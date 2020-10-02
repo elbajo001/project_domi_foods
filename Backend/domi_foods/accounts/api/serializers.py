@@ -1,6 +1,11 @@
 from abc import ABC
 from rest_framework import serializers
-from accounts.models import UserRestaurant
+from accounts.models import(
+    UserRestaurant,
+    Admin,
+    Client,
+    DeliveryMan,
+) 
 from django.contrib.auth.models import User
 
 
@@ -11,13 +16,36 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Admin
+        fields = '__all__'
 
+class ClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = '__all__'
+
+class Delivey_manSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DeliveryMan
+        fields = '__all__'
 
 class UserRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserRestaurant
-        fields = '__all__'
-
+        fields = (
+            'user',
+            'document_type',
+            'document',
+            'first_name',
+            'last_name',
+            'genre',
+            'phone_num',
+            'date_of_birth',
+            'email_address',
+            'address_location'
+        )
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -25,11 +53,10 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username')
 
-
 # Register Serializer
 class RegisterUserSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
 
+    password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password', 'password2')
@@ -42,5 +69,6 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         password2 = self.validated_data['password2']
         if password != password2:
             raise serializers.ValidationError({'answer': 'las contraseñas no coinciden.'})
-        user = User.objects.create_user(username, email, validated_data['password'])
+        user = User.objects.create_user(username,email , validated_data['password'])
         return user
+
