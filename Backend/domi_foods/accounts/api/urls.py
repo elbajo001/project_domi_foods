@@ -10,13 +10,24 @@ from .views import(
     UserLoginAPI,
     ChangePasswordView,
     UserRegisterAPI,
+    AdminRegister,
+    AdminDetail,
 )
 from knox import views as knox_views
 
 router = routers.DefaultRouter()
 router.register('', UserRestaurantRegister)
 
+router1 = routers.DefaultRouter()
+router1.register('',AdminRegister)
+
 urlpatterns = [
+    path('user_admin_detail/<str:pk>',AdminDetail , name = 'user_admin_detail'),
+    path('user_admin_list/',include(router1.urls) , name = 'user_admin_list'),
+    path('user_admin_register/',include(router1.urls) , name = 'user_admin_register'),
+]
+
+urlpatterns += [
     path('user_restaurant_update/<str:pk>',UserRestaurantUpdate , name = 'user_restaurant_update'),
     path('user_restaurant_delete/<str:pk>',UserRestaurantDelete , name = 'user_restaurant_delete'),
     path('user_restaurant_detail/<str:pk>',UserRestaurantDetail , name = 'user_restaurant_detail'),
