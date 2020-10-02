@@ -83,6 +83,78 @@ def AdminDetail(request, pk):
         serializer = AdminSerializer(User_admin, many = False)
         return Response(serializer.data)
 
+
+'''
+    *   *   *   *   *   *   *   *   *  *   USER RESTAURAN   *   *   *   *   *   *   *   *   *   *
+'''
+class UserRestaurantRegister(viewsets.ModelViewSet):
+    queryset = UserRestaurant.objects.all()
+    serializer_class = UserRestaurantSerializer
+
+@api_view(['GET'])
+def UserRestaurantList(request):
+    User_restaurant = UserRestaurant.objects.filter(state_delete = False)
+    if len(User_restaurant) != 0:
+        serializer = UserRestaurantSerializer(User_restaurant, many = True)
+        return Response(serializer.data)
+    else:
+        return Response({'answer':'No hay usuarios de restaurantes para listar'})
+
+@api_view(['GET'])
+def UserRestaurantDetail(request, pk):
+    try:
+        User_restaurant = UserRestaurant.objects.get(document = pk)
+    except UserRestaurant.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'GET':
+        serializer = UserRestaurantSerializer(User_restaurant, many = False)
+        return Response(serializer.data)
+
+@api_view(['DELETE',])
+def UserRestaurantDelete(request, pk):
+    try:
+        User_restaurant = UserRestaurant.objects.get(document = pk)
+    except UserRestaurant.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'DELETE':
+        User_restaurant.state_delete = True
+        User_restaurant.save()
+        return Response({'answer':'El cliente del restaurante se eliminó con éxito.'})
+
+
+@api_view(['PUT',])
+def UserRestaurantUpdate(request, pk):
+    try:
+        User_restaurant = UserRestaurant.objects.get(document = pk)
+    except UserRestaurant.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'PUT':
+        serializer = UserRestaurantSerializer(User_restaurant, data = request.data)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data["success"] = "Se actualizo correctamente la información."
+            return Response(data=data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+'''
+    *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+'''
+
+def Find_Restaurant_User_ID(par_username):
+    User_django_l = User.objects.get(username = par_username)
+    try:
+        User_Restaurant_l = UserRestaurant.objects.get(user = User_django_l.id)
+    except UserRestaurant.DoesNotExist:
+        User_django_l.delete()
+        return False
+    if User_Restaurant_l.state_delete == True:
+        return False
+    return User_Restaurant_l.document
+
 class ChangePasswordView(generics.UpdateAPIView):
     """
     An endpoint for changing password.
@@ -113,76 +185,6 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# - -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
-
-class UserRestaurantRegister(viewsets.ModelViewSet):
-    queryset = UserRestaurant.objects.all()
-    serializer_class = UserRestaurantSerializer
-
-
-@api_view(['GET'])
-def UserRestaurantList(request):
-    User_restaurant = UserRestaurant.objects.filter(state_delete=False)
-    if len(User_restaurant) != 0:
-        serializer = UserRestaurantSerializer(User_restaurant, many=True)
-        return Response(serializer.data)
-    else:
-        return Response({'answer': 'No hay usuarios de restaurantes para listar'})
-
-
-@api_view(['GET'])
-def UserRestaurantDetail(request, pk):
-    try:
-        User_restaurant = UserRestaurant.objects.get(document=pk)
-    except UserRestaurant.DoesNotExist:
-        return Response({'answer': 'No se encontró datos raciocinados a esa identificación'})
-
-    if request.method == 'GET':
-        serializer = UserRestaurantSerializer(User_restaurant, many=False)
-        return Response(serializer.data)
-
-
-@api_view(['DELETE', ])
-def UserRestaurantDelete(request, pk):
-    try:
-        User_restaurant = UserRestaurant.objects.get(document=pk)
-    except UserRestaurant.DoesNotExist:
-        return Response({'answer': 'No se encontró datos raciocinados a esa identificación'})
-
-    if request.method == 'DELETE':
-        User_restaurant.state_delete = True
-        User_restaurant.save()
-        return Response({'answer': 'El cliente del restaurante se eliminó con éxito.'})
-
-
-@api_view(['PUT', ])
-def UserRestaurantUpdate(request, pk):
-    try:
-        User_restaurant = UserRestaurant.objects.get(document=pk)
-    except UserRestaurant.DoesNotExist:
-        return Response({'answer': 'No se encontró datos raciocinados a esa identificación'})
-
-    if request.method == 'PUT':
-        serializer = UserRestaurantSerializer(User_restaurant, data=request.data)
-        data = {}
-        if serializer.is_valid():
-            serializer.save()
-            data['success'] = "El usuario se actualizo correctamente."
-            return Response(data=data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# - -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
-
-def UserDetail(par_username):
-    User_django = User.objects.get(username=par_username)
-    serializer = UserSerializer(User_django, many=False)
-    return serializer.data
-
-
-# Register API
 class UserRegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterUserSerializer
 
@@ -191,8 +193,9 @@ class UserRegisterAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
-            "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": AuthTokenSerializer.objects.create(user)[1]
+        "answer":"True",
+        "id": user.id,
+        "token": AuthToken.objects.create(user)[1]
         })
 
 
@@ -208,9 +211,12 @@ class UserLoginAPI(KnoxLoginView):
 
     def get_post_response_data(self, request, token, instance):
         UserSerializer = self.get_user_serializer_class()
+        answer = Find_Restaurant_User_ID(request.user)
+        if answer is False:
+            return {'answer':'Está cuenta no existe'}
         data = {
-            "answer": "True",
-            "user": UserDetail(request.user),
+            "answer":"True",
+            "document": answer,
             'expiry': self.format_expiry_datetime(instance.expiry),
             'token': token
         }
