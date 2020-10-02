@@ -7,17 +7,81 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
-from accounts.models import UserRestaurant
+from accounts.models import(
+    UserRestaurant,
+    Admin,
+    Client,
+    DeliveryMan
+) 
+
 from .serializers import (
     UserRestaurantSerializer,
     ChangePasswordSerializer,
     UserSerializer,
     RegisterUserSerializer,
+    AdminSerializer,
+    ClientSerializer,
+    DeliveryManSerializer,
 )
 
  
 # Django REST Framework Tutorial – Change & Reset Password
 
+'''
+    *   *   *   *   *   *   *   *   *  *   USER DELIVERY MAN   *   *   *   *   *   *   *   *   *   *
+'''
+class DeliveryManRegister(viewsets.ModelViewSet):
+    queryset = DeliveryMan.objects.all()
+    serializer_class = DeliveryManSerializer
+
+@api_view(['GET'])
+def DeliveryManDetail(request, pk):
+    try:
+        delivey_man = DeliveryMan.objects.get(id_user_restaurant = pk)
+    except DeliveryMan.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'GET':
+        serializer = DeliveryManSerializer(delivey_man, many = False)
+        return Response(serializer.data)
+
+
+'''
+    *   *   *   *   *   *   *   *   *  *   USER CLIENT   *   *   *   *   *   *   *   *   *   *
+'''
+class ClientRegister(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+
+@api_view(['GET'])
+def ClientDetail(request, pk):
+    try:
+        user_client = Client.objects.get(id_user_restaurant = pk)
+    except Client.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'GET':
+        serializer = ClientSerializer(user_client, many = False)
+        return Response(serializer.data)
+
+# Django REST Framework Tutorial – Change & Reset Password
+'''
+    *   *   *   *   *   *   *   *   *  *   USER ADMIN   *   *   *   *   *   *   *   *   *   *
+'''
+class AdminRegister(viewsets.ModelViewSet):
+    queryset = Admin.objects.all()
+    serializer_class = AdminSerializer
+
+@api_view(['GET'])
+def AdminDetail(request, pk):
+    try:
+        User_admin = Admin.objects.get(id_user_restaurant = pk)
+    except Admin.DoesNotExist:
+        return Response({'answer':'No se encontró datos relacionados a esa identificación'})
+
+    if request.method == 'GET':
+        serializer = AdminSerializer(User_admin, many = False)
+        return Response(serializer.data)
 
 class ChangePasswordView(generics.UpdateAPIView):
     """

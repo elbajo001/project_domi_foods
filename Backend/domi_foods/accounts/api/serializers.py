@@ -26,7 +26,7 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         fields = '__all__'
 
-class Delivey_manSerializer(serializers.ModelSerializer):
+class DeliveryManSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeliveryMan
         fields = '__all__'
