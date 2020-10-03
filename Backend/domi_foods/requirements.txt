@@ -1,0 +1,5 @@
+django-rest-framework
+django-rest-authtoken
+django-rest-knox
+Pillow
+knox
