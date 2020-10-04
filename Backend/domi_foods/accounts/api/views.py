@@ -184,6 +184,9 @@ class UserRegisterAPI(generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        answer = existing_user(request.data['username'])
+        if answer is True:
+            return Response({"username": ["Ya existe un usuario con este nombre."]})
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
