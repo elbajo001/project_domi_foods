@@ -29,7 +29,9 @@ SECRET_KEY = '-rcdo7n6i!ug=!ms5f!7r0+s!33#$c02%ja@jsicyn02fv0q(p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.0.111'
+]
 
 # Others
 # Date formats
@@ -97,15 +99,15 @@ WSGI_APPLICATION = 'domi_foods.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -116,7 +118,7 @@ DATABASES = {
         'DATABASE_PORT':5432
     }
 }
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
