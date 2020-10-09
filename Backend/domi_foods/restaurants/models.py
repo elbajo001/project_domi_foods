@@ -1,7 +1,6 @@
 from django.db import models
 from accounts.models import Admin
-
-
+from .validators import *
 # Create your models here.
 class Restaurant(models.Model):
     id_admin = models.ForeignKey(Admin, null=False, blank=False, on_delete=models.CASCADE)
@@ -9,7 +8,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=20, null=False, blank=False)
     address_location = models.CharField(max_length=40, null=False, blank=False)
     phone_num = models.IntegerField(null=False, blank=False, unique=True)
-    web_page = models.URLField(max_length=100, null=True, blank=True)
+    web_page = models.URLField(max_length=100, null=True, blank=True, validators=[url_validation])
     hours = models.CharField(max_length=25, null=True, blank=True)
     image = models.ImageField(upload_to='media_restaurants/img_restaurants', null=True, blank=True)
     date_creation = models.DateField(auto_now=True, auto_now_add=False)
@@ -57,4 +56,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 

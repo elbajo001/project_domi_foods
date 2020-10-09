@@ -17,6 +17,16 @@ class RestaurantSerializer(serializers.ModelSerializer):
         # 'date_creation', 'state_delete', 'state_disponibility')
         fields = "__all__"
 
+        def validate_url(self, url):
+            if not 'http://' in url and not 'https://' in url:
+                url = 'http://' + url
+            url_validate = URLValidator()
+            try:
+                url_validate(url)
+            except:
+                raise serializers.ValidationError("xD")
+            return url
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
