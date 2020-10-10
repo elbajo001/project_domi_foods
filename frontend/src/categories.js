@@ -96,7 +96,7 @@ cargar_restaurantes(){
 
 retornar_id_restaurante(name){
 	 for(var i=0;i<this.state.restaurants.length;i++){ 
-	 	if(this.state.restaurants[i].name == name){
+	 	if(this.state.restaurants[i].name === name){
 	 		return this.state.restaurants.id;
 	 	}
 	 }
