@@ -6,19 +6,26 @@ class Categories extends Component{
 	
 	state = {
     	categories: [],
-    	restaurants:[]
+		restaurants:[],
+		restaurant_id:""
   	};
 
+	  handleChange(event){
+		this.setState({value:event.target.value});
+	  }
 
   	 componentDidMount() {
-    	fetch('http://localhost:8000/restaurants/api/restaurants/3/categories')
+    	fetch('http://localhost:8000/restaurants/api/restaurants/4/categories')
       	.then((response) => response.json())
       	.then((data) => {
          	this.setState({ categories: data });
-      	});
-  	}
-
-  	
+		  });
+		  fetch("http://localhost:8000/restaurants/api/restaurants")
+		  .then((response) => response.json())
+		  .then((data) => {
+			this.setState({ restaurants: data });
+		  });
+		};
   	createNewCategory = (category) => {
     fetch(
     	'http://localhost:8000/restaurants/api/categories/', {
@@ -79,30 +86,6 @@ class Categories extends Component{
   };
 
 
-cargar_restaurantes(){
-	 fetch("http://localhost:8000/restaurants/api/restaurants")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ restaurants: data });
-      });
-    var restaurante= document.getElementById("restaurantes");
-    for(var i=0;i<this.state.restaurants.length;i++){ 
-            var opcion = document.createElement("option");
-            opcion.text = this.state.restaurants[i].name;
-            restaurante.options[i] = opcion;
-     }
-}
-
-
-retornar_id_restaurante(name){
-	 for(var i=0;i<this.state.restaurants.length;i++){ 
-	 	if(this.state.restaurants[i].name === name){
-	 		return this.state.restaurants.id;
-	 	}
-	 }
-}
-
-
 
 	render(){
 		return(
@@ -112,8 +95,10 @@ retornar_id_restaurante(name){
 					<h1 class="font-weight-bold text-danger mt-4">Información de las Categorías</h1>
 					<div class="form-group">
 						<label className="form-control-label">Restaurante:</label>
-						<select className="form-control" id="restaurantes" name="" >
-							<option value="cargar_restaurantes();">Seleccione un restaurante</option>
+						<select className="form-control" name="restaurant" id="restaurant" onChange={this.handleChange}>
+							{this.state.restaurants.map((restaurant)=>(
+								<option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
+							))}
 						</select>
 					<main className="d-flex justify-content-center my-4">
             			<div className="col-8">
