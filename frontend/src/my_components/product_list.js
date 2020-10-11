@@ -3,18 +3,19 @@ import EditableProduct from './editable_product';
 
 class ProductList extends Component {
   render() {
-    const books = this.props.books.map((book) => (
+    const products = this.props.products.map((product) => (
       <EditableProduct
-        key={book.id}
-        id={book.id}
-        title={book.title}
-        author={book.author}
-        description={book.description}
+        key={product.id}
+        id={product.id}
+        name={product.name}
+        price={product.price}
+        description={product.description}
+        category={product.category}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}
       ></EditableProduct>
     ));
-    return <div className="row">{books}</div>;
+    return <div className="row">{products}</div>;
   }
 }
 

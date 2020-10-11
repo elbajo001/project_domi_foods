@@ -8,30 +8,71 @@ class Products extends Component{
     products: []
   };
 
-
-
-
- createNewBook = (book) => {
-    book.id = Math.floor(Math.random() * 1000);
-    this.setState({ books: this.state.books.concat([book]) });
+  componentDidMount() {
+    fetch('http://localhost:8000/restaurants/api/restaurants/4/products')
+      .then((response) => response.json())
+      .then((data) => {
+         this.setState({ products: data });
+    });
   };
 
-  updateBook = (newBook) => {
-    const newBooks = this.state.books.map((book) => {
-      if (book.id === newBook.id) {
-        return Object.assign({}, newBook);
-      } else {
-        return book;
+
+ createNewProduct = (product) => {
+  fetch(
+    'http://localhost:8000/restaurants/api/products/', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(product)
+  })
+    .then((response) => response.json())
+    .then((product) => {
+      this.setState({
+        products: this.state.products.concat([product])
+      });
+    });
+  };
+
+  updateProduct = (newProduct) => {
+    fetch(
+      `http://localhost:8000/restaurants/api/products/${newProduct.id}/`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newProduct)
+      })
+
+      .then((response) => response.json())
+      .then((newProduct) => {
+        const newProducts = this.state.products.map((product) => {
+          if (product.id === newProduct.id) {
+            return Object.assign({}, newProduct);
+          } else {
+            return newProduct;
+          }
+        });
+        this.setState({ products: newProducts });
+      });
+    };
+
+  deleteProduct = (productId) => {
+    fetch(
+      `http://localhost:8000/restaurants/api/products/${productId}/`,
+    {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
       }
+    }
+    ).then(() => {
+      this.setState({
+        products: this.state.products.filter(
+        (product) => product.id !== productId)
     });
-
-    this.setState({ books: newBooks });
-  };
-
-  deleteBook = (bookId) => {
-    this.setState({
-      books: this.state.books.filter((book) => book.id !== bookId)
-    });
+});
   };
 
 
@@ -45,11 +86,11 @@ class Products extends Component{
 					 <main className="d-flex justify-content-center my-4">
                     <div className="col-sm-6">
           					<ProductList
-            					books={this.state.books}
-            					onDeleteClick={this.deleteBook}
-            					onUpdateClick={this.updateBook}
+            					products={this.state.products}
+            					onDeleteClick={this.deleteProduct}
+            					onUpdateClick={this.updateProduct}
          					   />
-         				 <ToggleableProductForm onBookCreate={this.createNewBook} />
+         				 <ToggleableProductForm onProductCreate={this.createNewProduct} />
                   </div>
       				</main>
           </div>

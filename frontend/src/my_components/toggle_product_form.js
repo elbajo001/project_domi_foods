@@ -14,9 +14,9 @@ class ToggleableProductForm extends React.Component {
   handleCancleClick = () => {
     this.leaveCreateMode();
   };
-  handleFormSubmit = (book) => {
+  handleFormSubmit = (product) => {
     this.leaveCreateMode();
-    this.props.onBookCreate(book);
+    this.props.onProductCreate(product);
   };
   render() {
     if (this.state.inCreateMode) {

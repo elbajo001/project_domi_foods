@@ -15,20 +15,20 @@ class EditableProduct extends Component {
   handleDelete = () => {
     this.props.onDeleteClick(this.props.id);
   };
-  handleUpdate = (book) => {
+  handleUpdate = (product) => {
     this.leaveEditMode();
-    book.id = this.props.id;
-    this.props.onUpdateClick(book);
+    product.id = this.props.id;
+    this.props.onUpdateClick(product);
   };
   render() {
     const component = () => {
       if (this.state.inEditMode) {
         return (
           <ProductForm
-            id={this.props.id}
-            title={this.props.title}
-            author={this.props.author}
+            name={this.props.name}
+            price={this.props.price}
             description={this.props.description}
+            category={this.props.category}
             onCancelClick={this.leaveEditMode}
             onFormSubmit={this.handleUpdate}
           />
@@ -36,9 +36,10 @@ class EditableProduct extends Component {
       }
       return (
         <Product
-          title={this.props.title}
-          author={this.props.author}
+          name={this.props.name}
+          price={this.props.price}
           description={this.props.description}
+          category={this.props.category}
           onEditClick={this.enterEditMode}
           onDeleteClick={this.handleDelete}
         />

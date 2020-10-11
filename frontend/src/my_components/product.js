@@ -6,8 +6,8 @@ class Product extends Component {
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between">
           <span>
-            <strong>Title: </strong>
-            {this.props.title}
+            <strong>Name: </strong>
+            {this.props.name}
           </span>
           <div>
             <span onClick={this.props.onEditClick} className="mr-2">
@@ -20,9 +20,11 @@ class Product extends Component {
         </div>
         <div className="card-body">
          <img className="card-img-top" src="https://higuma.github.io/bootstrap-4-tutorial/img/286x180.svg" alt="Card image cap"/>
-        {this.props.description}</div>
+        {this.props.description}
+        {this.props.price}
+        </div>
         <div className="card-footer">
-          <strong>Author:</strong> {this.props.author}
+          <strong>category:</strong> {this.props.category}
         </div>
       </div>
     );

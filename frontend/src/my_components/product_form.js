@@ -3,54 +3,77 @@ import React, { Component } from "react";
 
 class ProductForm extends Component {
   state = {
-    title: this.props.title || "",
-    author: this.props.author || "",
-    description: this.props.description || ""
+    name: this.props.author || "",
+    price: this.props.price || "",
+    description: this.props.description || "",
+    category: this.props.category || ""
   };
   handleFormSubmit = (evt) => {
     evt.preventDefault();
     this.props.onFormSubmit({ ...this.state });
   };
-  handleTitleUpdate = (evt) => {
-    this.setState({ title: evt.target.value });
+  handleIdUpdate = (evt) => {
+    this.setState({id: evt.target.value });
   };
-  handleAuthorUpdate = (evt) => {
-    this.setState({ author: evt.target.value });
+  handleNameUpdate = (evt) => {
+    this.setState({name: evt.target.value });
   };
+
+  handlePriceUpdate = (evt) => {
+    this.setState({price: evt.target.value });
+  };
+
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
   };
+
+  handleCategoryUpdate = (evt) => {
+    this.setState({category: evt.target.value });
+  };
+
   render() {
     const buttonText = this.props.id ? "Update Book" : "Create Book";
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div className="form-group">
-          <label>Title</label>
+          <label>Name</label>
           <input
             type="text"
-            placeholder="Enter a title"
-            value={this.state.title}
-            onChange={this.handleTitleUpdate}
+            placeholder="Enter a name"
+            value={this.state.name}
+            onChange={this.handleNameUpdate}
             className="form-control"
           />
         </div>
 
         <div className="form-group">
-          <label>Author</label>
+          <label>Price</label>
           <input
             type="text"
-            placeholder="Author's name"
-            value={this.state.author}
-            onChange={this.handleAuthorUpdate}
+            placeholder="Product's price"
+            value={this.state.price}
+            onChange={this.handlePriceUpdate}
             className="form-control"
           />
         </div>
+
+        <div className="form-group">
+          <label>Category</label>
+          <input
+            type="text"
+            placeholder="Product's category"
+            value={this.state.category}
+            onChange={this.handleCategoryUpdate}
+            className="form-control"
+          />
+        </div>
+
 
         <div className="form-group">
           <label>Description</label>
           <textarea
             className="form-control"
-            placeholder="Book Description"
+            placeholder="Product Description"
             rows="5"
             value={this.state.description}
             onChange={this.handleDescriptionUpdate}
@@ -58,6 +81,8 @@ class ProductForm extends Component {
             {this.state.description}
           </textarea>
         </div>
+
+
         <div className="form-group d-flex justify-content-between">
           <button type="submit" className="btn btn-md btn-primary">
             {buttonText}
