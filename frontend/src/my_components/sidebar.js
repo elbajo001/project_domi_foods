@@ -12,10 +12,19 @@ class Sidebar extends Component{
           </button>
         </div>
         <div class="p-4">
-          <h1><a href="index.html" class="logo">Domifoods!<span>Food Delivery</span></a></h1>
+          <h1><a href="index.html" class="logo">
+              Domifoods!
+              <span>
+              Food Delivery</span>
+              </a>
+          </h1>
+           <hr/>
+              <img src="https://lh3.googleusercontent.com/proxy/INcKAR8d7kawfNPAlBCT0bvaOs3ndZDKuZEXzrHBxzLX9tmcyj7wVxCUreziLMxdlVGcrz3yUlP5r8kufiVamTjg3pqULPiqXBOQwjWDGPQrBze6eZTNwi5Z8pA9AwA" height="70" width="70"/>
+              <label className="ml-3">Usuario</label>
+          <hr/>
           <ul class="list-unstyled components mb-5">
             <li class="active">
-              <Link to ="/"><span class="fa fa-home mr-3"></span> Home</Link>
+              <Link to ="/"><span class="fa fa-home mr-3"></span>Home</Link>
             </li>
             <li>
                 <Link to ="/profile"><span class="fa fa-user mr-3"></span>Mi perfil</Link>
@@ -30,7 +39,7 @@ class Sidebar extends Component{
               <Link to="/categories"><span class="fa fa-tasks mr-3"></span>Categorías</Link>
             </li>
             <li>
-              <a href="#"><span class="fa fa-bar-chart mr-3"></span>Reportes</a>
+              <a href="/reports"><span class="fa fa-bar-chart mr-3"></span>Reportes</a>
             </li>
           </ul>
         </div>

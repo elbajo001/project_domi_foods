@@ -6,8 +6,23 @@ class CategoryForm extends Component {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
-    restaurant: this.props.restaurant || ""
+    restaurant: this.props.restaurant || "",
+    restaurants:[]
   };
+
+
+   componentDidMount(){
+       fetch("http://localhost:8000/restaurants/api/restaurants")
+      .then((response) => response.json())
+      .then((data) => {
+      this.setState({ restaurants: data });
+      });
+   }
+
+    handleChange(event){
+    this.setState({value:event.target.value});
+    }
+
   handleFormSubmit = (evt) => {
     evt.preventDefault();
     this.props.onFormSubmit({ ...this.state });
@@ -52,13 +67,14 @@ class CategoryForm extends Component {
 
         <div className="form-group">
           <label>Restaurant</label>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Restaurant"
-            value={this.state.restaurant}
-            onChange={this.handleRestaurantUpdate}
-          />
+
+          <select className="form-control" name="restaurant_sel" id="restaurant_sel" onChange={this.handleChange}>
+              {this.state.restaurants.map((restaurant)=>(
+                <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
+              ))}
+            </select>
+
+        
         </div>
 
 

@@ -15,7 +15,7 @@ class ProductList extends Component {
         onUpdateClick={this.props.onUpdateClick}
       ></EditableProduct>
     ));
-    return <div className="row">{products}</div>;
+    return <div>{products}</div>;
   }
 }
 

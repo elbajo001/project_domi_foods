@@ -7,6 +7,7 @@ import RestaurantDashboard from './restaurants';
 import Products from './products';
 import Categories from './categories';
 import Profile from './profile';
+import Reports from './reports';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/restaurants" component={RestaurantDashboard} />
             <Route path="/products" component={Products} />
             <Route path="/categories" component={Categories}/>
+            <Route path="/reports" component={Reports}/>
          </Switch>
          </Router>
     </div>

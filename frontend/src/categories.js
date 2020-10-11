@@ -6,8 +6,8 @@ class Categories extends Component{
 	
 	state = {
     	categories: [],
-		restaurants:[],
-		restaurant_id:""
+		  restaurants:[],
+		  restaurant_id:""
   	};
 
 	  handleChange(event){
