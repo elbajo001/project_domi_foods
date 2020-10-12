@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import ToggleableRestaurantForm from "./my_components/toggle_restaurant_form";
 import RestaurantList from "./my_components/restaurant_list";
 import Restaurant from "./my_components/restaurant";
@@ -12,7 +12,7 @@ class RestaurantDashboard extends Component {
   //building crud
 
   componentDidMount() {
-    fetch("http://localhost:8000/restaurants/api/restaurants")
+    fetch("http://localhost:8000/restaurants/api/admin/1/restaurants")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ restaurants: data });

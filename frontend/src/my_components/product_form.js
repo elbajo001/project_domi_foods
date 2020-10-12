@@ -2,12 +2,38 @@ import React, { Component } from "react";
 
 
 class ProductForm extends Component {
-  state = {
-    name: this.props.author || "",
-    price: this.props.price || "",
-    description: this.props.description || "",
-    category: this.props.category || ""
-  };
+  constructor(props){
+    super(props);
+
+    //this.handleChange = this.handleChange.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+
+  }
+
+
+    state = {
+      name: this.props.name || "",
+      price: this.props.price || "",
+      description: this.props.description || "",
+      category: this.props.category || "",
+      categories:[]
+    };
+
+
+
+  componentDidMount(){
+      fetch('http://localhost:8000/restaurants/api/restaurants/4/categories')
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({ categories: data });
+      });
+  }
+
+  handleChange(event){
+    this.setState({category:event.target.value});
+    //this.props.category=event.target.value;
+   }
+
   handleFormSubmit = (evt) => {
     evt.preventDefault();
     this.props.onFormSubmit({ ...this.state });
@@ -32,7 +58,7 @@ class ProductForm extends Component {
   };
 
   render() {
-    const buttonText = this.props.id ? "Update Book" : "Create Book";
+    const buttonText = this.props.id ? "Update Product" : "Create Product";
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div className="form-group">
@@ -59,13 +85,11 @@ class ProductForm extends Component {
 
         <div className="form-group">
           <label>Category</label>
-          <input
-            type="text"
-            placeholder="Product's category"
-            value={this.state.category}
-            onChange={this.handleCategoryUpdate}
-            className="form-control"
-          />
+           <select className="form-control" name="category_sel" id="category_sel" onChange={this.handleChange.bind(this)}>
+              {this.state.categories.map((category)=>(
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
+            </select>
         </div>
 
 
@@ -84,12 +108,12 @@ class ProductForm extends Component {
 
 
         <div className="form-group d-flex justify-content-between">
-          <button type="submit" className="btn btn-md btn-primary">
+          <button type="submit" className="btn btn-md btn-danger">
             {buttonText}
           </button>
           <button
             type="button"
-            className="btn btn-md btn-secondary"
+            className="btn btn-md btn-primary"
             onClick={this.props.onCancelClick}
           >
             Cancel

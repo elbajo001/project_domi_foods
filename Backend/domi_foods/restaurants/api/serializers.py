@@ -11,6 +11,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
+    Restaurant.categories = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Restaurant
         # fields = ('id', 'id_admin', 'nit', 'name', 'address_location', 'phone_num', 'web_page', 'hours', 'image',

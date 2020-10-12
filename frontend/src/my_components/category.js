@@ -4,7 +4,7 @@ class Category extends Component {
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>
-        <div className="card-header d-flex justify-content-between">
+        <div className="card-header d-flex justify-content-between bg-danger text-white">
           <span>
             <strong>Category: </strong>
             {this.props.name}
@@ -19,9 +19,8 @@ class Category extends Component {
           </div>
         </div>
         <div className="card-body">
-         <img className="card-img-top" src="https://higuma.github.io/bootstrap-4-tutorial/img/286x180.svg" alt="Card image cap"/>
         {this.props.description}</div>
-        <div className="card-footer">
+        <div className="card-footer bg-danger text-white">
           <strong>Restaurant:</strong> {this.props.restaurant}
         </div>
       </div>

@@ -101,7 +101,7 @@ class Categories extends Component{
 							))}
 						</select>
 					<main className="d-flex justify-content-center my-4">
-            			<div className="col-8">
+            			<div className="col-auto">
             				<CategoryList
               					categories={this.state.categories}
               					onDeleteClick={this.deleteCategory}

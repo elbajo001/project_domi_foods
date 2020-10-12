@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 
 
 class Restaurant extends Component {
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>
-        <div className="card-header d-flex justify-content-between">
+        <div className="card-header d-flex justify-content-between bg-primary text-white">
           <span>
-            <h4 className="text-primary"><strong>Name: </strong>
+            <h4 className="text-white"><strong>Name: </strong>
             {this.props.name}
             </h4>
           </span>

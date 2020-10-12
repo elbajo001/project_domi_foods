@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CategoryForm from "./category_form";
 
-class ToggleableCategoryForm extends React.Component {
+class ToggleableCategoryForm extends Component {
   state = {
     inCreateMode: false
   };
@@ -21,7 +21,7 @@ class ToggleableCategoryForm extends React.Component {
   render() {
     if (this.state.inCreateMode) {
       return (
-        <div className="mb-3 p-4" style={{ boxShadow: "0 0 10px #ccc" }}>
+        <div className="mb-3 p-4 col-5" style={{ boxShadow: "0 0 10px #ccc" }}>
           <CategoryForm
             onFormSubmit={this.handleFormSubmit}
             onCancelClick={this.handleCancleClick}

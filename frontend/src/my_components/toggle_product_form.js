@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProductForm from "./product_form";
 
-class ToggleableProductForm extends React.Component {
+class ToggleableProductForm extends Component {
   state = {
     inCreateMode: false
   };

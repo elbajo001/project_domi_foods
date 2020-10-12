@@ -26,4 +26,10 @@ urlpatterns = [
     path('restaurants/<int:rest>/products/', ListProductsByRestaurant.as_view()),
     # List all products by restaurant <rest> by category <cat>
     path('restaurants/<int:rest>/category/<int:cat>/products/', ListProductsByRestaurantByCategory.as_view()),
+    # List all restaurants by admin <admin>
+    path('admin/<admin>/restaurants/', ListRestaurantsByAdmin.as_view()),
+    # List all categories by admin <cat>
+    path('admin/<admin>/restaurant/<rest>/categories/', ListCategoriesByRestaurantByAdmin.as_view()),
+    # List all products by admin <rest>
+    path('admin/<admin>/restaurant/<rest>/category/<cat>/products/', ListProductsByCategoryByRestaurantByAdmin.as_view()),
 ]

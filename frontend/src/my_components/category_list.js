@@ -9,7 +9,7 @@ class CategoryList extends Component {
         id={category.id}
         name={category.name}
         description={category.description}
-        restaurant={category.restaurant}
+        restaurant={[category.restaurant]}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}
       ></EditableCategory>

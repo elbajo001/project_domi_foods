@@ -5,10 +5,10 @@ from .validators import *
 class Restaurant(models.Model):
     id_admin = models.ForeignKey(Admin, null=False, blank=False, on_delete=models.CASCADE)
     nit = models.IntegerField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=20, null=False, blank=False)
-    address_location = models.CharField(max_length=40, null=False, blank=False)
+    name = models.CharField(max_length=20, null=False, blank=False, unique=True)
+    address_location = models.CharField(max_length=40, null=False, blank=False, unique=True)
     phone_num = models.IntegerField(null=False, blank=False, unique=True)
-    web_page = models.URLField(max_length=100, null=True, blank=True, validators=[url_validation])
+    web_page = models.URLField(max_length=100, null=True, blank=True, validators=[url_validation], unique=True)
     hours = models.CharField(max_length=25, null=True, blank=True)
     image = models.ImageField(upload_to='media_restaurants/img_restaurants', null=True, blank=True)
     date_creation = models.DateField(auto_now=True, auto_now_add=False)
@@ -25,7 +25,7 @@ class Restaurant(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=25, null=False, blank=False)
+    name = models.CharField(max_length=25, null=False, blank=False, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to='media_restaurants/img_categories', null=True, blank=True)
     restaurant = models.ManyToManyField(Restaurant)
@@ -40,7 +40,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=20, null=False, blank=False)
+    name = models.CharField(max_length=20, null=False, blank=False, unique=True)
     price = models.IntegerField(null=False, blank=False)
     description = models.CharField(max_length=255)
     image = models.ImageField(upload_to='media_restaurants/img_products', null=True, blank=True)

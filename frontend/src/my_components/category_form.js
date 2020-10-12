@@ -6,7 +6,7 @@ class CategoryForm extends Component {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
-    restaurant: this.props.restaurant || "",
+    restaurant: [this.props.restaurant] || [],
     restaurants:[]
   };
 
@@ -19,9 +19,10 @@ class CategoryForm extends Component {
       });
    }
 
-    handleChange(event){
-    this.setState({value:event.target.value});
-    }
+  handleChange(event){ 
+    this.setState({value:[event.target.value]});
+    this.setState({restaurant:[event.target.value]});
+  }
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -30,14 +31,13 @@ class CategoryForm extends Component {
   handleNameUpdate = (evt) => {
     this.setState({ name: evt.target.value });
   };
-  handleRestaurantUpdate = (evt) => {
-    this.setState({ restaurant: evt.target.value });
-  };
+ 
+
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
   };
   render() {
-    const buttonText = this.props.id ? "Update Book" : "Create Book";
+    const buttonText = this.props.id ? "Update Category" : "Create Category";
     return (
       <form onSubmit={this.handleFormSubmit}>
 
@@ -73,18 +73,17 @@ class CategoryForm extends Component {
                 <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
               ))}
             </select>
-
         
         </div>
 
 
         <div className="form-group d-flex justify-content-between">
-          <button type="submit" className="btn btn-md btn-primary">
+          <button type="submit" className="btn btn-md btn-danger">
             {buttonText}
           </button>
           <button
             type="button"
-            className="btn btn-md btn-secondary"
+            className="btn btn-md btn-primary"
             onClick={this.props.onCancelClick}
           >
             Cancel
