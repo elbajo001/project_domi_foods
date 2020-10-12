@@ -84,7 +84,7 @@ class Products extends Component{
          <div class="container-fluid">
 					<h1 class="font-weight-bold text-danger mt-4">Información de los Platos</h1>
 					 <main className="d-flex my-4 jumbotron row">
-                    <div className="col-sm-6">
+                    <div className="col-8">
           					<ProductList
             					products={this.state.products}
             					onDeleteClick={this.deleteProduct}

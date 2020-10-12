@@ -11,7 +11,7 @@ class RestaurantForm extends Component {
     phone_num: this.props.phone_num || "",
     web_page: this.props.web_page || "",
     hours: this.props.hours || "",
-    id_admin: this.props.id_admin || ""
+    id_admin: 1
   };
   handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -117,18 +117,6 @@ class RestaurantForm extends Component {
               className="form-control"
             />
           </div>
-
-           <div className="form-group">
-            <label>Admin id</label>
-            <input
-              type="text"
-              placeholder="Enter admin id"
-              value={this.state.id_admin}
-              onChange={this.handleIdAdminUpdate}
-              className="form-control"
-            />
-          </div>
-
         </div>
         <div className="form-group d-flex justify-content-between">
           <button type="submit" className="btn btn-md btn-primary">

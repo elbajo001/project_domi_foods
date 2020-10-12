@@ -32,9 +32,6 @@ class Restaurant extends Component {
           </div>
           </form>
         </div>
-        <div className="card-footer">
-          <h4 className="text-primary"><strong>Admin:</strong> {this.props.id_admin}</h4>
-        </div>
       </div>
     );
   }

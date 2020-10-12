@@ -2,6 +2,28 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Sidebar extends Component{
+  state={
+    admin:{
+      "user":"",
+      "document_type":"",
+      "document":"",
+      "first_name":"",
+      "last_name":"",
+      "phone_num":"",
+      "email":"",
+      "addres_location":""    
+    }
+  }
+
+  componentDidMount(){
+     fetch("http://localhost:8000/accounts/api/user_restaurant_detail/10467803")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ admin: data });
+      });
+  };
+
+
 	render(){
 		return(
 			 <nav id="sidebar">
@@ -20,7 +42,7 @@ class Sidebar extends Component{
           </h1>
            <hr/>
               <img src="https://lh3.googleusercontent.com/proxy/INcKAR8d7kawfNPAlBCT0bvaOs3ndZDKuZEXzrHBxzLX9tmcyj7wVxCUreziLMxdlVGcrz3yUlP5r8kufiVamTjg3pqULPiqXBOQwjWDGPQrBze6eZTNwi5Z8pA9AwA" height="70" width="70"/>
-              <label className="ml-3">Usuario</label>
+              <label className="form-control-sm ml-3">{this.state.admin.first_name} {this.state.admin.last_name}</label>
           <hr/>
           <ul class="list-unstyled components mb-5">
             <li class="active">
