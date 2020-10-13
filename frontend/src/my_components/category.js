@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 
 class Category extends Component {
+  
+    state={
+      restaurant_name:{
+          "id": "",
+          "nit": "",
+          "name": "",
+      }
+    }
+
+
+ componentDidMount(){
+      fetch(`http://localhost:8000/restaurants/api/restaurants/${this.props.restaurant}/`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({restaurant_name: data });
+      });
+  }
+
+
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
           <span>
-            <strong>Category: </strong>
-            {this.props.name}
+            <h5 className="text-white"><strong>{this.props.name}</strong></h5>
           </span>
           <div>
             <span onClick={this.props.onEditClick} className="mr-2">
@@ -18,10 +36,11 @@ class Category extends Component {
             </span>
           </div>
         </div>
-        <div className="card-body">
+        <hr/>
+        <div className="card-body text-dark">
         {this.props.description}</div>
         <div className="card-footer bg-danger text-white">
-          <strong>Restaurant:</strong> {this.props.restaurant}
+          <strong><h6>Restaurante:  {this.state.restaurant_name.name}</h6></strong>
         </div>
       </div>
     );

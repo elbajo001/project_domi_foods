@@ -85,7 +85,7 @@ class RestaurantDashboard extends Component {
           <div class="container-fluid">
             <h1 className="text-danger mt-4"><strong>Restaurantes</strong></h1>
              <main className="d-flex justify-content-center my-4">
-            <div className="container">
+            <div className="jumbotron bg-white">
             <RestaurantList
               restaurants={this.state.restaurants}
               onDeleteClick={this.deleteRestaurant}

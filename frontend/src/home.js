@@ -7,13 +7,13 @@ class Home extends Component{
 			 <main>
                     <div class="container-fluid">
                         <h1 class="font-weight-bold text-danger mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Área de Mensajes</li>
+                        <ol class="breadcrumb mb-4 bg-white">
+                            <li class="breadcrumb-item active text-dark"><h6>Área de Mensajes</h6></li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
-                                    <div class="card-header">
+                                    <div class="card-header bg-danger text-white">
                                         <i class="fas fa-chart-area mr-1"></i>
                                         Reporte Mensual de Ventas
                                     </div>
@@ -22,7 +22,7 @@ class Home extends Component{
                             </div>
                             <div class="col-xl-6">
                                 <div class="card mb-4">
-                                    <div class="card-header">
+                                    <div class="card-header bg-danger text-white">
                                         <i class="fas fa-chart-bar mr-1"></i>
                                         Reporte Semanal de Ventas
                                     </div>
@@ -31,7 +31,7 @@ class Home extends Component{
                             </div>
                         </div>
                         <div class="card mb-4">
-                            <div class="card-header">
+                            <div class="card-header bg-danger text-white">
                                 <i class="fas fa-table mr-1"></i>
                                 Platos Publicados
                             </div>

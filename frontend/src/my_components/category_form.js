@@ -6,7 +6,7 @@ class CategoryForm extends Component {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
-    restaurant: [this.props.restaurant] || [],
+    restaurant: this.props.restaurant || [4],
     restaurants:[]
   };
 
@@ -20,8 +20,8 @@ class CategoryForm extends Component {
    }
 
   handleChange(event){ 
-    this.setState({value:[event.target.value]});
-    this.setState({restaurant:[event.target.value]});
+    //restaurant: this.state.restaurant.concat([event.target.value]);
+    this.setState({restaurant:[4]});
   }
 
   handleFormSubmit = (evt) => {
@@ -68,7 +68,7 @@ class CategoryForm extends Component {
         <div className="form-group">
           <label>Restaurant</label>
 
-          <select className="form-control" name="restaurant_sel" id="restaurant_sel" onChange={this.handleChange}>
+          <select className="form-control" name="restaurant_sel" id="restaurant_sel" onChange={this.handleChange.bind(this)}>
               {this.state.restaurants.map((restaurant)=>(
                 <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
               ))}

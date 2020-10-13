@@ -41,7 +41,7 @@ class Sidebar extends Component{
               </a>
           </h1>
            <hr/>
-              <img src="https://lh3.googleusercontent.com/proxy/INcKAR8d7kawfNPAlBCT0bvaOs3ndZDKuZEXzrHBxzLX9tmcyj7wVxCUreziLMxdlVGcrz3yUlP5r8kufiVamTjg3pqULPiqXBOQwjWDGPQrBze6eZTNwi5Z8pA9AwA" height="70" width="70" alt="user"/>
+              <img src="https://electronicssoftware.net/wp-content/uploads/user.png" height="70" width="70" alt="user"/>
               <label className="form-control-sm ml-3">{this.state.admin.first_name} {this.state.admin.last_name}</label>
           <hr/>
           <ul class="list-unstyled components mb-5">

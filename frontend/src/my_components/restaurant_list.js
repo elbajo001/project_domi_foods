@@ -20,7 +20,7 @@ class RestaurantList extends Component {
       ></EditableRestaurant>
     ));
 
-    return <div>{restaurants}</div>;
+    return <div className="bg-faded">{restaurants}</div>;
   }
 }
 

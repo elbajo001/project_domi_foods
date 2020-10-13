@@ -93,15 +93,15 @@ class Categories extends Component{
 			 <main>
                 <div class="container-fluid">
 					<h1 class="font-weight-bold text-danger mt-4">Información de las Categorías</h1>
-					<div class="form-group">
+          <div class="form-group">
 						<label className="form-control-label">Restaurante:</label>
-						<select className="form-control" name="restaurant" id="restaurant" onChange={this.handleChange}>
+						<select className="form-control" name="restaurant" id="restaurant" onChange={this.handleChange} disabled>
 							{this.state.restaurants.map((restaurant)=>(
 								<option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
 							))}
 						</select>
 					<main className="d-flex justify-content-center my-4">
-            			<div className="col-auto">
+            			<div className="jumbotron bg-white col-auto">
             				<CategoryList
               					categories={this.state.categories}
               					onDeleteClick={this.deleteCategory}
