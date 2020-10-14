@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-//import ReactDOM from "react-dom";
 import ToggleableRestaurantForm from "./my_components/toggle_restaurant_form";
 import RestaurantList from "./my_components/restaurant_list";
 import Restaurant from "./my_components/restaurant";
@@ -9,75 +8,73 @@ class RestaurantDashboard extends Component {
     restaurants: []
   };
 
-  //building crud
+  //crud de restaurantes
 
+
+  //listar restaurantes de un administrador dado
   componentDidMount() {
-    fetch("http://localhost:8000/restaurants/api/admin/1/restaurants")
+    fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ restaurants: data });
       });
   }
 
+  //crear restaurante
   createNewRestaurant = (restaurant) => {
     fetch(
-    	'http://localhost:8000/restaurants/api/restaurants/', {
+    	'http://192.168.1.151:8000/restaurants/api/restaurants/', {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(restaurant)
-    })
-      .then((response) => response.json())
-      .then((restaurant) => {
-        this.setState({
-          restaurants: this.state.restaurants.concat([restaurant])
-        });
+      body: JSON.stringify(restaurant),
+    }).then(response => response.json())
+      .then(restaurant => {
+        this.setState({restaurants: this.state.restaurants.concat([restaurant])});
       });
-  };
+  }
 
+
+ //actualizar restaurante
   updateRestaurant = (newRestaurant) => {
-    fetch(
-      `http://localhost:8000/restaurants/api/restaurants/${newRestaurant.id}/`,
-      {
+    fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
         method: "PUT",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newRestaurant)
-      }
-    )
-      .then((response) => response.json())
-      .then((newRestaurant) => {
-        const newRestaurants = this.state.restaurants.map((restaurant) => {
+        body: JSON.stringify(newRestaurant),
+      }).then(response => response.json())
+      .then(newRestaurant => {
+        const newRestaurants = this.state.restaurants.map(restaurant => {
           if (restaurant.id === newRestaurant.id) {
-            return Object.assign({}, newRestaurant);
+            return Object.assign({}, newRestaurant)
           } else {
-            return Restaurant;
+            return restaurant;
           }
         });
-        this.setState({ restaurants: newRestaurants });
+        this.setState({restaurants: newRestaurants});
       });
-  };
+  }
 
+
+  //eliminar restaurante
   deleteRestaurant = (restaurantId) => {
     fetch(
-      `http://localhost:8000/restaurants/api/restaurants/${restaurantId}/`,
+      `http://192.168.1.151:8000/restaurants/api/restaurants/${restaurantId}/`,
       {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    ).then(() => {
+          "Content-Type": "application/json",
+        },
+      }).then(() => {
       this.setState({
         restaurants: this.state.restaurants.filter(
-          (restaurant) => restaurant.id !== restaurantId
-        )
-      });
+           restaurant => restaurant.id !== restaurantId)})
     });
-  };
+  }
 
+  //renderizar para mostrar el contenido
   render() {
     return (
       <div id="content" class="p-4 p-md-5 pt-5">

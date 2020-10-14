@@ -15,17 +15,17 @@ class EditableCategory extends Component {
   handleDelete = () => {
     this.props.onDeleteClick(this.props.id);
   };
-  handleUpdate = (book) => {
+  handleUpdate = (category) => {
     this.leaveEditMode();
-    book.id = this.props.id;
-    this.props.onUpdateClick(book);
+    category.id = this.props.id;
+    this.props.onUpdateClick(category);
   };
   render() {
     const component = () => {
       if (this.state.inEditMode) {
         return (
           <CategoryForm
-            id={this.props.id}
+            id = {this.props.id}
             name={this.props.name}
             description={this.props.description}
             restaurant={this.props.restaurant}
@@ -40,13 +40,13 @@ class EditableCategory extends Component {
             name={this.props.name}
             description={this.props.description}
             restaurant={this.props.restaurant}
-          onEditClick={this.enterEditMode}
-          onDeleteClick={this.handleDelete}
+            onEditClick={this.enterEditMode}
+            onDeleteClick={this.handleDelete}
         />
       );
     };
     return (
-      <div className="mb-3 p-4 col-5" style={{ boxShadow: "0 0 10px #ccc" }}>
+      <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
         {component()}
       </div>
     );

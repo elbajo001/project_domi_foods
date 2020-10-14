@@ -12,7 +12,7 @@ class Category extends Component {
 
 
  componentDidMount(){
-      fetch(`http://localhost:8000/restaurants/api/restaurants/${this.props.restaurant}/`)
+      fetch('http://192.168.1.151:8000/restaurants/api/restaurants/7/')
         .then((response) => response.json())
         .then((data) => {
           this.setState({restaurant_name: data });
@@ -39,9 +39,6 @@ class Category extends Component {
         <hr/>
         <div className="card-body text-dark">
         {this.props.description}</div>
-        <div className="card-footer bg-danger text-white">
-          <strong><h6>Restaurante:  {this.state.restaurant_name.name}</h6></strong>
-        </div>
       </div>
     );
   }

@@ -2,6 +2,7 @@ from django.urls import path
 from .views import *
 
 
+
 urlpatterns = [
     # Categories GET, POST
     path('categories/', CategoryList.as_view()),
@@ -21,7 +22,9 @@ urlpatterns = [
     path('restaurants/<int:pk>/', RestaurantDetail.as_view()),
 
     # List all categories by restaurant <rest>
-    path('restaurants/<int:rest>/categories/', ListCategoryByRestaurant.as_view()),
+    path('restaurants/<str:pk>/categories/', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
+    #Listar categorias por restaurante
+    #path('restaurants/categories/<str:pk>', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
     # List all products by restaurant <rest>
     path('restaurants/<int:rest>/products/', ListProductsByRestaurant.as_view()),
     # List all products by restaurant <rest> by category <cat>

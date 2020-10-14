@@ -2,32 +2,20 @@ import React, { Component } from "react";
 
 
 class CategoryForm extends Component {
+  //
   state = {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
-    restaurant: this.props.restaurant || [4],
-    restaurants:[]
+    restaurant: this.props.restaurant || ""
   };
 
-
-   componentDidMount(){
-       fetch("http://localhost:8000/restaurants/api/restaurants")
-      .then((response) => response.json())
-      .then((data) => {
-      this.setState({ restaurants: data });
-      });
-   }
-
-  handleChange(event){ 
-    //restaurant: this.state.restaurant.concat([event.target.value]);
-    this.setState({restaurant:[4]});
-  }
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
     this.props.onFormSubmit({ ...this.state });
   };
+
   handleNameUpdate = (evt) => {
     this.setState({ name: evt.target.value });
   };
@@ -36,11 +24,17 @@ class CategoryForm extends Component {
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
   };
+
+  handleRestaurantUpdate = (evt) => { 
+    //restaurant: this.state.restaurant.concat([event.target.value]);
+    this.setState({ restaurant: evt.target.value });
+  };
+
+
   render() {
     const buttonText = this.props.id ? "Update Category" : "Create Category";
     return (
       <form onSubmit={this.handleFormSubmit}>
-
         <div className="form-group">
           <label>Name</label>
           <input
@@ -67,13 +61,13 @@ class CategoryForm extends Component {
 
         <div className="form-group">
           <label>Restaurant</label>
-
-          <select className="form-control" name="restaurant_sel" id="restaurant_sel" onChange={this.handleChange.bind(this)}>
-              {this.state.restaurants.map((restaurant)=>(
-                <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
-              ))}
-            </select>
-        
+            <input
+            type="text"
+            placeholder="Restaurant's id"
+            value={this.state.restaurant}
+            onChange={this.handleRestaurantUpdate}
+            className="form-control"
+          />
         </div>
 
 

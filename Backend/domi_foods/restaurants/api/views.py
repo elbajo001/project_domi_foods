@@ -1,7 +1,8 @@
 from rest_framework import generics
 from .serializers import *
 from ..models import *
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # listar los productos de un restaurante <rest> y una categoria <cat>
 class ListProductsByRestaurantByCategory(generics.ListAPIView):
@@ -38,11 +39,20 @@ class ListCategoryByRestaurant(generics.ListAPIView):
 
     def get_queryset(self):
         var_rest = self.kwargs['rest']
+        print("****",rest)
         print(self.kwargs)
         queryset = Category.objects.raw('SELECT * FROM restaurants_category '
                                         'INNER JOIN restaurants_category_restaurant ON restaurants_category.id = restaurants_category_restaurant.category_id '
                                         'WHERE restaurants_category_restaurant.restaurant_id = %s', [var_rest])
         return queryset
+
+@api_view(['GET'])   
+def ListarCategoriasPorRestaurante(request, pk):
+    list_categorias = Category.objects.filter(restaurant = pk)
+    print('Aqui llega al serializer')
+    serializer = CategorySerializer(list_categorias, many = True)
+    return Response(serializer.data)
+
 
 # listar los restaurantes asociados a un admin <admin>
 class ListRestaurantsByAdmin(generics.ListAPIView):

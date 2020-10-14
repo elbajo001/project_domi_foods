@@ -42,7 +42,6 @@ class EditableRestaurant extends Component {
       }
       return (
         <Restaurant
-          id={this.props.id}
           nit={this.props.nit}
           name={this.props.name}
           address_location={this.props.address_location}
@@ -56,7 +55,7 @@ class EditableRestaurant extends Component {
       );
     };
     return (
-      <div className="mb-3 p-4" style={{ boxShadow: "0 0 10px #ccc" }}>
+      <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
         {component()}
       </div>
     );

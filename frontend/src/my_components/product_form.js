@@ -14,7 +14,7 @@ class ProductForm extends Component {
 
 
   componentDidMount(){
-      fetch('http://localhost:8000/restaurants/api/restaurants/4/categories')
+      fetch('http://192.168.1.151:8000/restaurants/api/restaurants/categories/7')
         .then((response) => response.json())
         .then((data) => {
           this.setState({ categories: data });
@@ -30,9 +30,8 @@ class ProductForm extends Component {
     evt.preventDefault();
     this.props.onFormSubmit({ ...this.state });
   };
-  handleIdUpdate = (evt) => {
-    this.setState({id: evt.target.value });
-  };
+ 
+ 
   handleNameUpdate = (evt) => {
     this.setState({name: evt.target.value });
   };
