@@ -34,7 +34,7 @@ class Product extends Component {
           </div>
         </div>
         <div className="card-body text-dark">
-         <img className="card-img-top" src="https://higuma.github.io/bootstrap-4-tutorial/img/286x180.svg" alt="product"/>
+         <img className="card-img-top" src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="product"/>
          <hr/>
         <div>{this.props.description}</div>
         <label>Precio: {this.props.price}</label>

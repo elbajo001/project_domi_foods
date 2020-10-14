@@ -3,6 +3,11 @@ import CategoryList from './my_components/category_list';
 import ToggleableCategoryForm from './my_components/toggle_category_form';
 
 class Categories extends Component{
+
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 	
 	state = {
     	categories: [],
@@ -13,9 +18,17 @@ class Categories extends Component{
 
     //listar categorías de un restaurante dado
 	  handleChange(event){
-		  this.setState({ restaurant_id:event.target.value });
+		 var id = "";
 
-      fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/categories/${this.state.restaurant_id}`)
+    
+     const auxRestaurants = this.state.restaurants.map(restaurant => {
+          if (restaurant.name === event.target.value) {
+            id = restaurant.id;
+            this.setState({ restaurant_id : restaurant.id });
+          }
+      });
+
+      fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${id}/categories/`)
        .then((response) => response.json())
        .then((data) => {
          this.setState({ categories: data });
@@ -26,7 +39,7 @@ class Categories extends Component{
     //listar restaurantes para escoger uno y traer sus categorías 
     componentDidMount() {
     	
-		  fetch("http://192.168.1.151:8000/restaurants/api/restaurants")
+		  fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
 		  .then((response) => response.json())
 		  .then((data) => {
 			this.setState({ restaurants: data });
@@ -94,20 +107,13 @@ class Categories extends Component{
   //renderizar para mostrar el contenido
 	render(){
 		return(
-			<div id="content" class="p-4 p-md-5 pt-5">
+			<div id="content" className="p-4 p-md-5 pt-5">
 			 <main>
-                <div class="container-fluid">
-					<h1 class="font-weight-bold text-danger mt-4">Información de las Categorías</h1>
+          <div className="container-fluid">
+					<h1 className="font-weight-bold text-danger mt-4">Información de las Categorías</h1>
           <div class="form-group mt-5">
-						<label className="form-control-lg">Restaurante:</label>
-						<select className="form-control-lg" value="Seleccione" name="restaurant" id="restaurant" onChange={this.handleChange.bind(this)}>
-							<option>Seleccione...</option>
-              {this.state.restaurants.map((restaurant)=>(
-								<option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
-							))}
-						</select>
 					<main className="d-flex justify-content-center my-4">
-            			<div className="jumbotron bg-white col-auto">
+            			<div className="jumbotron bg-faded">
             				<CategoryList
               					categories={this.state.categories}
               					onDeleteClick={this.deleteCategory}
@@ -118,6 +124,18 @@ class Categories extends Component{
             				/>
             			</div>
             		</main>
+
+                 <p align="center"><i>Escoja alguno de los restaurantes para ver sus categorías</i></p>
+              <div className="footer">
+              <nav aria-label="Page navigation">
+            <ul className="pagination justify-content-center">
+               {this.state.restaurants.map((restaurant)=>(
+                <li className="page-item"><button className="page-link text-danger" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
+              ))}
+            </ul>
+           </nav>
+           </div>
+
           		</div>
           	</div>
         	</main>

@@ -2,24 +2,6 @@ import React, { Component } from "react";
 
 class Category extends Component {
   
-    state={
-      restaurant_name:{
-          "id": "",
-          "nit": "",
-          "name": "",
-      }
-    }
-
-
- componentDidMount(){
-      fetch('http://192.168.1.151:8000/restaurants/api/restaurants/7/')
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({restaurant_name: data });
-      });
-  }
-
-
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>
@@ -36,6 +18,7 @@ class Category extends Component {
             </span>
           </div>
         </div>
+          <img src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="200"/>
         <hr/>
         <div className="card-body text-dark">
         {this.props.description}</div>

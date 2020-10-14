@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import ToggleableRestaurantForm from "./my_components/toggle_restaurant_form";
 import RestaurantList from "./my_components/restaurant_list";
-import Restaurant from "./my_components/restaurant";
 
 class RestaurantDashboard extends Component {
   state = {

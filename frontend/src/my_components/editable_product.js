@@ -47,7 +47,7 @@ class EditableProduct extends Component {
       );
     };
     return (
-      <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
+      <div className="mb-3 p-2 card" style={{ boxShadow: "0 0 10px #ccc" }}>
         {component()}
       </div>
     );

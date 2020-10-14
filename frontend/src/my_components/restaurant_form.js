@@ -49,10 +49,9 @@ class RestaurantForm extends Component {
       ? "Update Restaurant"
       : "Create Restaurant";
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <label>{this.state.id}</label>
+      <form onSubmit={this.handleFormSubmit} className="text-dark">
         <div className="form-group">
-          <label>Nit</label>
+          <label className="form-control-label form-control-lg">Nit</label>
           <input
             type="text"
             placeholder="Enter a nit"

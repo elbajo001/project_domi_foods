@@ -15,7 +15,12 @@ class ProductList extends Component {
         onUpdateClick={this.props.onUpdateClick}
       ></EditableProduct>
     ));
-    return <div className="row">{products}</div>;
+    if(Object.entries(products).length===0){
+      return <div className="card-deck"><h3>No hay productos para mostrar.</h3></div>
+    }
+    return <div className="card-deck">
+        {products}
+    </div>;
   }
 }
 

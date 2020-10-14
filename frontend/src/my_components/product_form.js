@@ -8,16 +8,26 @@ class ProductForm extends Component {
       price: this.props.price || "",
       description: this.props.description || "",
       category: this.props.category || "",
-      categories:[]
+      categories:[],
+      restaurants:[],
+      restaurant_id:"",
     };
 
-
-
-  componentDidMount(){
-      fetch('http://192.168.1.151:8000/restaurants/api/restaurants/categories/7')
+  handleRestaurant(event){
+        this.setState({restaurant_id: event.target.value});
+         fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${this.state.restaurant_id}/categories/`)
         .then((response) => response.json())
         .then((data) => {
           this.setState({ categories: data });
+      });
+  }
+
+  componentDidMount(){
+
+       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+      .then((response) => response.json())
+      .then((data) => {
+      this.setState({ restaurants: data });
       });
   }
 
@@ -74,9 +84,21 @@ class ProductForm extends Component {
           />
         </div>
 
+
+        <div className="form-group">
+          <label>Restaurante:</label>
+            <select className="form-control" value="Seleccione" name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
+              <option>Seleccione...</option>
+              {this.state.restaurants.map((restaurant)=>(
+                <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
+              ))}
+            </select>
+        </div>
+
         <div className="form-group">
           <label>Category</label>
-           <select className="form-control" name="category_sel" id="category_sel" onChange={this.handleChange.bind(this)}>
+           <select value="Seleccione..." className="form-control" name="category_sel" id="category_sel" onChange={this.handleChange.bind(this)}>
+             <option>Seleccione</option>
               {this.state.categories.map((category)=>(
                 <option key={category.id} value={category.id}>{category.name}</option>
               ))}

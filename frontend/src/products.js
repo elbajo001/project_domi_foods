@@ -3,21 +3,56 @@ import ProductList from './my_components/product_list';
 import ToggleableProductForm from './my_components/toggle_product_form';
 
 class Products extends Component{
-
-	state = {
-    products:[]
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  //crud de productos o platos
+	state = {
+    products:[],
+    restaurants:[],
+    restaurant_id:"",
+    restaurant_name:"nn"
+  }
 
-
-  //listar productos de un restaurante dado
-  componentDidMount() {
-    fetch('http://192.168.1.151:8000/restaurants/api/restaurants/7/products')
+//mostrar productos de un restaurante dado
+ handleChange(event){
+    //alert(event.target.value);
+    var id = "";
+    this.state.restaurants.map(restaurant => {
+          if (restaurant.name === event.target.value) {
+            id = restaurant.id;
+            this.setState({ restaurant_id : restaurant.id });
+          }
+      });
+      
+    
+     this.setState({restaurant_id:event.target.value});
+      fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${id}/products`)
       .then((response) => response.json())
       .then((data) => {
          this.setState({ products: data });
     });
+    
+  }
+
+ handleClick(event){
+  alert(this.state.restaurant_id);
+  event.preventDefault();
+}
+
+
+
+  //crud de productos o platos
+
+
+  //listar restaurantes de un administrador dado para escoger uno y mostrar sus productos
+  componentDidMount() {
+     fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({restaurants: data});
+      });
   };
 
 //crear producto
@@ -76,31 +111,37 @@ class Products extends Component{
   }
 
 
- //renderizar para mostrar el contenido
+ //renderizar para mostrar el contenido...
 	render(){
 		return(
-			<div id="content" class="p-4 p-md-5 pt-5">
+			<div id="content" className="p-4 p-md-5 pt-5">
 			 <main>
-         <div class="container-fluid">
-					<h1 class="font-weight-bold text-danger mt-4">Información de los Platos</h1>
-           <div className="form-group mt-5">
-           <label className="form-control-lg">Elegir restaurante</label>
-            <select  className="form-control-lg" id="restaurants" name="restaurants">
-              <option>Seleccione</option>
-            </select>
-           </div>
-					 <main className="d-flex my-4 jumbotron bg-white">
-                    <div className="col-auto">
+         <div className="container-fluid">
+					<h1 className="font-weight-bold text-danger mt-4">Información de los Platos</h1>
+					   <div class="form-group mt-5">
+           <main className="d-flex justify-content-center">
+                    <div className="jumbotron bg-faded">
           					<ProductList
             					products={this.state.products}
             					onDeleteClick={this.deleteProduct}
             					onUpdateClick={this.updateProduct}
          					   />
          				 <ToggleableProductForm onProductCreate={this.createNewProduct} />
-                  </div>
+                 </div>
       				</main>
+              </div>
+               <p align="center"><i>Escoja alguno de los restaurantes para ver sus productos</i></p>
+              <div className="footer">
+              <nav aria-label="Page navigation">
+            <ul className="pagination justify-content-center">
+               {this.state.restaurants.map((restaurant)=>(
+                <li className="page-item"><button className="page-link text-danger" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
+              ))}
+            </ul>
+           </nav>
+           </div>
           </div>
-			 </main>
+			 </main> 
 			</div>
 		);
 	}

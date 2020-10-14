@@ -21,7 +21,7 @@ class ToggleableProductForm extends Component {
   render() {
     if (this.state.inCreateMode) {
       return (
-        <div className="mb-3 p-4" style={{ boxShadow: "0 0 10px #ccc" }}>
+        <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
           <ProductForm
             onFormSubmit={this.handleFormSubmit}
             onCancelClick={this.handleCancleClick}
@@ -30,7 +30,7 @@ class ToggleableProductForm extends Component {
       );
     }
     return (
-      <button onClick={this.handleCreateClick} className="btn btn-danger">
+      <button onClick={this.handleCreateClick} className="btn btn-danger btn-lg">
         <i className="fas fa-plus"></i>
       </button>
     );

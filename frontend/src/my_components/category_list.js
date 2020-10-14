@@ -14,7 +14,12 @@ class CategoryList extends Component {
         onUpdateClick={this.props.onUpdateClick}
       ></EditableCategory>
     ));
-    return <div className="row">{categories}</div>;
+
+
+     if(Object.entries(categories).length===0){
+      return <div className="card-deck"><h3>No hay categorías para mostrar.</h3></div>
+     }
+    return <div className="card-deck">{categories}</div>;
   }
 }
 
