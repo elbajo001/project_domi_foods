@@ -29,7 +29,10 @@ SECRET_KEY = '-rcdo7n6i!ug=!ms5f!7r0+s!33#$c02%ja@jsicyn02fv0q(p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['192.168.0.111']
+
+
 
 # Others
 # Date formats
@@ -46,23 +49,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
+    'knox',
     'accounts',
     'restaurants',
     'payments',
     'reports',
     'shopping_cars',
-    # django rest framework
-    'rest_framework',
-    # knox
-    'knox',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    ],'DEFAULT_AUTHENTICATION_CLASSES': [
         'knox.auth.TokenAuthentication',
     ]
 }
@@ -103,20 +103,27 @@ WSGI_APPLICATION = 'domi_foods.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 """
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+<<<<<<< HEAD
         'NAME': 'domifoods',
         'USER': 'postgres',
         'PASSWORD': 'isa2020',
+=======
+        'NAME': 'bd_domi_foods',
+        'USER': 'postgres',
+        'PASSWORD': 'postgresql',
+>>>>>>> app_accounts
         'HOST': '127.0.0.1',
         'DATABASE_PORT':5432
     }
@@ -144,9 +151,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-Co'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 

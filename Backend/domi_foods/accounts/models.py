@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .validators import num_validation
-from domi_foods import settings
 
 
 # Create your models here.

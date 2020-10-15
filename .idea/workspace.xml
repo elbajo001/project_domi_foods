@@ -20,16 +20,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cecb6a3-a1e9-43d8-9e40-ea5944c2b338" name="Default Changelist" comment="Mis cambios: configuración de mi dirección ip y migraciones. V2">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/proyecto_web_back.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_accounts/img_delivery_man/tomas.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_categories/6091.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_categories/chuletas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_categories/cuba.libre-FILEminimizer-420x280.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_products/6104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_products/chuletapescado.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_products/piocriollo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_restaurants/cropped-logo-La-Cosecha-Parrillada-250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/domi_foods/media/media_restaurants/img_restaurants/logofull.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/accounts/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/domi_foods/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/domi_foods/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/domi_foods/domi_foods/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/domi_foods/domi_foods/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/my_components/category_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/my_components/category_form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/my_components/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/my_components/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/my_components/product_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/my_components/product_form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/my_components/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/my_components/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/restaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/restaurants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +89,7 @@
       <workItem from="1602556923703" duration="299000" />
       <workItem from="1602593867327" duration="803000" />
       <workItem from="1602640631280" duration="2035000" />
-      <workItem from="1602774877575" duration="2313000" />
+      <workItem from="1602774877575" duration="3874000" />
     </task>
     <task id="LOCAL-00001" summary="Mis cambios: configuración de mi dirección ip y migraciones">
       <created>1601989882170</created>
@@ -120,10 +133,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602557222500" />
-    <state width="283" height="368" key="Git.Branch.Popup" timestamp="1602775305949">
+    <state width="287" height="372" key="Git.Branch.Popup" timestamp="1602777327841">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="283" height="368" key="Git.Branch.Popup/0.0.1366.728@0.0.1366.728" timestamp="1602775305949" />
+    <state width="287" height="372" key="Git.Branch.Popup/0.0.1366.728@0.0.1366.728" timestamp="1602777327841" />
     <state x="470" y="80" key="VCS.ChangeListViewerDialog" timestamp="1601989950361">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
