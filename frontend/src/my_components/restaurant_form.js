@@ -50,8 +50,9 @@ class RestaurantForm extends Component {
       : "Create Restaurant";
     return (
       <form onSubmit={this.handleFormSubmit} className="text-dark">
-        <div className="form-group">
-          <label className="form-control-label form-control-lg">Nit</label>
+        <div className="form-row">
+          <div className="form-group col-sm-6">
+          <label className="form-control-label">Nit</label>
           <input
             type="text"
             placeholder="Enter a nit"
@@ -59,10 +60,10 @@ class RestaurantForm extends Component {
             onChange={this.handleNitUpdate}
             className="form-control"
           />
-        </div>
+          </div>
 
-        <div className="form-group">
-          <label>Name</label>
+        <div className="form-group col-sm-6">
+          <label className="form-control-label">Name</label>
           <input
             type="text"
             placeholder="Restaurant's name"
@@ -71,21 +72,24 @@ class RestaurantForm extends Component {
             className="form-control"
           />
         </div>
+        </div>
 
         <div className="form-group">
-          <label>Address_location</label>
+          <label className="form-control-label">Address_location</label>
           <textarea
             className="form-control"
             placeholder="Address_location"
-            rows="2"
+            rows="3"
             value={this.state.address_location}
             onChange={this.handleAddressLocationUpdate}
           >
             {this.state.description}
           </textarea>
+          </div>
 
-          <div className="form-group">
-            <label>Phone number</label>
+          <div className="form-row">
+            <div className="form-group col-sm-6">
+            <label className="form-control-label">Phone number</label>
             <input
               type="text"
               placeholder="Enter a phone number"
@@ -93,10 +97,10 @@ class RestaurantForm extends Component {
               onChange={this.handlePhoneNumUpdate}
               className="form-control"
             />
-          </div>
+            </div>
 
-          <div className="form-group">
-            <label>Web page</label>
+          <div className="form-group col-sm-6">
+            <label className="form-control-label">Web page</label>
             <input
               type="text"
               placeholder="Enter a web page address"
@@ -105,9 +109,10 @@ class RestaurantForm extends Component {
               className="form-control"
             />
           </div>
+          </div>
 
-          <div className="form-group">
-            <label>Hours</label>
+          <div className="form-row">
+            <label className="form-control-label">Hours</label>
             <input
               type="text"
               placeholder="Enter the Restaurant's schedule"
@@ -116,14 +121,13 @@ class RestaurantForm extends Component {
               className="form-control"
             />
           </div>
-        </div>
-        <div className="form-group d-flex justify-content-between">
-          <button type="submit" className="btn btn-md btn-primary">
+        <div className="mt-3 form-group d-flex justify-content-between">
+          <button type="submit" className="btn btn-md btn-danger">
             {buttonText}
           </button>
           <button
             type="button"
-            className="btn btn-md btn-secondary"
+            className="btn btn-md btn-primary"
             onClick={this.props.onCancelClick}
           >
             Cancel

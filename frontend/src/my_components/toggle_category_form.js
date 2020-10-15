@@ -30,7 +30,7 @@ class ToggleableCategoryForm extends Component {
       );
     }
     return (
-      <button onClick={this.handleCreateClick} className="btn btn-danger">
+      <button onClick={this.handleCreateClick} className="btn btn-danger btn-lg">
         <i className="fas fa-plus"></i>
       </button>
     );

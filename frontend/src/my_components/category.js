@@ -18,7 +18,7 @@ class Category extends Component {
             </span>
           </div>
         </div>
-          <img src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="200"/>
+          <img src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="250"/>
         <hr/>
         <div className="card-body text-dark">
         {this.props.description}</div>

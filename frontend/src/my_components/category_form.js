@@ -7,9 +7,36 @@ class CategoryForm extends Component {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
-    restaurant: this.props.restaurant || ""
+    restaurant: this.props.restaurant || "",
+    restaurants:[],
+    restaurant_id:"",
   };
 
+   componentDidMount(){
+
+       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+      .then((response) => response.json())
+      .then((data) => {
+      this.setState({ restaurants: data });
+      });
+  }
+
+
+ handleRestaurant(event){
+    var id = "";
+    this.state.restaurants.map(restaurant => {
+          if (restaurant.name === event.target.value) {
+            id = restaurant.id;
+            this.setState({ restaurant_id : id });
+          }
+      });
+    this.setState({restaurant: id});
+  }
+
+  handleChange(event){
+    this.setState({category:event.target.value});
+    //this.props.category=event.target.value;
+   }
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -60,14 +87,13 @@ class CategoryForm extends Component {
         </div>
 
         <div className="form-group">
-          <label>Restaurant</label>
-            <input
-            type="text"
-            placeholder="Restaurant's id"
-            value={this.state.restaurant}
-            onChange={this.handleRestaurantUpdate}
-            className="form-control"
-          />
+          <label>Restaurante:</label>
+            <select className="form-control" value="Seleccione" name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
+              <option>Seleccione...</option>
+              {this.state.restaurants.map((restaurant)=>(
+                <option>{restaurant.name}</option>
+              ))}
+            </select>
         </div>
 
 
