@@ -1,3 +1,6 @@
+"""
+    Sección donde se importan los mudulos de Django
+"""
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from rest_framework import generics, permissions, status, viewsets
@@ -7,6 +10,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
+"""
+    Sección donde se importan los mudulos locales
+"""
 from accounts.models import(
     UserRestaurant,
     Admin,
@@ -24,18 +30,20 @@ from .serializers import (
     DeliveryManSerializer,
 )
 
- 
-# Django REST Framework Tutorial – Change & Reset Password
 
-'''
-    *   *   *   *   *   *   *   *   *  *   USER DELIVERY MAN   *   *   *   *   *   *   *   *   *   *
-'''
 class DeliveryManRegister(viewsets.ModelViewSet):
+    """
+    Esta vista permite a las REST API  poder crear y listar un DeliveryMan.
+    """
     queryset = DeliveryMan.objects.all()
     serializer_class = DeliveryManSerializer
 
 @api_view(['GET'])
 def DeliveryManDetail(request, pk):
+    """
+    Esta vista permite a las REST API poder retorna un DeliveryMan segun su
+    identificación.
+    """
     try:
         delivey_man = DeliveryMan.objects.get(id_user_restaurant = pk)
     except DeliveryMan.DoesNotExist:
@@ -45,16 +53,19 @@ def DeliveryManDetail(request, pk):
         serializer = DeliveryManSerializer(delivey_man, many = False)
         return Response(serializer.data)
 
-
-'''
-    *   *   *   *   *   *   *   *   *  *   USER CLIENT   *   *   *   *   *   *   *   *   *   *
-'''
 class ClientRegister(viewsets.ModelViewSet):
+    """
+    Esta vista permite a las REST API poder crear y listar un Client 
+    """
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
 @api_view(['GET'])
 def ClientDetail(request, pk):
+    """
+    Esta vista permite a las REST API poder retorna un Client segun su
+    identificación.
+    """
     try:
         user_client = Client.objects.get(id_user_restaurant = pk)
     except Client.DoesNotExist:
@@ -64,16 +75,19 @@ def ClientDetail(request, pk):
         serializer = ClientSerializer(user_client, many = False)
         return Response(serializer.data)
 
-# Django REST Framework Tutorial – Change & Reset Password
-'''
-    *   *   *   *   *   *   *   *   *  *   USER ADMIN   *   *   *   *   *   *   *   *   *   *
-'''
 class AdminRegister(viewsets.ModelViewSet):
+    """
+    Esta vista permite a las REST API poder crear y listar un Admin. 
+    """
     queryset = Admin.objects.all()
     serializer_class = AdminSerializer
 
 @api_view(['GET'])
 def AdminDetail(request, pk):
+    """
+    Esta vista permite a las REST API poder retorna un Admin segun su
+    identificación.
+    """
     try:
         User_admin = Admin.objects.get(id_user_restaurant = pk)
     except Admin.DoesNotExist:
@@ -84,15 +98,18 @@ def AdminDetail(request, pk):
         return Response(serializer.data)
 
 
-'''
-    *   *   *   *   *   *   *   *   *  *   USER RESTAURAN   *   *   *   *   *   *   *   *   *   *
-'''
 class UserRestaurantRegister(viewsets.ModelViewSet):
+    """
+    Esta vista permite a las REST API poder crear un UserRestaurant. 
+    """
     queryset = UserRestaurant.objects.all()
     serializer_class = UserRestaurantSerializer
 
 @api_view(['GET'])
 def UserRestaurantList(request):
+    """
+    Esta vista permite a las REST API poder listar los UserRestaurant. 
+    """
     User_restaurant = UserRestaurant.objects.filter(state_delete = False)
     if len(User_restaurant) != 0:
         serializer = UserRestaurantSerializer(User_restaurant, many = True)
@@ -102,6 +119,10 @@ def UserRestaurantList(request):
 
 @api_view(['GET'])
 def UserRestaurantDetail(request, pk):
+    """
+    Esta vista permite a las REST API poder retorna un UserRestaurant segun su
+    identificación.
+    """
     try:
         User_restaurant = UserRestaurant.objects.get(document = pk)
     except UserRestaurant.DoesNotExist:
@@ -113,6 +134,10 @@ def UserRestaurantDetail(request, pk):
 
 @api_view(['DELETE',])
 def UserRestaurantDelete(request, pk):
+    """
+    Esta vista permite a las REST API poder eliminar un UserRestaurant segun su
+    identificación, está eliminación se hace cambiando el estado.
+    """
     try:
         User_restaurant = UserRestaurant.objects.get(document = pk)
     except UserRestaurant.DoesNotExist:
@@ -126,6 +151,10 @@ def UserRestaurantDelete(request, pk):
 
 @api_view(['PUT',])
 def UserRestaurantUpdate(request, pk):
+    """
+    Esta vista permite a las REST API poder editar un UserRestaurant segun su
+    identificación.
+    """
     try:
         User_restaurant = UserRestaurant.objects.get(document = pk)
     except UserRestaurant.DoesNotExist:
@@ -140,28 +169,36 @@ def UserRestaurantUpdate(request, pk):
             return Response(data=data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-'''
-    *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
-'''
-
 def document_search(par_username):
+    """
+    Está es una función que nos permite por medio del username del usario 
+    poder buscar su identificación.
+    """
     User_django_l = User.objects.get(username = par_username)
     User_Restaurant_l = UserRestaurant.objects.get(user = User_django_l.id)
     return User_Restaurant_l.document
 
 class ChangePasswordView(generics.UpdateAPIView):
     """
-    An endpoint for changing password.
+    Esta vista permite a las REST API poder editar la contraseña de un usuario
     """
     serializer_class = ChangePasswordSerializer
     model = User
     permission_classes = (IsAuthenticated,)
 
     def get_object(self, queryset=None):
+        """
+        Metodos porpios de django, el cual te permite poder
+        retornar los detalles que llegan en el request
+        """
         obj = self.request.user
         return obj
 
     def update(self, request, *args, **kwargs):
+        """
+        Metodo para actualizar la contraeña, todos los datos llegan en el request,
+        en el request solo llegan el token que se genera al autenticarse
+        """
         self.object = self.get_object()
         serializer = self.get_serializer(data=request.data)
 
@@ -180,6 +217,9 @@ class ChangePasswordView(generics.UpdateAPIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class UserRegisterAPI(generics.GenericAPIView):
+    """
+    Esta vista permite a las REST API poder crear un usuario de Django.
+    """
     serializer_class = RegisterUserSerializer
 
     def post(self, request, *args, **kwargs):
@@ -196,6 +236,10 @@ class UserRegisterAPI(generics.GenericAPIView):
         })
 
 def existing_user(par_username):
+    """
+    Esta función permite verificar la existecia de un usuario en la bd, 
+    está busqueda la hace por medio de su usuario.
+    """
     try:
         User_django_l = User.objects.get(username = par_username)
         try:
@@ -209,6 +253,10 @@ def existing_user(par_username):
 
 
 class UserLoginAPI(KnoxLoginView):
+    """
+    Esta vista permite poder hacer el login de un usuario al sistema,
+    está vista recive un usuario y un username y una contraseña.
+    """
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
