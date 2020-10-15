@@ -144,15 +144,9 @@ def UserRestaurantUpdate(request, pk):
     *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
 '''
 
-def Find_Restaurant_User_ID(par_username):
+def document_search(par_username):
     User_django_l = User.objects.get(username = par_username)
-    try:
-        User_Restaurant_l = UserRestaurant.objects.get(user = User_django_l.id)
-    except UserRestaurant.DoesNotExist:
-        User_django_l.delete()
-        return False
-    if User_Restaurant_l.state_delete == True:
-        return False
+    User_Restaurant_l = UserRestaurant.objects.get(user = User_django_l.id)
     return User_Restaurant_l.document
 
 class ChangePasswordView(generics.UpdateAPIView):
@@ -190,6 +184,9 @@ class UserRegisterAPI(generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        answer = existing_user(request.data['username'])
+        if answer is True:
+            return Response({"username": ["Ya existe un usuario con este nombre."]})
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
@@ -198,6 +195,18 @@ class UserRegisterAPI(generics.GenericAPIView):
         "token": AuthToken.objects.create(user)[1]
         })
 
+def existing_user(par_username):
+    try:
+        User_django_l = User.objects.get(username = par_username)
+        try:
+            User_Restaurant_l = UserRestaurant.objects.get(user = User_django_l.id)
+            return True
+        except UserRestaurant.DoesNotExist:
+            User_django_l.delete()
+            return False
+    except User.DoesNotExist:
+        return False
+
 
 class UserLoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
@@ -205,18 +214,19 @@ class UserLoginAPI(KnoxLoginView):
     def post(self, request, format=None):
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        answer = existing_user(request.data['username'])
+        if answer is False:
+            return Response({'answer':'Está cuenta no existe'})
         user = serializer.validated_data['user']
         login(request, user)
         return super(UserLoginAPI, self).post(request, format=None)
 
     def get_post_response_data(self, request, token, instance):
         UserSerializer = self.get_user_serializer_class()
-        answer = Find_Restaurant_User_ID(request.user)
-        if answer is False:
-            return {'answer':'Está cuenta no existe'}
+        document_user = document_search(request.user)
         data = {
             "answer":"True",
-            "document": answer,
+            "document": document_user,
             'expiry': self.format_expiry_datetime(instance.expiry),
             'token': token
         }
