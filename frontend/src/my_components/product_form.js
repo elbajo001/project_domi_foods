@@ -15,7 +15,7 @@ class ProductForm extends Component {
 
   handleRestaurant(event){
         this.setState({restaurant_id: event.target.value});
-         fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${this.state.restaurant_id}/categories/`)
+         fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${this.state.restaurant_id}/categories/`)
         .then((response) => response.json())
         .then((data) => {
           this.setState({ categories: data });
@@ -24,7 +24,7 @@ class ProductForm extends Component {
 
   componentDidMount(){
 
-       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+       fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
       .then((response) => response.json())
       .then((data) => {
       this.setState({ restaurants: data });

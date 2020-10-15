@@ -28,7 +28,7 @@ class Products extends Component{
       
     
      this.setState({restaurant_id:event.target.value});
-      fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${id}/products`)
+      fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${id}/products`)
       .then((response) => response.json())
       .then((data) => {
          this.setState({ products: data });
@@ -48,7 +48,7 @@ class Products extends Component{
 
   //listar restaurantes de un administrador dado para escoger uno y mostrar sus productos
   componentDidMount() {
-     fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+     fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
       .then(response => response.json())
       .then(data => {
         this.setState({restaurants: data});
@@ -57,7 +57,7 @@ class Products extends Component{
 
 //crear producto
  createNewProduct = (product) => {
-  fetch('http://192.168.1.151:8000/restaurants/api/products/', {
+  fetch('http://192.168.0.111:8000/restaurants/api/products/', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -73,7 +73,7 @@ class Products extends Component{
   //actualizar producto
   updateProduct = (newProduct) => {
     fetch(
-      `http://192.168.1.151:8000/restaurants/api/products/${newProduct.id}/`,
+      `http://192.168.0.111:8000/restaurants/api/products/${newProduct.id}/`,
       {
         method: "PUT",
         headers: {
@@ -97,7 +97,7 @@ class Products extends Component{
   //eliminar producto
   deleteProduct = (productId) => {
     fetch(
-      `http://192.168.1.151:8000/restaurants/api/products/${productId}/`,
+      `http://192.168.0.111:8000/restaurants/api/products/${productId}/`,
     {
       method: "DELETE",
       headers: {

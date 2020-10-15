@@ -14,7 +14,7 @@ class CategoryForm extends Component {
 
    componentDidMount(){
 
-       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+       fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
       .then((response) => response.json())
       .then((data) => {
       this.setState({ restaurants: data });

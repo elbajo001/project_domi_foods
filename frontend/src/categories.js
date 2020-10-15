@@ -28,7 +28,7 @@ class Categories extends Component{
           }
       });
 
-      fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${id}/categories/`)
+      fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${id}/categories/`)
        .then((response) => response.json())
        .then((data) => {
          this.setState({ categories: data });
@@ -39,7 +39,7 @@ class Categories extends Component{
     //listar restaurantes para escoger uno y traer sus categorías 
     componentDidMount() {
     	
-		  fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+		  fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
 		  .then((response) => response.json())
 		  .then((data) => {
 			this.setState({ restaurants: data });
@@ -52,7 +52,7 @@ class Categories extends Component{
     //crear categoría
   	createNewCategory = (category) => {
     fetch(
-    	'http://192.168.1.151:8000/restaurants/api/categories/', {
+    	'http://192.168.0.111:8000/restaurants/api/categories/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ class Categories extends Component{
   //actualizar categoría
   updateCategory = (newCategory) => {
     fetch(
-      `http://192.168.1.151:8000/restaurants/api/categories/${newCategory.id}/`,
+      `http://192.168.0.111:8000/restaurants/api/categories/${newCategory.id}/`,
       {
         method: "PUT",
         headers: {
@@ -92,7 +92,7 @@ class Categories extends Component{
     //eliminar categoría
   	deleteCategory = (categoryId) => {
     	fetch(
-      		`http://192.168.1.151:8000/restaurants/api/categories/${categoryId}/`,
+      		`http://192.168.0.111:8000/restaurants/api/categories/${categoryId}/`,
       	{
         	method: "DELETE",
         	headers: {

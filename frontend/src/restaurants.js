@@ -12,7 +12,7 @@ class RestaurantDashboard extends Component {
 
   //listar restaurantes de un administrador dado
   componentDidMount() {
-    fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+    fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ restaurants: data });
@@ -22,7 +22,7 @@ class RestaurantDashboard extends Component {
   //crear restaurante
   createNewRestaurant = (restaurant) => {
     fetch(
-    	'http://192.168.1.151:8000/restaurants/api/restaurants/', {
+    	'http://192.168.0.111:8000/restaurants/api/restaurants/', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ class RestaurantDashboard extends Component {
 
  //actualizar restaurante
   updateRestaurant = (newRestaurant) => {
-    fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
+    fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ class RestaurantDashboard extends Component {
   //eliminar restaurante
   deleteRestaurant = (restaurantId) => {
     fetch(
-      `http://192.168.1.151:8000/restaurants/api/restaurants/${restaurantId}/`,
+      `http://192.168.0.111:8000/restaurants/api/restaurants/${restaurantId}/`,
       {
         method: "DELETE",
         headers: {
