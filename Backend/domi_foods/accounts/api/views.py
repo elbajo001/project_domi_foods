@@ -1,5 +1,5 @@
 """
-    Sección donde se importan los mudulos de Django
+    Sección donde se importan los módulos de Django
 """
 from django.contrib.auth.models import User
 from django.contrib.auth import login
@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
 """
-    Sección donde se importan los mudulos locales
+    Sección donde se importan los módulos  locales
 """
 from accounts.models import(
     UserRestaurant,
@@ -41,7 +41,7 @@ class DeliveryManRegister(viewsets.ModelViewSet):
 @api_view(['GET'])
 def DeliveryManDetail(request, pk):
     """
-    Esta vista permite a las REST API poder retorna un DeliveryMan segun su
+    Esta vista permite a las REST API poder retorna un DeliveryMan según su
     identificación.
     """
     try:
@@ -63,7 +63,7 @@ class ClientRegister(viewsets.ModelViewSet):
 @api_view(['GET'])
 def ClientDetail(request, pk):
     """
-    Esta vista permite a las REST API poder retorna un Client segun su
+    Esta vista permite a las REST API poder retorna un Client según su
     identificación.
     """
     try:
@@ -85,7 +85,7 @@ class AdminRegister(viewsets.ModelViewSet):
 @api_view(['GET'])
 def AdminDetail(request, pk):
     """
-    Esta vista permite a las REST API poder retorna un Admin segun su
+    Esta vista permite a las REST API poder retorna un Admin según su
     identificación.
     """
     try:
@@ -120,7 +120,7 @@ def UserRestaurantList(request):
 @api_view(['GET'])
 def UserRestaurantDetail(request, pk):
     """
-    Esta vista permite a las REST API poder retorna un UserRestaurant segun su
+    Esta vista permite a las REST API poder retorna un UserRestaurant según su
     identificación.
     """
     try:
@@ -135,7 +135,7 @@ def UserRestaurantDetail(request, pk):
 @api_view(['DELETE',])
 def UserRestaurantDelete(request, pk):
     """
-    Esta vista permite a las REST API poder eliminar un UserRestaurant segun su
+    Esta vista permite a las REST API poder eliminar un UserRestaurant según su
     identificación, está eliminación se hace cambiando el estado.
     """
     try:
@@ -152,7 +152,7 @@ def UserRestaurantDelete(request, pk):
 @api_view(['PUT',])
 def UserRestaurantUpdate(request, pk):
     """
-    Esta vista permite a las REST API poder editar un UserRestaurant segun su
+    Esta vista permite a las REST API poder editar un UserRestaurant según su
     identificación.
     """
     try:
@@ -171,7 +171,7 @@ def UserRestaurantUpdate(request, pk):
 
 def document_search(par_username):
     """
-    Está es una función que nos permite por medio del username del usario 
+    Está es una función que nos permite por medio del username del usuario 
     poder buscar su identificación.
     """
     User_django_l = User.objects.get(username = par_username)
@@ -188,16 +188,16 @@ class ChangePasswordView(generics.UpdateAPIView):
 
     def get_object(self, queryset=None):
         """
-        Metodos porpios de django, el cual te permite poder
-        retornar los detalles que llegan en el request
+        Métodos propios de django, el cual te permite poder
+        retornar los detalles que llegan en el request.
         """
         obj = self.request.user
         return obj
 
     def update(self, request, *args, **kwargs):
         """
-        Metodo para actualizar la contraeña, todos los datos llegan en el request,
-        en el request solo llegan el token que se genera al autenticarse
+        Método para actualizar la contraseña, todos los datos llegan en el request,
+        en el request solo llegan el token que se genera al autenticarse.
         """
         self.object = self.get_object()
         serializer = self.get_serializer(data=request.data)
@@ -237,8 +237,8 @@ class UserRegisterAPI(generics.GenericAPIView):
 
 def existing_user(par_username):
     """
-    Esta función permite verificar la existecia de un usuario en la bd, 
-    está busqueda la hace por medio de su usuario.
+    Esta función permite verificar la existencia de un usuario en la bd, 
+    está búsqueda la hace por medio de su usuario.
     """
     try:
         User_django_l = User.objects.get(username = par_username)
@@ -255,7 +255,7 @@ def existing_user(par_username):
 class UserLoginAPI(KnoxLoginView):
     """
     Esta vista permite poder hacer el login de un usuario al sistema,
-    está vista recive un usuario y un username y una contraseña.
+    está vista recibe un usuario y un username y una contraseña.
     """
     permission_classes = (permissions.AllowAny,)
 
