@@ -10,6 +10,10 @@ from django.contrib.auth.models import User
 
 
 class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Este método no permite convertir la petición de cambio de contraseña en 
+    .json para que pueda viajar por medio de las REST AP.
+    """
     model = User
     """
     Serializer for password change endpoint.
@@ -17,21 +21,37 @@ class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
 class AdminSerializer(serializers.ModelSerializer):
+    """
+    Este método no permite convertir un Admin en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     class Meta:
         model = Admin
         fields = '__all__'
 
 class ClientSerializer(serializers.ModelSerializer):
+    """
+    Este método no permite convertir un Client en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     class Meta:
         model = Client
         fields = '__all__'
 
 class DeliveryManSerializer(serializers.ModelSerializer):
+    """
+    Este método no permite convertir un DeliveryMan en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     class Meta:
         model = DeliveryMan
         fields = '__all__'
 
 class UserRestaurantSerializer(serializers.ModelSerializer):
+    """
+    Este método no permite convertir un UserRestaurant en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     class Meta:
         model = UserRestaurant
         fields = (
@@ -49,13 +69,20 @@ class UserRestaurantSerializer(serializers.ModelSerializer):
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Este método no permite convertir un User en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     class Meta:
         model = User
         fields = ('id', 'username')
 
 # Register Serializer
 class RegisterUserSerializer(serializers.ModelSerializer):
-
+    """
+    Este método no permite convertir un User en .json para que pueda viajar por 
+    medio de las REST AP.
+    """
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
     class Meta:
         model = User
