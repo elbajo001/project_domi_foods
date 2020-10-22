@@ -17,7 +17,7 @@ class CategoryList extends Component {
 
 
      if(Object.entries(categories).length===0){
-      return <div className="card-deck"><h3>No hay categorías para mostrar.</h3></div>
+      return <div className="card-deck"><h5>No hay categorías para mostrar.</h5></div>
      }
     return <div className="card-deck">{categories}</div>;
   }

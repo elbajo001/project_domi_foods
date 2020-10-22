@@ -7,7 +7,7 @@ class Category extends Component {
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
           <span>
-            <h5 className="text-white"><strong>{this.props.name}</strong></h5>
+            <h6 className="text-white"><strong>{this.props.name}</strong></h6>
           </span>
           <div>
             <span onClick={this.props.onEditClick} className="mr-2">
@@ -21,7 +21,8 @@ class Category extends Component {
           <img src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="250"/>
         <hr/>
         <div className="card-body text-dark">
-        {this.props.description}</div>
+          <p>{this.props.description}</p>
+        </div>
       </div>
     );
   }

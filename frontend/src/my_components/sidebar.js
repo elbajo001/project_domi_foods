@@ -12,11 +12,12 @@ class Sidebar extends Component{
       "phone_num":"",
       "email":"",
       "addres_location":""    
-    }
+    },
+    dir_ip: "192.168.1.151",
   }
 
   componentDidMount(){
-     fetch("http://192.168.1.151:8000/accounts/api/user_restaurant_detail/10467803")
+     fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/10467803`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ admin: data });

@@ -20,7 +20,10 @@ class RestaurantList extends Component {
       ></EditableRestaurant>
     ));
 
-    return <div className="bg-faded">{restaurants}</div>;
+    if(Object.entries(restaurants).length===0){
+      return <div className="card-deck"><h3>No hay restaurantes para mostrar.</h3></div>
+    }
+    return <div className="card-deck">{restaurants}</div>;
   }
 }
 

@@ -6,11 +6,12 @@ class Product extends Component {
       id: this.props.id || "",
       name: this.props.name || "",
       description: this.props.description || "",
-    }
+    },
+    dir_ip:"192.168.1.151",
   }
 
   componentDidMount(){
-      fetch(`http://192.168.1.151:8000/restaurants/api/categories/${this.props.category}/`)
+      fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${this.props.category}/`)
         .then((response) => response.json())
         .then((data) => {
           this.setState({ category_pr: data });

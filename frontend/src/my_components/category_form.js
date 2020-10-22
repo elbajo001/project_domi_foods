@@ -10,11 +10,13 @@ class CategoryForm extends Component {
     restaurant: this.props.restaurant || "",
     restaurants:[],
     restaurant_id:"",
+    restaurant_name:"",
+    dir_ip:"192.168.1.151",
   };
 
    componentDidMount(){
 
-       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
       .then((response) => response.json())
       .then((data) => {
       this.setState({ restaurants: data });
@@ -24,19 +26,16 @@ class CategoryForm extends Component {
 
  handleRestaurant(event){
     var id = "";
-    this.state.restaurants.map(restaurant => {
-          if (restaurant.name === event.target.value) {
-            id = restaurant.id;
-            this.setState({ restaurant_id : id });
-          }
-      });
+   
+    for (var i = 0; i < this.state.restaurants.length; i++) {
+      if(this.state.restaurants[i].name === event.target.value){
+        id = this.state.restaurants[i].id;
+      }
+    }
     this.setState({restaurant: id});
+    this.setState({restaurant_name: event.target.value});
   }
 
-  handleChange(event){
-    this.setState({category:event.target.value});
-    //this.props.category=event.target.value;
-   }
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -50,11 +49,6 @@ class CategoryForm extends Component {
 
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
-  };
-
-  handleRestaurantUpdate = (evt) => { 
-    //restaurant: this.state.restaurant.concat([event.target.value]);
-    this.setState({ restaurant: evt.target.value });
   };
 
 
@@ -88,7 +82,7 @@ class CategoryForm extends Component {
 
         <div className="form-group">
           <label>Restaurante:</label>
-            <select className="form-control" value="Seleccione" name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
+            <select className="form-control" value={this.state.restaurant_name} name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
               <option>Seleccione...</option>
               {this.state.restaurants.map((restaurant)=>(
                 <option>{restaurant.name}</option>

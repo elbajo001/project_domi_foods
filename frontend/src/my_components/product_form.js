@@ -4,35 +4,64 @@ import React, { Component } from "react";
 class ProductForm extends Component {
 
     state = {
+      id: this.props.id || "",
       name: this.props.name || "",
       price: this.props.price || "",
       description: this.props.description || "",
       category: this.props.category || "",
+      //state_delete: this.props.state_delete || "",
       categories:[],
       restaurants:[],
-      restaurant_id:"",
+      restaurant:"",
+      category_id:"",
+      category_name:"",
+      restaurant_name:"",
+      dir_ip:"192.168.1.151",
     };
 
-  handleRestaurant(event){
-        this.setState({restaurant_id: event.target.value});
-         fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${this.state.restaurant_id}/categories/`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ categories: data });
-      });
-  }
+  
+componentDidMount(){
 
-  componentDidMount(){
-
-       fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+      fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
       .then((response) => response.json())
       .then((data) => {
       this.setState({ restaurants: data });
       });
   }
 
-  handleChange(event){
-    this.setState({category:event.target.value});
+  handleRestaurant(event){
+     //this.setState({restaurant: event.target.value});
+      var id = "";
+      
+      for (var i = 0; i < this.state.restaurants.length; i++) {
+          if(this.state.restaurants[i].name === event.target.value){
+              id = this.state.restaurants[i].id;
+          }
+      }
+        //alert(id);
+        this.setState({restaurant: id});
+        this.setState({restaurant_name: event.target.value});
+
+        fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/categories/`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({ categories: data });
+      });
+  }
+
+
+  handleCategory(event){
+    var id="";
+    
+    for (var i = 0; i < this.state.categories.length; i++) {
+          if(this.state.categories[i].name === event.target.value){
+              id = this.state.categories[i].id;
+          }
+    }
+    //alert(id);
+    this.setState({category:id});
+    //this.setState({category_id: event.target.value });
+    this.setState({category_name: event.target.value});
     //this.props.category=event.target.value;
    }
 
@@ -54,9 +83,6 @@ class ProductForm extends Component {
     this.setState({ description: evt.target.value });
   };
 
-  handleCategoryUpdate = (evt) => {
-    this.setState({category: evt.target.value });
-  };
 
   render() {
     const buttonText = this.props.id ? "Update Product" : "Create Product";
@@ -87,20 +113,20 @@ class ProductForm extends Component {
 
         <div className="form-group">
           <label>Restaurante:</label>
-            <select className="form-control" value="Seleccione" name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
+            <select className="form-control" value={this.state.restaurant_name} name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
               <option>Seleccione...</option>
               {this.state.restaurants.map((restaurant)=>(
-                <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
+                <option>{restaurant.name}</option>
               ))}
             </select>
         </div>
 
         <div className="form-group">
           <label>Category</label>
-           <select value="Seleccione..." className="form-control" name="category_sel" id="category_sel" onChange={this.handleChange.bind(this)}>
+          <select value={this.state.category_name} className="form-control" name="category_sel" id="category_sel" onChange={this.handleCategory.bind(this)}>
              <option>Seleccione</option>
               {this.state.categories.map((category)=>(
-                <option key={category.id} value={category.id}>{category.name}</option>
+                <option>{category.name}</option>
               ))}
             </select>
         </div>

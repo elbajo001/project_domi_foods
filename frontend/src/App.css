@@ -8133,11 +8133,14 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  /*font-family:'Sansita Swashed', cursive;*/
+  /*font-family: 'Merriweather Sans', sans-serif;*/
+  font-family: 'ABeeZee', sans-serif;
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  background: #fafafa;
+  /*background: #fafafa;*/
+  background-image: "https://mediacdn.bellacor.com/images/500/209301ME1520.jpg";
   color: gray; }
 
 a {

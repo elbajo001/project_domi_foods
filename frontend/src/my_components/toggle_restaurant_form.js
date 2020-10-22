@@ -12,7 +12,7 @@ class ToggleableRestaurantForm extends Component {
   leaveCreateMode = () => {
     this.setState({ inCreateMode: false });
   };
-  handleCancleClick = () => {
+  handleCancelClick = () => {
     this.leaveCreateMode();
   };
   handleFormSubmit = (restaurant) => {
@@ -22,10 +22,10 @@ class ToggleableRestaurantForm extends Component {
   render() {
     if (this.state.inCreateMode) {
       return (
-        <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
+        <div className="mb-3 p-4 col-7 bg-light" style={{ boxShadow: "0 0 10px #ccc" }}>
           <RestaurantForm
             onFormSubmit={this.handleFormSubmit}
-            onCancelClick={this.handleCancleClick}
+            onCancelClick={this.handleCancelClick}
           />
         </div>
       );

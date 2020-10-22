@@ -4,7 +4,8 @@ import RestaurantList from "./my_components/restaurant_list";
 
 class RestaurantDashboard extends Component {
   state = {
-    restaurants: []
+    restaurants: [],
+    dir_ip:"192.168.1.151",
   };
 
   //crud de restaurantes
@@ -12,7 +13,7 @@ class RestaurantDashboard extends Component {
 
   //listar restaurantes de un administrador dado
   componentDidMount() {
-    fetch("http://192.168.1.151:8000/restaurants/api/admin/1/restaurants")
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ restaurants: data });
@@ -22,7 +23,7 @@ class RestaurantDashboard extends Component {
   //crear restaurante
   createNewRestaurant = (restaurant) => {
     fetch(
-    	'http://192.168.1.151:8000/restaurants/api/restaurants/', {
+    	`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ class RestaurantDashboard extends Component {
 
  //actualizar restaurante
   updateRestaurant = (newRestaurant) => {
-    fetch(`http://192.168.1.151:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +61,7 @@ class RestaurantDashboard extends Component {
   //eliminar restaurante
   deleteRestaurant = (restaurantId) => {
     fetch(
-      `http://192.168.1.151:8000/restaurants/api/restaurants/${restaurantId}/`,
+      `http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${restaurantId}/`,
       {
         method: "DELETE",
         headers: {
@@ -76,12 +77,12 @@ class RestaurantDashboard extends Component {
   //renderizar para mostrar el contenido
   render() {
     return (
-      <div id="content" class="p-4 p-md-5 pt-5">
+      <div id="content" className="p-4 p-md-5 pt-1">
         <main>
-          <div class="container-fluid">
-            <h1 className="text-danger mt-4"><strong>Restaurantes</strong></h1>
-             <main className="d-flex justify-content-center my-4">
-            <div className="jumbotron bg-faded">
+          <div className="jumbotron-fluid bg-faded">
+            <h2 className="text-danger mt-4 bg-light" align="center"><strong>Restaurantes</strong></h2>
+             <main className="d-flex  my-4">
+             <div>
             <RestaurantList
               restaurants={this.state.restaurants}
               onDeleteClick={this.deleteRestaurant}

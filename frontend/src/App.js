@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.css';
+import './stylebar.css';
 import Sidebar from './my_components/sidebar';
 import Home from './home';
 import RestaurantDashboard from './restaurants';
@@ -11,7 +11,7 @@ import Reports from './reports';
 
 function App() {
   return (
-      <div class="wrapper d-flex align-items-stretch">
+      <div className="wrapper d-flex align-items-stretch">
         <Router>
         <Sidebar />
          
