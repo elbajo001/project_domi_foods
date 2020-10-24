@@ -37,7 +37,11 @@ class Products extends Component{
     }
     
      this.setState({restaurant_id:event.target.value});
+<<<<<<< HEAD
       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/products`)
+=======
+      fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${id}/products`)
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       .then((response) => response.json())
       .then((data) => {
          this.setState({ products: data });
@@ -57,7 +61,11 @@ class Products extends Component{
 
   //listar restaurantes de un administrador dado para escoger uno y mostrar sus productos
   componentDidMount() {
+<<<<<<< HEAD
      fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
+=======
+     fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       .then(response => response.json())
       .then(data => {
         this.setState({restaurants: data});
@@ -66,6 +74,7 @@ class Products extends Component{
 
 //crear producto
  createNewProduct = (product) => {
+<<<<<<< HEAD
   fetch(
     `http://${this.state.dir_ip}:8000/restaurants/api/products/`, {
       method: "POST",
@@ -78,12 +87,29 @@ class Products extends Component{
         this.setState({products: this.state.products.concat([product])});
       });
 }
+=======
+  fetch('http://192.168.0.111:8000/restaurants/api/products/', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(product),
+  }).then(response => response.json())
+    .then(product => {
+      this.setState({products: this.state.products.concat([product])});
+    });
+  }
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
 
 
   //actualizar producto
   updateProduct = (newProduct) => {
     fetch(
+<<<<<<< HEAD
       `http://${this.state.dir_ip}:8000/restaurants/api/products/${newProduct.id}/`,
+=======
+      `http://192.168.0.111:8000/restaurants/api/products/${newProduct.id}/`,
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       {
         method: "PUT",
         headers: {
@@ -107,7 +133,11 @@ class Products extends Component{
   //eliminar producto
   deleteProduct = (productId) => {
     fetch(
+<<<<<<< HEAD
       `http://${this.state.dir_ip}:8000/restaurants/api/products/${productId}/`,
+=======
+      `http://192.168.0.111:8000/restaurants/api/products/${productId}/`,
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
     {
       method: "DELETE",
       headers: {

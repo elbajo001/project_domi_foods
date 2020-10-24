@@ -17,7 +17,11 @@ class Sidebar extends Component{
   }
 
   componentDidMount(){
+<<<<<<< HEAD
      fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/10467803`)
+=======
+     fetch("http://192.168.0.111:8000/accounts/api/user_restaurant_detail/123124124214")
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       .then((response) => response.json())
       .then((data) => {
         this.setState({ admin: data });

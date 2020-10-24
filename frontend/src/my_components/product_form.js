@@ -30,6 +30,7 @@ componentDidMount(){
   }
 
   handleRestaurant(event){
+<<<<<<< HEAD
      //this.setState({restaurant: event.target.value});
       var id = "";
       
@@ -43,6 +44,10 @@ componentDidMount(){
         this.setState({restaurant_name: event.target.value});
 
         fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/categories/`)
+=======
+        this.setState({restaurant_id: event.target.value});
+         fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${this.state.restaurant_id}/categories/`)
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
         .then((response) => response.json())
         .then((data) => {
           this.setState({ categories: data });
@@ -50,6 +55,7 @@ componentDidMount(){
   }
 
 
+<<<<<<< HEAD
   handleCategory(event){
     var id="";
     
@@ -62,6 +68,17 @@ componentDidMount(){
     this.setState({category:id});
     //this.setState({category_id: event.target.value });
     this.setState({category_name: event.target.value});
+=======
+       fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
+      .then((response) => response.json())
+      .then((data) => {
+      this.setState({ restaurants: data });
+      });
+  }
+
+  handleChange(event){
+    this.setState({category:event.target.value});
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
     //this.props.category=event.target.value;
    }
 

@@ -11,7 +11,11 @@ class Product extends Component {
   }
 
   componentDidMount(){
+<<<<<<< HEAD
       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${this.props.category}/`)
+=======
+      fetch(`http://192.168.0.111:8000/restaurants/api/categories/${this.props.category}/`)
+>>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
         .then((response) => response.json())
         .then((data) => {
           this.setState({ category_pr: data });
