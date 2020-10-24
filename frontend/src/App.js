@@ -1,29 +1,32 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './stylebar.css';
-import Sidebar from './my_components/sidebar';
-import Home from './home';
-import RestaurantDashboard from './restaurants';
-import Products from './products';
-import Categories from './categories';
-import Profile from './profile';
-import Reports from './reports';
+import './App.css';
+import LandingPage from './my_components/landing';
+//import Sidebar from './my_components/sidebar';
+//import Home from './home';
+//import RestaurantDashboard from './restaurants';
+//import Products from './products';
+//import Categories from './categories';
+//import Profile from './profile';
+//import Reports from './reports';
+import Login from './login';
+import Registry from './registry';
+import Welcome from './my_components/welcome';
 
 function App() {
   return (
-      <div className="wrapper d-flex align-items-stretch">
+      <div className="container-fluid">
         <Router>
-        <Sidebar />
-         
+        
+
+         <LandingPage/>
          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/restaurants" component={RestaurantDashboard} />
-            <Route path="/products" component={Products} />
-            <Route path="/categories" component={Categories}/>
-            <Route path="/reports" component={Reports}/>
+         <Route exact path="/welcome" component={Welcome}/>
+         <Route path="/login" component={Login}/>
+         <Route path="/registry" component={Registry}/>
          </Switch>
          </Router>
+
     </div>
   );
 }

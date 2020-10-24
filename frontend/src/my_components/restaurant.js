@@ -21,13 +21,14 @@ class Restaurant extends Component {
             </h6>
           </div>
         </div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShKy5uLANUObl_sqrfcu4MOq_Ohd_ZspinDg&usqp=CAU" alt="img"/>
+        <img src={this.props.image} alt="img"/>
         <div className="card-body text-dark">
               <label className="label">Nit: {this.props.nit}</label>
               <label className="label">Dirección: {this.props.address_location}</label>
               <label className="label">Teléfono: {this.props.phone_num}</label>
               <label className="label">Horario:  {this.props.hours}</label>
               <label className="label">Página web: {this.props.web_page}</label>
+              <label>Imagen: {this.props.image}</label>
         </div>
       </div>
     );

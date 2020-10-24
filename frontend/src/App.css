@@ -18,7 +18,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #3A0EBA;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -5349,7 +5349,7 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #007bff !important; }
+  background-color: #3A0EBA !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
@@ -8133,14 +8133,11 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  /*font-family:'Sansita Swashed', cursive;*/
-  /*font-family: 'Merriweather Sans', sans-serif;*/
-  font-family: 'ABeeZee', sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  /*background: #fafafa;*/
-  background-image: "https://mediacdn.bellacor.com/images/500/209301ME1520.jpg";
+  background: #fafafa;
   color: gray; }
 
 a {

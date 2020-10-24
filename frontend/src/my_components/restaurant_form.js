@@ -3,6 +3,13 @@ import React,{Component} from 'react';
 
 
 class RestaurantForm extends Component {
+
+  constructor(props){
+    super(props);
+    //this.fileInput = React.createRef();
+  }
+
+
   state = {
     id: this.props.id || "",
     nit: this.props.nit || "",
@@ -13,10 +20,21 @@ class RestaurantForm extends Component {
     hours: this.props.hours || "",
     id_admin: 1
   };
+
   handleFormSubmit = (evt) => {
     evt.preventDefault();
-    this.props.onFormSubmit({ ...this.state });
+    /*let formData = new FormData();
+    formData.append('id', this.state.id);
+    formData.append('nit', this.state.nit);
+    formData.append('name', this.state.name);
+    formData.append('address_location', this.state.address_location);
+    formData.append('phone_num', this.state.phone_num);
+    formData.append('web_page', this.state.web_page);
+    formData.append('hours', this.state.hours);
+    formData.append('image', this.state.image);*/
+    this.props.onFormSubmit({ ...this.state});
   };
+
   handleNitUpdate = (evt) => {
     this.setState({ nit: evt.target.value });
   };
@@ -38,6 +56,11 @@ class RestaurantForm extends Component {
   handleHoursUpdate = (evt) => {
     this.setState({ hours: evt.target.value });
   };
+
+
+  handleImageUpdate = (evt) => {
+      this.setState({image: evt.target.files[0]});
+  }
 
 
   handleIdAdminUpdate = (evt) => {
@@ -121,6 +144,9 @@ class RestaurantForm extends Component {
               className="form-control"
             />
           </div>
+        
+
+
         <div className="mt-3 form-group d-flex justify-content-between">
           <button type="submit" className="btn btn-md btn-danger">
             {buttonText}

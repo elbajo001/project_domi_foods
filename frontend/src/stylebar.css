@@ -18,7 +18,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #3a0eba;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -44,8 +44,7 @@ html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image:url("https://fondosmil.com/fondo/32052.jpg"); }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
@@ -117,9 +116,7 @@ dd {
   margin-bottom: .5rem;
   margin-left: 0; }
 
-div{
-  background-image:'https://mediacdn.bellacor.com/images/500/209301ME1520.jpg';
-}
+
 
 blockquote {
   margin: 0 0 1rem; }
@@ -5361,7 +5358,7 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #007bff !important; }
+  background-color: #3A0EBA !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
@@ -8151,9 +8148,9 @@ body {
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  /*background: #fafafa;*/
-  background-image:url('https://image.freepik.com/foto-gratis/manteles_127657-12720.jpg');
-   background-size: 25px 50px;
+  background: #fafafa;
+  /*background-image:url('https://image.freepik.com/foto-gratis/manteles_127657-12720.jpg');*/
+   background-size: 600px 1000px;
        background-size: 100% 100%;
   color: gray; }
 
