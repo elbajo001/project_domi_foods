@@ -4,3 +4,17 @@ __pycache__
 */__pycache__/*
 */__pycache__/**
 */__pycache__/**
+/__pycache__/
+media
+.migrations/
+*.migrations
+migrations*/
+.migrations/*
+*.migrations/*
+migrations*/*
+.__pycache__/
+*.__pycache__
+__pycache__*/
+.__pycache__/*
+*.__pycache__/*
+__pycache__*/*
