@@ -1,9 +1,11 @@
 from rest_framework import generics
 from .serializers import *
 from ..models import *
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # listar los productos de un restaurante <rest> y una categoria <cat>
+'''
 class ListProductsByRestaurantByCategory(generics.ListAPIView):
     serializer_class = ProductSerializer
 
@@ -18,7 +20,19 @@ class ListProductsByRestaurantByCategory(generics.ListAPIView):
                                        [var_rest, var_cat])
         return queryset
 
+'''
+
+@api_view(['GET'])   
+def ListProductsByRestaurantByCategory(request, rest, cat):
+    list_products = Product.objects.filter(category = cat)
+    serializer = ProductSerializer(list_products, many = True)
+    return Response(serializer.data)
+
+
 # listar los productos de un restaurante <rest>
+
+
+'''
 class ListProductsByRestaurant(generics.ListAPIView):
     serializer_class = ProductSerializer
 
@@ -30,19 +44,40 @@ class ListProductsByRestaurant(generics.ListAPIView):
                                        'INNER JOIN restaurants_category_restaurant ON restaurants_category.id = restaurants_category_restaurant.category_id '
                                        'WHERE restaurants_category_restaurant.restaurant_id = %s', [var_rest])
         return queryset
+'''
 
+@api_view(['GET'])   
+def ListProductsByRestaurant(request, pk):
+    list_categorias = Category.objects.filter(restaurant = pk)
+    list_platos = []
+    for categoria in list_categorias:
+      platos = Product.objects.filter(category = categoria.id)
+      for plato in platos:
+        list_platos.append(plato)
+    serializer = ProductSerializer(list_platos, many = True)
+    return Response(serializer.data)
 
 # Listar todas las Categorias de un restaurante <rest>
+'''
 class ListCategoryByRestaurant(generics.ListAPIView):
     serializer_class = CategorySerializer
 
     def get_queryset(self):
         var_rest = self.kwargs['rest']
+        print("****",rest)
         print(self.kwargs)
         queryset = Category.objects.raw('SELECT * FROM restaurants_category '
                                         'INNER JOIN restaurants_category_restaurant ON restaurants_category.id = restaurants_category_restaurant.category_id '
                                         'WHERE restaurants_category_restaurant.restaurant_id = %s', [var_rest])
         return queryset
+'''
+
+@api_view(['GET'])   
+def ListarCategoriasPorRestaurante(request, pk):
+    list_categorias = Category.objects.filter(restaurant = pk)
+    serializer = CategorySerializer(list_categorias, many = True)
+    return Response(serializer.data)
+
 
 # listar los restaurantes asociados a un admin <admin>
 class ListRestaurantsByAdmin(generics.ListAPIView):

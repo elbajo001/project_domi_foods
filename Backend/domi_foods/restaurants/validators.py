@@ -18,6 +18,13 @@ def url_validation(value):
         raise ValidationError(f'Por favor ingrese una url válida con http o https. Ej. http://%s' %  value)
 
 
+def num_validation(value):
+    try:
+        int(value)
+    except ValueError:
+        raise ValidationError('El campo debe ser de tipo numérico')
+
+
 def validate_url(self, url):
     if not 'http://' in url and not 'https://' in url:
         url = 'http://' + url
