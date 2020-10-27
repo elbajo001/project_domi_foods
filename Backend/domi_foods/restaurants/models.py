@@ -7,10 +7,10 @@ class Restaurant(models.Model):
     nit = models.CharField(max_length=255, null=False, blank=False, unique=True)
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     address_location = models.CharField(max_length=255, null=False, blank=False, unique=True)
-    phone_num = models.CharField(max_length=255, null=False, blank=False, unique=True, validators=[num_validation]
+    phone_num = models.CharField(max_length=255, null=False, blank=False, unique=True, validators=[num_validation])
     web_page = models.URLField(max_length=255, null=True, blank=True, unique=True, validators=[url_validation])
-    hours_start = models.PositiveIntegerField(max_length=2, null=False, blank=False)
-    hours_end = models.PositiveIntegerField(max_length=2, null=False, blank=False)
+    hours_start = models.PositiveIntegerField(null=False, blank=False)
+    hours_end = models.PositiveIntegerField(null=False, blank=False)
     image = models.ImageField(upload_to='media_restaurants/img_restaurants', null=False, blank=False)
     state = models.CharField(max_length=255, null=False, blank=False, default='disponible')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,7 +44,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
-    price = models.FloatField(max_length=10 null=False, blank=False)
+    price = models.FloatField(max_length=10, null=False, blank=False)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='media_restaurants/img_products', null=False, blank=False)
     state = models.CharField(max_length=255, null=False, blank=False, default='disponible')

@@ -15,7 +15,7 @@ class UserRestaurant(models.Model):
         ('M', 'Masculino'),
         ('F', 'Femenino'),
     ]
-    user = models.OneToOneField(User, null=False, blank=False, on_delete=models.CASCADE, null=False, blank=False)
+    user = models.OneToOneField(User, null=False, blank=False, on_delete=models.CASCADE)
     document_type = models.CharField(choices=DOCUMENTS_TYPE, max_length=15)
     document = models.CharField(max_length=255, unique=True, primary_key=True, validators=[num_validation])
     first_name = models.CharField(max_length=255, null=False, blank=False)
