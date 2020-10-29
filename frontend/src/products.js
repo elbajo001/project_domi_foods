@@ -128,7 +128,7 @@ class Products extends Component{
 			 <main>
          <div className="container-fluid">
 					<h2 className="font-weight-bold text-danger bg-light mt-4" align="center">Información de los Platos</h2>
-					   <div class="form-group mt-5">
+					   <div class="form-group mt-2">
            <main className="d-flex justify-content-center">
                     <div className="jumbotron bg-light">
           					<ProductList

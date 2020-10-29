@@ -7,7 +7,7 @@ class RestaurantDashboard extends Component {
 
 
   state = {
-    admin: this.props.admin,
+    admin: "",
     restaurants: [],
     dir_ip:"192.168.43.52",
   };
@@ -28,6 +28,9 @@ class RestaurantDashboard extends Component {
 
   //crear restaurante
   createNewRestaurant = (restaurant) => {
+    alert(this.state.admin);
+    restaurant.id_admin = this.state.admin;
+    alert(restaurant.id_admin);
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/`, {
       method: "POST",
       headers: {
@@ -87,7 +90,7 @@ class RestaurantDashboard extends Component {
           <div className="jumbotron-fluid bg-faded">
             <h2 className="text-danger mt-4 bg-light" align="center"><strong>Restaurantes</strong></h2>
              <main className="d-flex  my-4">
-             <div>
+             <div className="container">
             <RestaurantList
               restaurants={this.state.restaurants}
               onDeleteClick={this.deleteRestaurant}

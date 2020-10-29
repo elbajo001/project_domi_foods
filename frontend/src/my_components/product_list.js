@@ -18,7 +18,7 @@ class ProductList extends Component {
     if(Object.entries(products).length===0){
       return <div className="card-deck"><h5>No hay productos para mostrar.</h5></div>
     }
-    return <div className="card-deck">
+    return <div className="row">
         {products}
     </div>;
   }
