@@ -1,23 +1,32 @@
 import React,{Component} from 'react';
 import LoginForm from './my_components/login_form';
 
+
 class Login extends Component{
 
 	/*Aquí lógica del inicio de sesión*/
     state = {
-    	 dir_ip:"192.168.1.151",
+    	 dir_ip:"192.168.43.52",
     	 user: {
     	 	 username:"",
     	     password:""
     	 },
 
     	 result:{
+    	 	non_field_errors:"",
     	 	answer:"",
     	 	document:"",
     	 	expiry: "",
     	 	token:""
-    	 }
+    	 },
+    	 id:""
     };
+
+    componentDidMount(){
+    	this.setState({username: ""});
+    	this.setState({password:""});
+    }
+
 
      handleFormSubmit = (user) => {
      	this.login_user(user);
@@ -34,6 +43,7 @@ class Login extends Component{
           }).then(response => response.json())
             .then((data) => {
 			this.setState({ result: data });
+			this.props.history.push(`/admin/${this.state.result.document}`);
 		});
     }
 
@@ -52,10 +62,6 @@ class Login extends Component{
 
 				 	<div className="alert-warning mt-2">
 				 		<p>
-				 			{this.state.result.answer}<br/>
-				 			<strong>{this.state.result.document}</strong><br/>
-				 			{this.state.result.expiry}<br/>
-				 			{this.state.result.token}<br/>
 
 				 		</p>
 				 	</div>

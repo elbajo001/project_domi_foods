@@ -2,71 +2,46 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Sidebar extends Component{
-  state={
-    admin:{
-      "user":"",
-      "document_type":"",
-      "document":"",
-      "first_name":"",
-      "last_name":"",
-      "phone_num":"",
-      "email":"",
-      "addres_location":""    
-    },
-    dir_ip: "192.168.1.151",
-  }
-
-  componentDidMount(){
-<<<<<<< HEAD
-     fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/10467803`)
-=======
-     fetch("http://192.168.0.111:8000/accounts/api/user_restaurant_detail/123124124214")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ admin: data });
-      });
-  };
-
 
 	render(){
-		return(
-			 <nav id="sidebar">
-        <div class="custom-menu">
-          <button type="button" id="sidebarCollapse" class="btn btn-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-        </div>
+	  
+    const first_name = this.props.first_name;
+    const last_name = this.props.last_name;
+    //const admin_document = this.props.admin_document;
+    const restaurant= `/restaurants/${this.props.id}`;
+    const profile=`/profile/${this.props.admin_document}`;
+    const products=`/products/${this.props.id}`;
+    const categories=`/categories/${this.props.id}`;
+
+  	return(
+			 <nav className="navbar navbar-expand alert-primary mt-5">
         <div class="p-4">
           <h1><a href="index.html" class="logo">
-              Domifoods!
-              <span>
-              Food Delivery</span>
+                Administration Panel
               </a>
           </h1>
            <hr/>
               <img src="https://electronicssoftware.net/wp-content/uploads/user.png" height="70" width="70" alt="user"/>
-              <label className="form-control-sm ml-3">{this.state.admin.first_name} {this.state.admin.last_name}</label>
+              <label className="form-control-sm ml-3">{first_name} {last_name}</label>
           <hr/>
-          <ul class="list-unstyled components mb-5">
-            <li class="active">
-              <Link to ="/"><span class="fa fa-home mr-3"></span>Home</Link>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <Link to ="/" className="nav-link active"><span class="fa fa-home mr-3"></span>Home</Link>
             </li>
-            <li>
-                <Link to ="/profile"><span class="fa fa-user mr-3"></span>Mi perfil</Link>
+            <li className="nav-item">
+                <Link to ={profile} className="nav-link"><span class="fa fa-user mr-3"></span>Mi perfil</Link>
             </li>
-            <li>
-              <Link to="/restaurants"><span class="fa fa-briefcase mr-3"></span>Restaurante</Link>
+            <li className="nav-item">
+              <Link to ={restaurant} className="nav-link"><span class="fa fa-briefcase mr-3"></span>Restaurante</Link>
             </li>
-            <li>
-              <Link to="/products"><span class="fa fa-cutlery mr-3"></span>Productos</Link>
+            <li className="nav-item">
+              <Link to={products} className="nav-link"><span class="fa fa-cutlery mr-3"></span>Productos</Link>
             </li>
-            <li>
-              <Link to="/categories"><span class="fa fa-tasks mr-3"></span>Categorías</Link>
+            <li className="nav-item">
+              <Link to={categories} className="nav-link"><span class="fa fa-tasks mr-3"></span>Categorías</Link>
             </li>
-            <li>
-              <a href="/reports"><span class="fa fa-bar-chart mr-3"></span>Reportes</a>
+            <li className="nav-item">
+              <Link to="/reports" className="nav-link"><span class="fa fa-bar-chart mr-3"></span>Reportes</Link>
             </li>
           </ul>
         </div>

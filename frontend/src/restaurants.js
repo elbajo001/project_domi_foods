@@ -3,9 +3,13 @@ import ToggleableRestaurantForm from "./my_components/toggle_restaurant_form";
 import RestaurantList from "./my_components/restaurant_list";
 
 class RestaurantDashboard extends Component {
+  
+
+
   state = {
+    admin: this.props.admin,
     restaurants: [],
-    dir_ip:"192.168.1.151",
+    dir_ip:"192.168.43.52",
   };
 
   //crud de restaurantes
@@ -13,11 +17,9 @@ class RestaurantDashboard extends Component {
 
   //listar restaurantes de un administrador dado
   componentDidMount() {
-<<<<<<< HEAD
-    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
-=======
-    fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    const {id} = this.props.match.params;
+    this.setState({admin: id});
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/${id}/restaurants`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ restaurants: data });
@@ -26,12 +28,7 @@ class RestaurantDashboard extends Component {
 
   //crear restaurante
   createNewRestaurant = (restaurant) => {
-    fetch(
-<<<<<<< HEAD
-    	`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/`, {
-=======
-    	'http://192.168.0.111:8000/restaurants/api/restaurants/', {
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,11 +43,7 @@ class RestaurantDashboard extends Component {
 
  //actualizar restaurante
   updateRestaurant = (newRestaurant) => {
-<<<<<<< HEAD
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
-=======
-    fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -73,11 +66,7 @@ class RestaurantDashboard extends Component {
   //eliminar restaurante
   deleteRestaurant = (restaurantId) => {
     fetch(
-<<<<<<< HEAD
       `http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${restaurantId}/`,
-=======
-      `http://192.168.0.111:8000/restaurants/api/restaurants/${restaurantId}/`,
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       {
         method: "DELETE",
         headers: {

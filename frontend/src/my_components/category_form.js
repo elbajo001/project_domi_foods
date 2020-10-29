@@ -11,16 +11,11 @@ class CategoryForm extends Component {
     restaurants:[],
     restaurant_id:"",
     restaurant_name:"",
-    dir_ip:"192.168.1.151",
+    dir_ip:"192.168.43.52",
   };
 
    componentDidMount(){
-
-<<<<<<< HEAD
        fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
-=======
-       fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       .then((response) => response.json())
       .then((data) => {
       this.setState({ restaurants: data });

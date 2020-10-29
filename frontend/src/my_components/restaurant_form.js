@@ -4,12 +4,6 @@ import React,{Component} from 'react';
 
 class RestaurantForm extends Component {
 
-  constructor(props){
-    super(props);
-    //this.fileInput = React.createRef();
-  }
-
-
   state = {
     id: this.props.id || "",
     nit: this.props.nit || "",
@@ -18,7 +12,7 @@ class RestaurantForm extends Component {
     phone_num: this.props.phone_num || "",
     web_page: this.props.web_page || "",
     hours: this.props.hours || "",
-    id_admin: 1
+    id_admin: this.props.id_admin || "",
   };
 
   handleFormSubmit = (evt) => {

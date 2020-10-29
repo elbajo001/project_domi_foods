@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
+
 class LoginForm extends Component{
 	state = {
 		username: this.props.username || "",
 		password: this.props.password || "",
-		dir_ip: "192.168.1.151"
 	};
 
 	handleUserNameUpdate = evt => {
@@ -15,6 +15,7 @@ class LoginForm extends Component{
 		this.setState({password: evt.target.value});
 	}
 
+	
 	handleFormSubmit = (evt) => {
     	evt.preventDefault();
     	this.props.onFormSubmit({ ...this.state });
@@ -54,9 +55,8 @@ class LoginForm extends Component{
 
 				<div className="container mt-4">
 					<button 
-						type="submit" 
 						className="btn btn-primary" 
-						name="btnLogin"
+						type="submit"
 					>
 						Iniciar Sesión
 					</button>

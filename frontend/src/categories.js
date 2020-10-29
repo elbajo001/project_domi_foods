@@ -13,7 +13,7 @@ class Categories extends Component{
     	categories: [],
 		  restaurants:[],
 		  restaurant_id: "",
-      dir_ip:"192.168.1.151",
+      dir_ip:"192.168.43.52",
   	};
 
 
@@ -35,11 +35,7 @@ class Categories extends Component{
       }
     }
 
-<<<<<<< HEAD
       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/categories/`)
-=======
-      fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${id}/categories/`)
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
        .then((response) => response.json())
        .then((data) => {
          this.setState({ categories: data });
@@ -49,12 +45,9 @@ class Categories extends Component{
 
     //listar restaurantes para escoger uno y traer sus categorías 
     componentDidMount() {
-    	
-<<<<<<< HEAD
-		  fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
-=======
-		  fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    	const {id} = this.props.match.params;
+      
+		  fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/${id}/restaurants`)
 		  .then((response) => response.json())
 		  .then((data) => {
 			this.setState({ restaurants: data });
@@ -67,11 +60,9 @@ class Categories extends Component{
     //crear categoría
   	createNewCategory = (category) => {
     fetch(
-<<<<<<< HEAD
+
     	`http://${this.state.dir_ip}:8000/restaurants/api/categories/`, {
-=======
-    	'http://192.168.0.111:8000/restaurants/api/categories/', {
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,12 +77,7 @@ class Categories extends Component{
 
   //actualizar categoría
   updateCategory = (newCategory) => {
-    fetch(
-<<<<<<< HEAD
-      `http://${this.state.dir_ip}:8000/restaurants/api/categories/${newCategory.id}/`,
-=======
-      `http://192.168.0.111:8000/restaurants/api/categories/${newCategory.id}/`,
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${newCategory.id}/`,
       {
         method: "PUT",
         headers: {
@@ -114,12 +100,7 @@ class Categories extends Component{
 
     //eliminar categoría
   	deleteCategory = (categoryId) => {
-    	fetch(
-<<<<<<< HEAD
-      		`http://${this.state.dir_ip}:8000/restaurants/api/categories/${categoryId}/`,
-=======
-      		`http://192.168.0.111:8000/restaurants/api/categories/${categoryId}/`,
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    	fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${categoryId}/`,
       	{
         	method: "DELETE",
         	headers: {
@@ -140,7 +121,7 @@ class Categories extends Component{
 					<h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Información de las Categorías</h2>
           <div class="form-group mt-5">
 					<main className="d-flex justify-content-center my-4">
-            			<div className="jumbotron bg-white">
+            			<div className="jumbotron bg-light">
             				<CategoryList
               					categories={this.state.categories}
               					onDeleteClick={this.deleteCategory}
@@ -152,16 +133,16 @@ class Categories extends Component{
             			</div>
             		</main>
 
-                 <p  className="text-white" align="center"><i>Escoja alguno de los restaurantes para ver sus categorías</i></p>
+                 <p  className="text-dark" align="center"><i>Escoja alguno de los restaurantes para ver sus categorías</i></p>
               <div className="footer">
-              <nav aria-label="Page navigation">
-            <ul className="pagination justify-content-center">
-               {this.state.restaurants.map((restaurant)=>(
-                <li className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
-              ))}
-            </ul>
-           </nav>
-           </div>
+                  <nav aria-label="Page navigation">
+                    <ul className="pagination justify-content-center">
+                        {this.state.restaurants.map((restaurant)=>(
+                        <li className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
+                        ))}
+                    </ul>
+                  </nav>
+              </div>
 
           		</div>
           	</div>
