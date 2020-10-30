@@ -5,8 +5,8 @@ from .models import *
 # Register your models here.
 @admin.register(UserRestaurant)
 class UserRestaurantAdmin(admin.ModelAdmin):
-    list_display = ['document_type', 'document', 'first_name', 'last_name', 'phone_num', 'email_address',
-        'address_location', 'state_delete', 'state_disponibility']
+    list_display = ['user', 'document_type', 'document', 'first_name', 'last_name', 'phone_num', 'date_of_birth', 'email_address',
+        'address_location', 'state']
     # list_display = '__all__'
 
 @admin.register(Admin)
@@ -21,5 +21,5 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(DeliveryMan)
 class DeliveryManAdmin(admin.ModelAdmin):
-    list_display = ['image', 'id_client', 'vehicle_document']
+    list_display = ['id_client', 'vehicle_document', 'image']
     # list_display = '__all__'

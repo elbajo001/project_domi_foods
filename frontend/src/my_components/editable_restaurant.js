@@ -55,7 +55,7 @@ class EditableRestaurant extends Component {
       );
     };
     return (
-      <div className="container-fluid mb-2 p-2 bg-light card">
+      <div className="col-lg-4 col-sm-6 mb-4 bg-light">
         {component()}
       </div>
     );

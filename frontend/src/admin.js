@@ -8,7 +8,7 @@ import Products from './products';
 import Categories from './categories';
 import Profile from './profile';
 import Reports from './reports';
-
+import Delivery from './delivery';
 
 class Admin extends Component{
 	state ={
@@ -58,6 +58,7 @@ class Admin extends Component{
             			<Route path="/products/:id" component={Products} />
             			<Route path="/categories/:id" component={Categories}/>
             			<Route exact path="/reports" component={Reports}/>
+            			<Route exact path="/deliverys" component={Delivery}/>
             		</Switch>
              	</Router>
             </div>

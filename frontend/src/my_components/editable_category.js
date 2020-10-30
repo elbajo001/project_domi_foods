@@ -46,7 +46,7 @@ class EditableCategory extends Component {
       );
     };
     return (
-      <div className="mb-2 p-2 card" style={{ boxShadow: "0 0 5px #ccc" }}>
+      <div className="col-lg-6 col-sm-6 mb-4" style={{ boxShadow: "0 0 5px #ccc" }}>
         {component()}
       </div>
     );

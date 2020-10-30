@@ -20,7 +20,7 @@ class Product extends Component {
 
   render() {
     return (
-      <div className="card" /* style="width: 18rem;" */>
+      <div className="card h-100" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
           <span>
             <strong>{this.props.name}</strong>

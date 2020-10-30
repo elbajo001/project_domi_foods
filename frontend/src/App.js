@@ -7,6 +7,7 @@ import Login from './login';
 import Registry from './registry';
 import Welcome from './my_components/welcome';
 import Step2 from './user_restaurant';
+import Registry_Admin from './user_admin_registry';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/registry" component={Registry}/>
             <Route path="/admin/:id" component={Admin}/>
             <Route path="/user_restaurant/:id" component={Step2}/>
+            <Route path="/user_admin_registry/:id" component={Registry_Admin}/>
          </Switch>
          </Router>
 

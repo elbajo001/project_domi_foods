@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 class Sidebar extends Component{
 
-	render(){
+ 	render(){
 	  
     const first_name = this.props.first_name;
     const last_name = this.props.last_name;
@@ -43,6 +43,11 @@ class Sidebar extends Component{
             <li className="nav-item">
               <Link to="/reports" className="nav-link"><span class="fa fa-bar-chart mr-3"></span>Reportes</Link>
             </li>
+
+            <li className="nav-item">
+              <Link to="/deliverys" className="nav-link"><span class="fas fa-calendar-minus mr-3"></span>Pedidos</Link>
+            </li>
+
           </ul>
         </div>
       </nav>

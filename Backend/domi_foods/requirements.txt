@@ -3,3 +3,4 @@ django-rest-authtoken
 django-rest-knox
 Pillow
 knox
+django-cors-headers

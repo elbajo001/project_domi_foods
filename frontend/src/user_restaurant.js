@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Signup from './my_components/signup_form';
-//import Step1 from './my_components/user_form';
+
 
 class Step2 extends Component{
 	state = {
@@ -13,12 +13,8 @@ class Step2 extends Component{
    			genre: "",
     		phone_num: "",
    			date_of_birth: "",
-    	    email_address: "",
+    	  	email_address: "",
     		address_location: ""
-		},
-
-		user_admin:{
-			id_user_restaurant:""
 		},
 
 		dir_ip:"192.168.43.52",
@@ -41,25 +37,12 @@ class Step2 extends Component{
     	}).then(response1 => response1.json())
     	  .then((data) => {
 		  		this.setState({user_restaurant: data});
-		  		this.setState({id_user_restaurant: user_restaurant.document});
-		  		this.createUserAdmin(this.state.user_admin);
+		  		this.props.history.push(`/user_admin_registry/${this.state.user_restaurant.document}`);
 		    });
 	}
 
 
-	createUserAdmin(user_admin){
-			//finalmente se registra como administrador
-    	fetch(
-    		`http://${this.state.dir_ip}:8000/accounts/api/user_admin_register/`, {
-      		 method: "POST",
-      		 headers: {
-        	 "Content-Type": "application/json",
-      		},
-      		body: JSON.stringify(this.state.user_restaurant.document),
-    	}).then(response2 => response2.json())
-    	alert(this.state.user_restaurant.document);
-    	this.props.history.push(`/admin/${this.state.user_restaurant.document}`);  
-	}
+	
 
 	render(){
 			const {id} = this.props.match.params;
@@ -81,7 +64,6 @@ class Step2 extends Component{
     					address_location = {this.state.user_restaurant.address_location}
     					onFormSubmit={this.handleFormRestaurant}
 					/>
-
 				</div>
 			</div>		
 			);		

@@ -4,16 +4,17 @@ from .validators import *
 # Create your models here.
 class Restaurant(models.Model):
     id_admin = models.ForeignKey(Admin, null=False, blank=False, on_delete=models.CASCADE)
-    nit = models.IntegerField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=100, null=False, blank=False, unique=True)
-    address_location = models.CharField(max_length=40, null=False, blank=False, unique=True)
-    phone_num = models.IntegerField(null=False, blank=False, unique=True)
-    web_page = models.URLField(max_length=100, null=True, blank=True, validators=[url_validation], unique=True)
-    hours = models.CharField(max_length=25, null=True, blank=True)
-    image = models.ImageField(upload_to='media_restaurants/img_restaurants', null=True, blank=True)
-    date_creation = models.DateField(auto_now=True, auto_now_add=False)
-    state_delete = models.BooleanField(default=False)
-    state_disponibility = models.BooleanField(default=False)
+    nit = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    address_location = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    phone_num = models.CharField(max_length=255, null=False, blank=False, unique=True, validators=[num_validation])
+    web_page = models.URLField(max_length=255, null=True, blank=True, unique=True, validators=[url_validation])
+    hours_start = models.TimeField(null=False, blank=False)
+    hours_end = models.TimeField(null=False, blank=False)
+    image = models.ImageField(upload_to='media_restaurants/img_restaurants', null=False, blank=False)
+    state = models.CharField(max_length=255, null=False, blank=False, default='disponible')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'restaurant'
@@ -25,12 +26,13 @@ class Restaurant(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    description = models.TextField()
-    image = models.ImageField(upload_to='media_restaurants/img_categories', null=True, blank=True)
     restaurant = models.ForeignKey(Restaurant,  on_delete=models.CASCADE,  null=False, blank=False, default=None)
-    date_creation = models.DateField(auto_now=True, auto_now_add=False)
-    state_delete = models.BooleanField(default=False)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='media_restaurants/img_categories', null=False, blank=False)
+    state = models.CharField(max_length=255, null=False, blank=False, default='disponible')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'category'
@@ -40,14 +42,14 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    price = models.IntegerField(null=False, blank=False)
-    description = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='media_restaurants/img_products', null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
-    date_creation = models.DateField(auto_now=True, auto_now_add=False)
-    state_delete = models.BooleanField(default=False)
-    state_disponibility = models.BooleanField(default=False)
+    category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.CASCADE, default=None)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    price = models.FloatField(max_length=10, null=False, blank=False)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='media_restaurants/img_products', null=False, blank=False)
+    state = models.CharField(max_length=255, null=False, blank=False, default='disponible')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'product'
