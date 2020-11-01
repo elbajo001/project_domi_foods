@@ -9,6 +9,12 @@ from reports.models import *
 class Order(models.Model):
     client = models.ForeignKey(
         Client, on_delete=models.CASCADE,  null=False, blank=False)
+    total_to_pay = models.FloatField(max_length=15, null=False, blank=False)
+    estimated_time = models.FloatField(max_length=15, null=True, blank=True)
+    current_address = models.CharField(max_length=255, null=True, blank=True)
+    longitude = models.FloatField(max_length=15, null=True, blank=True)
+    latitude = models.FloatField(max_length=15, null=True, blank=True)
+    observation = models.TextField(null=True, blank=True)
     state = models.CharField(max_length=255, null=False,
                              blank=False, default='en espera')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,12 +37,6 @@ class Shipment(models.Model):
     hour_delivery = models.TimeField(null=False, blank=False)
     state = models.CharField(max_length=255, null=False,
                              blank=False, default='no entregado')
-    estimated_time = models.FloatField(max_length=15, null=True, blank=True)
-    current_address = models.CharField(max_length=255, null=True, blank=True)
-    longitude = models.FloatField(max_length=15, null=True, blank=True)
-    latitude = models.FloatField(max_length=15, null=True, blank=True)
-    address_client = models.CharField(max_length=255, null=False, blank=False)
-    observation = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'shipment'
@@ -71,7 +71,6 @@ class Bill(models.Model):
     report = models.ForeignKey(
         Report, on_delete=models.CASCADE,  null=False, blank=False)
     num_bill = models.CharField(max_length=255, null=False, blank=False)
-    total_to_pay = models.FloatField(max_length=15, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
