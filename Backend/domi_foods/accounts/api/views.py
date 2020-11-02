@@ -29,7 +29,7 @@ class ChangePasswordView(generics.UpdateAPIView):
 
     def get_object(self, queryset=None):
         obj = self.request.user
-        return obj
+        return obj 
 
     def update(self, request, *args, **kwargs):
         self.object = self.get_object()
