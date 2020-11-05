@@ -11,7 +11,7 @@ router.register('order_register', OrderRegister)
 router.register('order_product', OrderProductView)
 
 urlpatterns = [
-    path('', include(router.urls), name='order_register'),
+    path('', include(router.urls)),
     path('order_list/<str:pk>', OrderList, name='order_list'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
