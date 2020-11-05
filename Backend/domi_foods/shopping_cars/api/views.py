@@ -52,3 +52,12 @@ def OrderList(request, pk):
 class OrderProductView(viewsets.ModelViewSet):
     queryset = ShoppingCart.objects.all()
     serializer_class = OrderProductSerializer
+
+
+class OrderProductByOrder(generics.ListAPIView):
+    serializer_class = OrderProductSerializer
+
+    def get_queryset(self):
+        var_order = self.kwargs['order']
+        queryset = ShoppingCart.objects.filter(order_id=var_order)
+        return queryset
