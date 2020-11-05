@@ -6,9 +6,9 @@ from .views import(
 )
 
 router = routers.DefaultRouter()
-router.register('', OrderRegister)
+router.register('order_register', OrderRegister)
 
 urlpatterns = [
-    path('order_register/',include(router.urls) , name = 'order_register'),
-    path('order_list/<str:pk>',OrderList , name = 'order_list')
+    path('', include(router.urls),
+    path('order_list/<str:pk>', OrderList, name='order_list')
 ]
