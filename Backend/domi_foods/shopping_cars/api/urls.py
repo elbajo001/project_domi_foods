@@ -3,12 +3,15 @@ from rest_framework import routers
 from .views import(
     OrderRegister,
     OrderList,
+    OrderProductView,
 )
 
 router = routers.DefaultRouter()
-router.register('', OrderRegister)
+router.register('order_register', OrderRegister)
+router.register('order_product', OrderProductView)
 
 urlpatterns = [
-    path('order_register/',include(router.urls) , name = 'order_register'),
-    path('order_list/<str:pk>',OrderList , name = 'order_list')
+    path('', include(router.urls), name='order_register'),
+    path('order_list/<str:pk>', OrderList, name='order_list'),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
