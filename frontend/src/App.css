@@ -57,7 +57,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-image: url("https://cdn.hipwallpaper.com/i/74/55/tbqMJI.png"); }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -8137,7 +8137,7 @@ body {
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  background: #fafafa;
+  background: transparent;
   color: gray; }
 
 a {

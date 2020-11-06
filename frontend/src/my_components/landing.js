@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class LandingPage extends Component{
 	render(){
 		return(
-			<div className="container">
+			<div className="container bg-transparent">
 				<header id="header" className="fixed-top d-flex align-items-center bg-primary">
 					<div className="container d-flex align-items-center">
 	      				<div className="logo mr-auto">
@@ -23,7 +23,7 @@ class LandingPage extends Component{
 	    			</div>
 				</header>
 			
-				<div className="inner-page"></div>
+				
 			</div>
 		
 		);

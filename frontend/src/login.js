@@ -48,9 +48,8 @@ class Login extends Component{
     }
 
 	render(){
-		return(
-			<div className="jumbotron d-flex mt-5 mb-2 justify-content-center alert-primary">			
-			    <div className="jumbotron alert-danger col-auto mb-2" align="center">
+		return(		
+			    <div className="jumbotron alert-danger col-4 col-auto mb-2 ml-auto mr-auto" align="center">
 					<img src="https://icon-library.com/images/restaurant-icon-png/restaurant-icon-png-21.jpg" height="100" width="100" align="left" alt="login"/>
 					<h2  className="text-danger font-weight-bold">Login</h2>
 					<hr/>
@@ -66,7 +65,6 @@ class Login extends Component{
 				 		</p>
 				 	</div>
 				</div>
-			</div>
 		);
 	}
 }

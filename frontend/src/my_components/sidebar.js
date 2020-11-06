@@ -45,7 +45,7 @@ class Sidebar extends Component{
             </li>
 
             <li className="nav-item">
-              <Link to="/deliverys" className="nav-link"><span class="fas fa-calendar-minus mr-3"></span>Pedidos</Link>
+              <Link to="/orders" className="nav-link"><span class="fas fa-calendar-minus mr-3"></span>Pedidos</Link>
             </li>
 
           </ul>

@@ -5,6 +5,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  background-image: url("https://img4.goodfon.com/wallpaper/nbig/7/50/guilherme-gomes-chef-3d-shef-povar-eda.jpg");
+   width: 100%;
+   position: relative;
+  padding: 120px 0 0 0;
+  position: absolute;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -35,10 +40,14 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
-*::before,
+*::before{
+
+  },
 *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
+
+
 
 html {
   font-family: sans-serif;
@@ -5406,7 +5415,8 @@ button.bg-danger:focus {
   background-color: #bd2130 !important; }
 
 .bg-light {
-  background-color: #f8f9fa !important; }
+  background-color: #f8f9fa !important; 
+}
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -8148,11 +8158,11 @@ body {
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  background: #fafafa;
+  background-color: transparent;
   /*background-image:url('https://image.freepik.com/foto-gratis/manteles_127657-12720.jpg');*/
    background-size: 600px 1000px;
        background-size: 100% 100%;
-  color: gray; }
+  color: transparent; }
 
 a {
   -webkit-transition: .3s all ease;

@@ -11,7 +11,7 @@ import Registry_Admin from './user_admin_registry';
 
 function App() {
   return (
-      <div className="container-fluid">
+      <div className="bg-transparent">
         <Router>
          <LandingPage/>
          <Switch>
