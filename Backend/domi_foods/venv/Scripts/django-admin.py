@@ -1,4 +1,4 @@
-#!C:\Users\El Juano\Documents\Universidad\8vo semestre\proyecto 1\Final\project_domi_foods\Backend\domi_foods\venv\Scripts\python.exe
+#!c:\users\el juano\desktop\merge\project_domi_foods\backend\domi_foods\venv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

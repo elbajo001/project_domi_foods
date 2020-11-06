@@ -102,7 +102,12 @@ WSGI_APPLICATION = 'domi_foods.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 """
+=======
+
+
+>>>>>>> ade7cee01d9ce88b9c3e640e6005c9e9e9838d26
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -111,6 +116,19 @@ DATABASES = {
 }
 <<<<<<< HEAD
 """
+
+""" 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bd_domifoods',
+        'USER': 'postgres',
+        'PASSWORD': 'postgresql',
+        'HOST': '127.0.0.1',
+        'DATABASE_PORT':5432
+    }
+}
+ """
 
 
 DATABASES = {
