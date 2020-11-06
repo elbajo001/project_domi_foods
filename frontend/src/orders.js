@@ -4,17 +4,14 @@ import OrderList from './my_components/order_list';
 class Orders extends Component{
 
 	state={
-		orders:{
-			order1:{
-				id:1,
-				detail:"hola"
-			},
-			order2:{
-				id:2,
-				detail:"chao"
-			},
-		}
+		orders:[],
+		dir_ip:"192.168.1.151"
 	};
+
+
+	componentDidMount(){
+		
+	}
 
 
 
@@ -29,7 +26,7 @@ class Orders extends Component{
 						<main className="d-flex justify-content-center my-4">
             			<div className="jumbotron bg-light">
             				<OrderList
-              					
+              					orders={this.state.orders}
             				/>
             			</div>
             		</main>

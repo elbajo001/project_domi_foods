@@ -6,7 +6,7 @@ class Login extends Component{
 
 	/*Aquí lógica del inicio de sesión*/
     state = {
-    	 dir_ip:"192.168.43.52",
+    	 dir_ip:"192.168.1.151",
     	 user: {
     	 	 username:"",
     	     password:""

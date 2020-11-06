@@ -30,7 +30,7 @@ SECRET_KEY = '-rcdo7n6i!ug=!ms5f!7r0+s!33#$c02%ja@jsicyn02fv0q(p'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['192.168.43.52']
+ALLOWED_HOSTS = ['192.168.1.151']
 
 
 # Others
@@ -134,7 +134,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'domifoods',
+        'NAME': 'domi_foods',
         'USER': 'postgres',
         'PASSWORD': 'isa2020',
       

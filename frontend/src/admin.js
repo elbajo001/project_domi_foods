@@ -17,7 +17,7 @@ class Admin extends Component{
 			first_name:"",
 			last_name:""
 		},
-		dir_ip: "192.168.43.52",
+		dir_ip: "192.168.1.151",
 
 		admin:{
 			id:""

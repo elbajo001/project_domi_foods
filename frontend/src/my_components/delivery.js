@@ -7,7 +7,7 @@ class Delivery extends Component {
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
           <span>
-            <h6 className="text-white"><strong>Order</strong></h6>
+            <h6 className="text-white"><strong>Order: {this.props.id}</strong></h6>
           </span>
           <div>
             <span onClick={this.props.onEditClick} className="mr-2">
@@ -19,9 +19,17 @@ class Delivery extends Component {
           </div>
         </div>
         <div className="card-body text-dark">
-           <img  className="card-img-top" src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="250"/>
              <hr/>
-            <p>Detail</p>
+            <p>
+              {this.props.client}
+              {this.props.estimated_time}
+              {this.props.current_address}
+              {this.props.longitude}
+              {this.props.latitude}
+              {this.props.observation}
+              {this.props.state}
+              {this.props.total_to_pay}
+            </p>
         </div>
       </div>
     );

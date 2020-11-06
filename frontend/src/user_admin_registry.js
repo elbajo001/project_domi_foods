@@ -7,7 +7,7 @@ class Registry_Admin extends Component{
 			id_user_restaurant:""
 		},
 
-		dir_ip:"192.168.43.52",
+		dir_ip:"192.168.1.151",
 	};
 
 	createUserAdmin(user_admin){

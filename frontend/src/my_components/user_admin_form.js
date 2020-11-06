@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 
 class AdminForm extends Component{
 	state = {
-		id_user_restaurant: this.props.document || ""
+		id_user_restaurant: this.props.id_user_restaurant || ""
 	};
 
 

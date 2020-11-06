@@ -21,7 +21,7 @@ class Registry extends Component{
 		},
 
 
-		dir_ip:"192.168.43.52",
+		dir_ip:"192.168.1.151",
 	};
 
 

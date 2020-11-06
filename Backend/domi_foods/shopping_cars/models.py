@@ -9,7 +9,7 @@ from reports.models import *
 class Order(models.Model):
     client = models.ForeignKey(
         Client, on_delete=models.CASCADE,  null=False, blank=False)
-    total_to_pay = models.FloatField(max_length=15, null=False, blank=False)
+    total_to_pay = models.FloatField(max_length=15, null=False, blank=False, default=0)
     estimated_time = models.FloatField(max_length=15, null=True, blank=True)
     current_address = models.CharField(max_length=255, null=True, blank=True)
     longitude = models.FloatField(max_length=15, null=True, blank=True)

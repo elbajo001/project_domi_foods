@@ -23,8 +23,7 @@ class EditableOrder extends Component {
     const component = () => {
       return (
         <Delivery
-           
-
+  
             onEditClick={this.enterEditMode}
             onDeleteClick={this.handleDelete}
         />

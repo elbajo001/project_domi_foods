@@ -17,7 +17,7 @@ class Step2 extends Component{
     		address_location: ""
 		},
 
-		dir_ip:"192.168.43.52",
+		dir_ip:"192.168.1.151",
 	};
 
 	
