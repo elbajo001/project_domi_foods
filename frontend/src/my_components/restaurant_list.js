@@ -13,7 +13,9 @@ class RestaurantList extends Component {
         address_location={restaurant.address_location}
         phone_num={restaurant.phone_num}
         web_page={restaurant.web_page}
-        hours={restaurant.hours}
+        hours_start={restaurant.hours_start}
+        hours_end={restaurant.hours_end}
+        image={restaurant.image}
         id_admin={restaurant.id_admin}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}

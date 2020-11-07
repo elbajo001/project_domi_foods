@@ -31,12 +31,24 @@ class RestaurantDashboard extends Component {
     alert(this.state.admin);
     restaurant.id_admin = this.state.admin;
     alert(restaurant.id_admin);
+    const uploadData = new FormData();
+    uploadData.append('id', restaurant.id);
+    uploadData.append('id_admin', restaurant.id_admin);
+    uploadData.append('nit', restaurant.nit);
+    uploadData.append('name', restaurant.name);
+    uploadData.append('address_location', restaurant.address_location);
+    uploadData.append('phone_num',restaurant.phone_num);
+    uploadData.append('web_page', restaurant.web_page);
+    uploadData.append('hours_start', restaurant.hours_start);
+    uploadData.append('hours_end', restaurant.hours_end);
+    uploadData.append('image', restaurant.image);
+
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/`, {
       method: "POST",
-      headers: {
+      /*headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(restaurant),
+      },*/
+      body: uploadData, //JSON.stringify(restaurant),
     }).then(response => response.json())
       .then(restaurant => {
         this.setState({restaurants: this.state.restaurants.concat([restaurant])});

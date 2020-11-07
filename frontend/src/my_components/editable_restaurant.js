@@ -33,7 +33,9 @@ class EditableRestaurant extends Component {
             address_location={this.props.address_location}
             phone_num={this.props.phone_num}
             web_page={this.props.web_page}
-            hours={this.props.hours}
+            hours_start={this.props.hours_start}
+            hours_end={this.props.hours_end}
+            image={this.props.image}
             id_admin={this.props.id_admin}
             onCancelClick={this.leaveEditMode}
             onFormSubmit={this.handleUpdate}
@@ -47,7 +49,9 @@ class EditableRestaurant extends Component {
           address_location={this.props.address_location}
           phone_num={this.props.phone_num}
           web_page={this.props.web_page}
-          hours={this.props.hours}
+          hours_start={this.props.hours_start}
+          hours_end={this.props.hours_end}
+          image={this.props.image}
           id_admin={this.props.id_admin}
           onEditClick={this.enterEditMode}
           onDeleteClick={this.handleDelete}
