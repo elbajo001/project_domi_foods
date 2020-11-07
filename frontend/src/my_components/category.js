@@ -18,8 +18,8 @@ class Category extends Component {
             </span>
           </div>
         </div>
+        <img src={this.props.image} alt="category" height="150" width="250"/>
         <div className="card-body text-dark">
-           <img  className="card-img-top" src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="category" height="150" width="250"/>
              <hr/>
             <p>{this.props.description}</p>
         </div>

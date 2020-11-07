@@ -59,15 +59,23 @@ class Categories extends Component{
     
     //crear categoría
   	createNewCategory = (category) => {
+      alert(category.restaurant_id);
+      const uploadData = new FormData();
+      uploadData.append('id', category.id);
+      uploadData.append('name', category.name);
+      uploadData.append('description', category.description);
+      uploadData.append('image', category.image);
+      uploadData.append('restaurant', category.restaurant);
+
     fetch(
 
     	`http://${this.state.dir_ip}:8000/restaurants/api/categories/`, {
 
         method: "POST",
-        headers: {
+        /*headers: {
           "Content-Type": "application/json",
-        },
-        body: JSON.stringify(category),
+        },*/
+        body: uploadData,//body: JSON.stringify(category),
       }).then(response => response.json())
         .then(category => {
           this.setState({categories: this.state.categories.concat([category])});
@@ -77,13 +85,20 @@ class Categories extends Component{
 
   //actualizar categoría
   updateCategory = (newCategory) => {
+    const uploadData = new FormData();
+      uploadData.append('id', newCategory.id);
+      uploadData.append('name', newCategory.name);
+      uploadData.append('description', newCategory.description);
+      uploadData.append('image', newCategory.image);
+      uploadData.append('restaurant', newCategory.restaurant);
+
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${newCategory.id}/`,
       {
         method: "PUT",
-        headers: {
+        /*headers: {
           "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCategory),
+        },*/
+        body: uploadData,//body: JSON.stringify(newCategory),
       }).then(response => response.json())
       .then(newCategory => {
         const newCategories = this.state.categories.map(category => {

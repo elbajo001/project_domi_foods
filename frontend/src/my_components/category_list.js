@@ -9,6 +9,7 @@ class CategoryList extends Component {
         id={category.id}
         name={category.name}
         description={category.description}
+        image={category.image}
         restaurant={category.restaurant}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}

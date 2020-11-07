@@ -28,6 +28,7 @@ class EditableCategory extends Component {
             id = {this.props.id}
             name={this.props.name}
             description={this.props.description}
+            image={this.props.image}
             restaurant={this.props.restaurant}
             onCancelClick={this.leaveEditMode}
             onFormSubmit={this.handleUpdate}
@@ -39,6 +40,7 @@ class EditableCategory extends Component {
             id={this.props.id}
             name={this.props.name}
             description={this.props.description}
+            image={this.props.image}
             restaurant={this.props.restaurant}
             onEditClick={this.enterEditMode}
             onDeleteClick={this.handleDelete}

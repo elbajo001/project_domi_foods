@@ -58,12 +58,26 @@ class RestaurantDashboard extends Component {
 
  //actualizar restaurante
   updateRestaurant = (newRestaurant) => {
+    const uploadData = new FormData();
+    uploadData.append('id', newRestaurant.id);
+    uploadData.append('id_admin', newRestaurant.id_admin);
+    uploadData.append('nit', newRestaurant.nit);
+    uploadData.append('name', newRestaurant.name);
+    uploadData.append('address_location', newRestaurant.address_location);
+    uploadData.append('phone_num',newRestaurant.phone_num);
+    uploadData.append('web_page', newRestaurant.web_page);
+    uploadData.append('hours_start', newRestaurant.hours_start);
+    uploadData.append('hours_end', newRestaurant.hours_end);
+    uploadData.append('image', newRestaurant.image);
+
+
+
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${newRestaurant.id}/`,{
         method: "PUT",
-        headers: {
+        /*headers: {
           "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newRestaurant),
+        },*/
+        body: uploadData,//body: JSON.stringify(newRestaurant),
       }).then(response => response.json())
       .then(newRestaurant => {
         const newRestaurants = this.state.restaurants.map(restaurant => {

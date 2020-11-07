@@ -7,6 +7,7 @@ class CategoryForm extends Component {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
+    image: this.props.image || "",
     restaurant: this.props.restaurant || "",
     restaurants:[],
     restaurant_id:"",
@@ -50,6 +51,10 @@ class CategoryForm extends Component {
     this.setState({ description: evt.target.value });
   };
 
+   handleImageUpdate = (evt) => {
+      this.setState({image: evt.target.files[0]});
+  }
+
 
   render() {
     const buttonText = this.props.id ? "Update Category" : "Create Category";
@@ -89,6 +94,15 @@ class CategoryForm extends Component {
             </select>
         </div>
 
+
+        <div className="form-row">
+            <label className="form-control-label">Image</label>
+            <input
+              type="file"
+              onChange={this.handleImageUpdate}
+              className="form-control"
+            />
+          </div>
 
         <div className="form-group d-flex justify-content-between">
           <button type="submit" className="btn btn-md btn-danger">
