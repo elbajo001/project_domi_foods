@@ -113,10 +113,10 @@ class RestaurantDashboard extends Component {
     return (
       <div id="content" className="p-4 p-md-5 pt-1">
         <main>
-          <div className="jumbotron-fluid bg-faded">
+          <div className="jumbotron-fluid bg-light">
             <h2 className="text-danger mt-4 bg-light" align="center"><strong>Restaurantes</strong></h2>
              <main className="d-flex  my-4">
-             <div className="container">
+             <div className="container mb-2">
             <RestaurantList
               restaurants={this.state.restaurants}
               onDeleteClick={this.deleteRestaurant}

@@ -5,7 +5,7 @@ class Home extends Component{
 		return(
              <div id="content" className="p-4 p-md-5 pt-5">
 			 <main>
-                    <div className="container-fluid">
+                    <div className="jumbotron bg-light">
                         <h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Dashboard</h2>
                         <hr/>
                         <div className="row">

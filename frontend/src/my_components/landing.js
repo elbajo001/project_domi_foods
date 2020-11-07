@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+import Welcome from './welcome';
 
 class LandingPage extends Component{
 	render(){
@@ -9,9 +10,9 @@ class LandingPage extends Component{
 					<div className="container d-flex align-items-center">
 	      				<div className="logo mr-auto">
 	        				<h1 className="text-light">
-	        					<a href="index.html">
+	        					<Link to ="/Welcome">
 	        						<span className="text-light font-weight-bold">DomiFoods!</span>
-	        					</a>
+	        					</Link>
 	        				</h1>
 	      				</div>
 
@@ -22,7 +23,6 @@ class LandingPage extends Component{
 						</nav>
 	    			</div>
 				</header>
-			
 				
 			</div>
 		

@@ -16,14 +16,13 @@ class Sidebar extends Component{
 
   	return(
 			 <nav className="navbar navbar-expand alert-primary mt-5">
-        <div class="p-4">
-          <h1><a href="index.html" class="logo">
-                Administration Panel
-              </a>
+        <div className="p-4">
+          <h1 className="logo font-weight-bold text-primary">
+                Panel de Administración
           </h1>
            <hr/>
               <img src="https://electronicssoftware.net/wp-content/uploads/user.png" height="70" width="70" alt="user"/>
-              <label className="form-control-sm ml-3">{first_name} {last_name}</label>
+              <label className="form-control-sm ml-3 font-weight-bold"><h4>{first_name} {last_name}</h4></label>
           <hr/>
           <ul class="navbar-nav">
             <li class="nav-item">
