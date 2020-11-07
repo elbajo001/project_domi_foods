@@ -10,6 +10,7 @@ class ProductList extends Component {
         name={product.name}
         price={product.price}
         description={product.description}
+        image={product.image}
         category={product.category}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}

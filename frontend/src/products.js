@@ -68,13 +68,21 @@ class Products extends Component{
 
 //crear producto
  createNewProduct = (product) => {
+  const uploadData = new FormData();
+  uploadData.append('id', product.id);
+  uploadData.append('category', product.category);
+  uploadData.append('name', product.name);
+  uploadData.append('price', product.price);
+  uploadData.append('description', product.description);
+  uploadData.append('image', product.image);
+
   fetch(
     `http://${this.state.dir_ip}:8000/restaurants/api/products/`, {
       method: "POST",
-      headers: {
+      /*headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
+      },*/
+      body: uploadData,//body: JSON.stringify(product),
     }).then(response => response.json())
       .then(product => {
         this.setState({products: this.state.products.concat([product])});
@@ -84,13 +92,22 @@ class Products extends Component{
 
   //actualizar producto
   updateProduct = (newProduct) => {
-    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/products/${newProduct.id}/`,
+     const uploadData = new FormData();
+     uploadData.append('id', newProduct.id);
+     uploadData.append('category', newProduct.category);
+     uploadData.append('name', newProduct.name);
+     uploadData.append('price', newProduct.price);
+     uploadData.append('description', newProduct.description);
+     uploadData.append('image', newProduct.image);
+    
+
+     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/products/${newProduct.id}/`,
       {
         method: "PUT",
-        headers: {
+        /*headers: {
           "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
+        },*/
+        body: uploadData,//body: JSON.stringify(newProduct),
       }).then(response => response.json())
       .then(newProduct => {
         const newProducts = this.state.products.map(product => {
@@ -130,7 +147,7 @@ class Products extends Component{
 					<h2 className="font-weight-bold text-danger bg-light mt-4" align="center">Información de los Platos</h2>
 					   <div class="form-group mt-2">
            <main className="d-flex justify-content-center">
-                    <div className="jumbotron bg-light">
+                    <div className="jumbotron bg-light col-lg-12">
           					<ProductList
             					products={this.state.products}
             					onDeleteClick={this.deleteProduct}

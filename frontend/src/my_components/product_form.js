@@ -8,6 +8,7 @@ class ProductForm extends Component {
       name: this.props.name || "",
       price: this.props.price || "",
       description: this.props.description || "",
+      image: this.props.image || "",
       category: this.props.category || "",
       //state_delete: this.props.state_delete || "",
       categories:[],
@@ -86,6 +87,9 @@ componentDidMount(){
     this.setState({ description: evt.target.value });
   };
 
+  handleImageUpdate = (evt) => {
+      this.setState({image: evt.target.files[0]});
+  }
 
   render() {
     const buttonText = this.props.id ? "Update Product" : "Create Product";
@@ -147,6 +151,15 @@ componentDidMount(){
             {this.state.description}
           </textarea>
         </div>
+
+           <div className="form-row">
+            <label className="form-control-label">Image</label>
+            <input
+              type="file"
+              onChange={this.handleImageUpdate}
+              className="form-control"
+            />
+          </div>
 
 
         <div className="form-group d-flex justify-content-between">
