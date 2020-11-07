@@ -19,6 +19,7 @@ class Product extends Component {
   }
 
   render() {
+    const url=`http://${this.state.dir_ip}:8000${this.props.image}`;
     return (
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
@@ -34,7 +35,7 @@ class Product extends Component {
             </span>
           </div>
         </div>
-         <img src={this.props.image} alt="product"/>
+        <img src={url} alt={this.props.image} width="348" height="200"/>
         <div className="card-body text-dark">
          <hr/>
         <div>{this.props.description}</div>

@@ -136,7 +136,7 @@ class Categories extends Component{
 					<h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Información de las Categorías</h2>
           <div class="form-group mt-5">
 					<main className="d-flex justify-content-center my-4">
-            			<div className="jumbotron bg-light col-lg-12">
+            			<div className="jumbotron bg-light">
             				<CategoryList
               					categories={this.state.categories}
               					onDeleteClick={this.deleteCategory}

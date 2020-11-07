@@ -20,15 +20,6 @@ class Products extends Component{
  handleChange(event){
     //alert(event.target.value);
     var id = "";
-    
-    /*
-    this.state.restaurants.map(restaurant => {
-          if (restaurant.name === event.target.value) {
-            id = restaurant.id;
-            this.setState({ restaurant_id : restaurant.id });
-          }
-      });
-    */
 
     for (var i = 0; i < this.state.restaurants.length; i++) {
       if(this.state.restaurants[i].name === event.target.value){
@@ -41,7 +32,7 @@ class Products extends Component{
       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/products`)
       .then((response) => response.json())
       .then((data) => {
-         this.setState({ products: data });
+         this.setState({products: data});
     });
     
   }
@@ -164,7 +155,7 @@ class Products extends Component{
               <nav aria-label="Page navigation">
             <ul className="pagination justify-content-center">
                {this.state.restaurants.map((restaurant)=>(
-                <li className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
+                <li key={restaurant.id} className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
               ))}
             </ul>
            </nav>

@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 
 class Category extends Component {
+  state={
+    dir_ip:"192.168.1.151"
+  }
   
   render() {
+    const url = `http://${this.state.dir_ip}:8000${this.props.image}`;
+
     return (
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
@@ -18,7 +23,7 @@ class Category extends Component {
             </span>
           </div>
         </div>
-        <img src={this.props.image} alt="category" height="150" width="250"/>
+        <img src={url} alt="category" height="150" width="250"/>
         <div className="card-body text-dark">
              <hr/>
             <p>{this.props.description}</p>

@@ -12,6 +12,7 @@ class Sidebar extends Component{
     const profile=`/profile/${this.props.admin_document}`;
     const products=`/products/${this.props.id}`;
     const categories=`/categories/${this.props.id}`;
+    const orders= `/orders/${this.props.id}`;
 
   	return(
 			 <nav className="navbar navbar-expand alert-primary mt-5">
@@ -45,7 +46,7 @@ class Sidebar extends Component{
             </li>
 
             <li className="nav-item">
-              <Link to="/orders" className="nav-link"><span class="fas fa-calendar-minus mr-3"></span>Pedidos</Link>
+              <Link to={orders} className="nav-link"><span class="fas fa-calendar-minus mr-3"></span>Pedidos</Link>
             </li>
 
           </ul>

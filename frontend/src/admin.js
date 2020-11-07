@@ -58,7 +58,7 @@ class Admin extends Component{
             			<Route path="/products/:id" component={Products} />
             			<Route path="/categories/:id" component={Categories}/>
             			<Route exact path="/reports" component={Reports}/>
-            			<Route exact path="/orders" component={Orders}/>
+            			<Route exact path="/orders/:id" component={Orders}/>
             		</Switch>
              	</Router>
             </div>
