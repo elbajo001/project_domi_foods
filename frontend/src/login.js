@@ -42,9 +42,12 @@ class Login extends Component{
          body: JSON.stringify(user),
           }).then(response => response.json())
             .then((data) => {
-			this.setState({ result: data });
-			this.props.history.push(`/admin/${this.state.result.document}`);
-		});
+			       this.setState({ result: data });
+              if(this.state.result.answer === "True"){
+                //alert(this.state.result.answer);
+                this.props.history.push(`/admin/${this.state.result.document}`);
+              }
+		      });
     }
 
 	render(){
@@ -61,7 +64,7 @@ class Login extends Component{
 
 				 	<div className="alert-warning mt-2">
 				 		<p>
-
+              {this.state.result.non_field_errors}
 				 		</p>
 				 	</div>
 				</div>
