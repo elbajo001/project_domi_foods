@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 
 class LoginForm extends Component{
+	/*Componente del formulario de autenticación del usuario administrador de restaurantes*/
+	
 	state = {
 		username: this.props.username || "",
 		password: this.props.password || "",

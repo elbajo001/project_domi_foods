@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import RestaurantForm from "./restaurant_form";
 
 class ToggleableRestaurantForm extends Component {
+   //Componente que permite la creación de más restaurantes.
   state = {
     inCreateMode: false
   };

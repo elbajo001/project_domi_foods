@@ -1,6 +1,10 @@
 import React,{Component} from 'react';
 
 class Home extends Component{
+    /*Componente que despliega cortos resumenes estadísticos de ventas y otros detalles
+     * al administrador que ha iniciado sesión*/
+
+    //función que renderiza el contenido de este componente. 
 	render(){
 		return(
              <div id="content" className="p-4 p-md-5 pt-5">

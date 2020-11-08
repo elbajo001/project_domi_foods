@@ -2,6 +2,13 @@ import React,{Component} from 'react';
 
 
 class Profile extends Component{
+  /*Componente que despliega la información detallada del 
+   *administrador que ha iniciado sesión.
+   *parámetros:
+   *información completa del administrador.
+   *dirección ip del host que establece conexión con el servidor.
+  */
+
 	state={
 		admin_detail:{
 			document_type: "",
@@ -17,6 +24,11 @@ class Profile extends Component{
 		dir_ip:"192.168.1.151",
 	};
 
+
+
+  /*permite traer la información detallada del usuario a través del 
+  /*documento de identificación, que se extrae de la ruta de acceso a este componente
+  /*en el navegador.*/
 	componentDidMount(){
 		const {id} = this.props.match.params;
 		fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/${id}`)
@@ -27,7 +39,7 @@ class Profile extends Component{
 	}
 
 
-
+  //función que permite renderizar el contenido de este componente.
 	render(){
 
 		return(

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 
 class ProductForm extends Component {
+    /*Componente que despliega el formulario del producto, para la creación y actualización
+    *del mismo.*/
 
     state = {
       id: this.props.id || "",

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 class Product extends Component {
+   /*Componente que muestra la información del producto*/
+   /*Parámetros: dirección ip del host que establece conexión con el servidor, esto para obtener
+   *correctamente la imagen del producto que viene serializada en formato JSON, y la
+   *la información de la categoría a la que el producto pertenece.*/
+  
   state={
     category_pr:{
       id: "",

@@ -11,6 +11,9 @@ import Reports from './reports';
 import Orders from './orders';
 
 class Admin extends Component{
+	/*Componente que despliega la información pertenciente al administrador que haya iniciado sesión
+	 *Los parámetros de este componente incluyen la información básica del usuario: identificación(documento) y nombre completo
+	 *Además de la dirección ip del host donde se establece la conexión con el servidor y el id del administrador.*/
 	state ={
 		user_restaurant:{
 			document: "",
@@ -24,6 +27,8 @@ class Admin extends Component{
 		},
 	};
 
+	/*permite traer la información del usuario que ha iniciado sesión a través del documento
+	 *de identificación, que es extraído de la ruta de acceso a este componente en el navegador.*/
 	componentDidMount(){
 		const {id} = this.props.match.params;
 		fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/${id}`)
@@ -41,6 +46,7 @@ class Admin extends Component{
 
 	}
 
+	//función que renderiza el contenido de este componente.
 	render(){
 		return(
 			  <div className="container-fluid">

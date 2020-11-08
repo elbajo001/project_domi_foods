@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Delivery from './delivery';
 
 class EditableOrder extends Component {
+  /*Componente que muestra la información del pedido para que sea confirmado.*/
   state = {
     inEditMode: false
   };

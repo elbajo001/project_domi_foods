@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import EditableRestaurant from "./editable_restaurant";
 
 class RestaurantList extends Component {
+  //Componente que despliega la lista de restaurantes que gerencia un administrador.
   render() {
     const restaurants = this.props.restaurants.map((restaurant) => (
       <EditableRestaurant

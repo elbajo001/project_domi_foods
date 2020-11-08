@@ -1,6 +1,11 @@
 import React,{Component} from 'react';
 
 class AdminForm extends Component{
+
+   /*Componente que despliega el último paso de registro de un administrador
+   .*donde se captura a través de la ruta de acceso al componente de registro el documento
+   *del administrador que será registrado.*/
+
 	state = {
 		id_user_restaurant: this.props.id_user_restaurant || ""
 	};

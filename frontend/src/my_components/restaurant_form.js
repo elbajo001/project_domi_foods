@@ -4,6 +4,8 @@ import React,{Component} from 'react';
 
 class RestaurantForm extends Component {
 
+    //Componente que despliega el formulario de creación y actualización de un restaurante.
+
   state = {
     id: this.props.id || "",
     nit: this.props.nit || "",

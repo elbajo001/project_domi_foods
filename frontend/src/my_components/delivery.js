@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 class Delivery extends Component {
-  
+   /*Componente que muestra la información del pedido*/
+
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditableProduct from './editable_product';
 
 class ProductList extends Component {
+  /*Componente que muestra la lista de productos de un restaurante*/
   render() {
     const products = this.props.products.map((product) => (
       <EditableProduct

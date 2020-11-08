@@ -2,9 +2,13 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Sidebar extends Component{
+  //Componente que despliega una barra de navegación que muestra todas las funcionalidades
+  //disponibles para un administrador de restaurantes.
 
  	render(){
-	  
+	  //Se configuran las rutas de acceso a cada una de las funcionalidades y se capturan
+    //los datos necesarios para que sean traspasados o mostrados en cada uno de los componentes 
+    //diseñados.
     const first_name = this.props.first_name;
     const last_name = this.props.last_name;
     //const admin_document = this.props.admin_document;

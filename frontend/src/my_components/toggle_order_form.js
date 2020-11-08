@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Delivery from "./delivery";
 
 class ToggleableOrderForm extends Component {
+   //Componente que permite la confirmación de pedidos.
   state = {
     inCreateMode: false
   };

@@ -3,6 +3,14 @@ import Signup from './my_components/signup_form';
 
 
 class Step2 extends Component{
+	/*
+	 *Componente que despliega la funcionalidad de registro, correspondiente al segundo paso,
+	 *donde el usuario diligencia todos sus datos personales para posteriormente ser registrado
+	 *como administrador en el último paso.
+	*/
+
+	/*Parámetros del componente: datos personales del usuario y dirección del host
+	 *que establece conexión con el servidor*/
 	state = {
 		user_restaurant:{
 			user: "",
@@ -20,11 +28,13 @@ class Step2 extends Component{
 		dir_ip:"192.168.1.151",
 	};
 
-	
+	//función que dirige los datos del formulario correspondientes al usuario que se está 
+	//registrando.
 	handleFormRestaurant = (user_restaurant) =>{
      	this.createUserRestaurant(user_restaurant);
     };
 
+    //función que permite la creación de un usuario de la plataforma domifoods web.
     createUserRestaurant(user_restaurant){
 		//se procede a registrar como usuario restaurante
     	fetch(
@@ -43,8 +53,9 @@ class Step2 extends Component{
 
 
 	
-
+	//función que renderiza el contenido de este componente.
 	render(){
+		    //se obtiene el id del usuario a traves de la ruta de acceso a este componente en el navegador.
 			const {id} = this.props.match.params;
 			return(
 			<div className="jumbotron justify-content-center alert-info" align="center">

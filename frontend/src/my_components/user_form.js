@@ -1,6 +1,11 @@
 import React,{Component} from 'react';
 
 class Step1 extends Component{
+	/*Componente que despliega el primer paso de registro de un administrador
+   .*donde como resultado se pasa a través de la ruta de acceso al componente de registro el documento
+   *del administrador que será registrado.*/
+
+
 	state ={
 		username: this.props.username || "",
 		email: this.props.email || "",

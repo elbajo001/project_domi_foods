@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 
 
 class Signup extends Component{
+	//Componente que despliega el formulario de inicio de sesión.
+
 	state ={
 			user: this.props.user || "",
 			document_type: this.props.document_type || "",

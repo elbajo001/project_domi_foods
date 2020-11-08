@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 
 class CategoryForm extends Component {
-  //
+  //Componente que despliega el formulario de creación y actualización de una categoría.
+  
   state = {
     id: this.props.id || "",
     name: this.props.name || "",

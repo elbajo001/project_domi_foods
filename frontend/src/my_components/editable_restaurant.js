@@ -4,6 +4,9 @@ import RestaurantForm from "./restaurant_form";
 import Restaurant from './restaurant';
 
 class EditableRestaurant extends Component {
+  /*Componente que muestra la información del restaurante y permite las funcionalidades de
+   *crear, editar y eliminar*/
+   
   state = {
     inEditMode: false
   };

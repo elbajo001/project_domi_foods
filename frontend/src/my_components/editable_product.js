@@ -3,6 +3,8 @@ import Product from './product';
 import ProductForm from './product_form';
 
 class EditableProduct extends Component {
+  /*Componente que muestra la información del producto y permite las funcionalidades de
+   *crear, editar y eliminar*/
   state = {
     inEditMode: false
   };

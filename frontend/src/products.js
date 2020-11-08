@@ -3,6 +3,15 @@ import ProductList from './my_components/product_list';
 import ToggleableProductForm from './my_components/toggle_product_form';
 
 class Products extends Component{
+  /*Componente que despliega la lista de los productos asociados a un restaurante.
+   *Los parámetros de entrada son: 
+   *la lista de restaurantes por la cual se discrimina la lista de productos.
+   *la lista de productos que se va a visualizar.
+   *el id del restaurante para el cual se van a ver los productos.
+   *el nombre del restaurante para el cual se van a ver los productos.
+   *la dirección ip del host que establece conexión con el servidor.
+  */
+
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -16,7 +25,7 @@ class Products extends Component{
     dir_ip:"192.168.1.151",
   }
 
-//mostrar productos de un restaurante dado
+//permite mostrar productos de un restaurante dado
  handleChange(event){
     //alert(event.target.value);
     var id = "";
@@ -47,7 +56,8 @@ class Products extends Component{
   //crud de productos o platos
 
 
-  //listar restaurantes de un administrador dado para escoger uno y mostrar sus productos
+  //permite listar restaurantes de un administrador dado 
+  //para escoger uno y mostrar sus productos
   componentDidMount() {
     const {id} = this.props.match.params;
      fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/${id}/restaurants`)
@@ -57,7 +67,7 @@ class Products extends Component{
       });
   };
 
-//crear producto
+//permite crear un producto
  createNewProduct = (product) => {
   const uploadData = new FormData();
   uploadData.append('id', product.id);
@@ -81,7 +91,7 @@ class Products extends Component{
 }
 
 
-  //actualizar producto
+  //permite actualizar un producto
   updateProduct = (newProduct) => {
      const uploadData = new FormData();
      uploadData.append('id', newProduct.id);
@@ -113,7 +123,7 @@ class Products extends Component{
   }
 
 
-  //eliminar producto
+  //permite eliminar un producto
   deleteProduct = (productId) => {
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/products/${productId}/`,
     {
@@ -129,7 +139,7 @@ class Products extends Component{
   }
 
 
- //renderizar para mostrar el contenido...
+ //función para renderizar para mostrar el contenido...
 	render(){
 		return(
 			<div id="content" className="p-4 p-md-5 pt-5">

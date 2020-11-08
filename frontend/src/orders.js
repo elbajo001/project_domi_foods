@@ -3,6 +3,13 @@ import OrderList from './my_components/order_list';
 
 class Orders extends Component{
 
+  /*Componente que despliega la lista de pedidos realizados a un restaurante determinado.*/
+
+  /*Parámetros:
+   *lista de pedidos
+   *lista de restaurantes para discriminar los pedidos por el id del restaurante escogido.
+   *dirección ip del host que establece conexión con el servidor.
+  */
 	state={
 		orders:[],
 		restaurants:[],
@@ -11,7 +18,10 @@ class Orders extends Component{
 		dir_ip:"192.168.1.151"
 	};
 
-
+  /*permite traer la lista de restaurantes que son gerenciados por el administrador que
+   *ha iniciado sesión, el id del administrador se obtiene de la ruta de acceso a este componente
+   *desde el navegador.
+  */ 
 	componentDidMount(){
 		const {id} = this.props.match.params;
      	fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/${id}/restaurants`)
@@ -22,7 +32,8 @@ class Orders extends Component{
 	}
 
 
-	//mostrar los pedidos  de un restaurante dado
+	//permite mostrar los pedidos  de un restaurante dado, luego de un evento de cambio
+  //que ocurre en el momento en que escoge un restaurante.
  	handleChange(event){
     //alert(event.target.value);
     var id = "";
@@ -49,7 +60,7 @@ class Orders extends Component{
 }
 
 
-
+  //Función que permite renderizar el contenido de este componente.
 	render(){
 		return(
 			

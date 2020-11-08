@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import Welcome from './welcome';
 
 class LandingPage extends Component{
+	/*Componente que muestra la página principal de la aplicación web domifoods!*/
+
 	render(){
 		return(
 			<div className="container bg-transparent">

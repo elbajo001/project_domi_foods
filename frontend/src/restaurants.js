@@ -4,8 +4,11 @@ import RestaurantList from "./my_components/restaurant_list";
 
 class RestaurantDashboard extends Component {
   
+ /*Componente que se encarga de la visualización general de información de los restaurantes
+ gerenciados por un administrador determinado*/
 
-
+  //parámetros del componente: administrador, lista de restaurantes y la dirección ip del host
+  //donde se va a realizar la conexión con el servidor. 
   state = {
     admin: "",
     restaurants: [],
@@ -15,7 +18,7 @@ class RestaurantDashboard extends Component {
   //crud de restaurantes
 
 
-  //listar restaurantes de un administrador dado
+  //permite listar restaurantes de un administrador dado
   componentDidMount() {
     const {id} = this.props.match.params;
     this.setState({admin: id});
@@ -26,7 +29,7 @@ class RestaurantDashboard extends Component {
       });
   }
 
-  //crear restaurante
+  //función que permite crear un restaurante
   createNewRestaurant = (restaurant) => {
     alert(this.state.admin);
     restaurant.id_admin = this.state.admin;
@@ -56,7 +59,7 @@ class RestaurantDashboard extends Component {
   }
 
 
- //actualizar restaurante
+ //función que permite actualizar los datos del restaurante
   updateRestaurant = (newRestaurant) => {
     const uploadData = new FormData();
     uploadData.append('id', newRestaurant.id);
@@ -92,7 +95,7 @@ class RestaurantDashboard extends Component {
   }
 
 
-  //eliminar restaurante
+  //esta función permite eliminar un restaurante discriminandolo por el identificador: id.
   deleteRestaurant = (restaurantId) => {
     fetch(
       `http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${restaurantId}/`,

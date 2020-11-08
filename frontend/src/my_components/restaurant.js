@@ -3,6 +3,8 @@ import React,{Component} from 'react';
 
 
 class Restaurant extends Component {
+  /*Componente que muestra la información del restaurante*/
+  
   render() {
     return (
       <div className="card" /* style="width: 18rem;" */>

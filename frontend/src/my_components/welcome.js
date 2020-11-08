@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 
 class Welcome extends Component{
+	//Componente que despliega la bienvenida a domifoods web.
+
 	render(){
 		return(
 			<div className="jumbotron mt-5 bg-transparent">

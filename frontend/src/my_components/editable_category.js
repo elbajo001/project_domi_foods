@@ -3,6 +3,9 @@ import Category from './category';
 import CategoryForm from './category_form';
 
 class EditableCategory extends Component {
+   /*Componente que muestra la información categoría y permite las funcionalidades de
+   *crear, editar y eliminar*/
+ 
   state = {
     inEditMode: false
   };

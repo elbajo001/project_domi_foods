@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import EditableCategory from './editable_category';
 
 class CategoryList extends Component {
+  //Componente que despliega la lista de categorías.
+  
   render() {
     const categories = this.props.categories.map((category) => (
       <EditableCategory

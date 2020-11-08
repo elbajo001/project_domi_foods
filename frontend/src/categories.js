@@ -4,11 +4,16 @@ import ToggleableCategoryForm from './my_components/toggle_category_form';
 
 class Categories extends Component{
 
+  /*Componente que despliega las categorías de un restaurante determinado*/
+
+  /*Constructor de la clase*/
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 	
+  /*Parámetros de entrada del componente: lista de categorías que son discriminadas por restaurante
+   *Además de la dirección ip del host que establece conexión con el servidor.*/
 	state = {
     	categories: [],
 		  restaurants:[],
@@ -17,18 +22,10 @@ class Categories extends Component{
   	};
 
 
-    //listar categorías de un restaurante dado
+    //Permite listar categorías de un restaurante escogido.
 	  handleChange(event){
 		 var id = "";
 
-    /*
-     const auxRestaurants = this.state.restaurants.map(restaurant => {
-          if (restaurant.name === event.target.value) {
-            id = restaurant.id;
-            this.setState({ restaurant_id : restaurant.id });
-          }
-      });
-    */
     for (var i = 0; i < this.state.restaurants.length; i++) {
       if(this.state.restaurants[i].name === event.target.value){
         id = this.state.restaurants[i].id;
@@ -43,7 +40,7 @@ class Categories extends Component{
      
 	  }
 
-    //listar restaurantes para escoger uno y traer sus categorías 
+    //Permite listar restaurantes para escoger uno y traer sus categorías 
     componentDidMount() {
     	const {id} = this.props.match.params;
       
@@ -57,7 +54,7 @@ class Categories extends Component{
 
     //crud de categorías
     
-    //crear categoría
+    //Permite crear una categoría
   	createNewCategory = (category) => {
       alert(category.restaurant_id);
       const uploadData = new FormData();
@@ -83,7 +80,7 @@ class Categories extends Component{
     }
 
 
-  //actualizar categoría
+  //Permite actualizar categoría
   updateCategory = (newCategory) => {
     const uploadData = new FormData();
       uploadData.append('id', newCategory.id);
@@ -113,7 +110,7 @@ class Categories extends Component{
   };
 
 
-    //eliminar categoría
+    //Permite eliminar una categoría
   	deleteCategory = (categoryId) => {
     	fetch(`http://${this.state.dir_ip}:8000/restaurants/api/categories/${categoryId}/`,
       	{
@@ -127,7 +124,7 @@ class Categories extends Component{
          });
     }
 
-  //renderizar para mostrar el contenido
+  //Función que se encarga de renderizar para mostrar el contenido
 	render(){
 		return(
 			<div id="content" className="p-4 p-md-5 pt-5">

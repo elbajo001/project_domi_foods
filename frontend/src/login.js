@@ -3,8 +3,14 @@ import LoginForm from './my_components/login_form';
 
 
 class Login extends Component{
+  /*Componente que despliega la funcionalidad de inicio de sesión*/
+	
+  /*Parámetros: 
+    * dirección ip del host que establece conexión con el servidor.
+    * credenciales del usuario que desea iniciar sesión: usuario y contraseña.
+    * diccionario que almacena la respuesta del servidor.
+  */
 
-	/*Aquí lógica del inicio de sesión*/
     state = {
     	 dir_ip:"192.168.1.151",
     	 user: {
@@ -22,17 +28,21 @@ class Login extends Component{
     	 id:""
     };
 
+
+    //se inicializan el usuario y contraseña en vacíos.
     componentDidMount(){
     	this.setState({username: ""});
     	this.setState({password:""});
     }
 
-
+    //función que permite envío de los datos del formulario hacia el servicio de login del servidor.
      handleFormSubmit = (user) => {
      	this.login_user(user);
      };
 
 
+    //Servicio de login y/o autenticación del servidor para acceder a la cuenta si existe, de 
+    //la plataforma DomiFoods web.
     login_user = (user) => {
       fetch(`http://${this.state.dir_ip}:8000/accounts/api/login/`, {
         method: "POST",
@@ -50,6 +60,7 @@ class Login extends Component{
 		      });
     }
 
+  //función que renderiza el contenido de este componente.
 	render(){
 		return(		
 			    <div className="jumbotron alert-danger col-4 col-auto mb-2 ml-auto mr-auto" align="center">

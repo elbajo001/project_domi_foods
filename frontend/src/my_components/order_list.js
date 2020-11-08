@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import EditableOrder from './editable_order';
 
 class OrderList extends Component {
+  
+  /*Componente que muestra la lista de pedidos de un restaurante*/
+
   render() {
     const orders = this.props.orders.map((order) => (
       <EditableOrder

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CategoryForm from "./category_form";
 
 class ToggleableCategoryForm extends Component {
+  //Componente que permite la creación de más categorías.
+  
   state = {
     inCreateMode: false
   };
