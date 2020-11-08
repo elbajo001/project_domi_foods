@@ -36,6 +36,7 @@ class Step2 extends Component{
 
     //función que permite la creación de un usuario de la plataforma domifoods web.
     createUserRestaurant(user_restaurant){
+    	const flag = false;
 		//se procede a registrar como usuario restaurante
     	fetch(
     		`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_register/`, {
@@ -44,10 +45,12 @@ class Step2 extends Component{
         	 "Content-Type": "application/json",
       		},
       		body: JSON.stringify(user_restaurant),
-    	}).then(response1 => response1.json())
+    	}).then(response => response.json())
     	  .then((data) => {
 		  		this.setState({user_restaurant: data});
-		  		this.props.history.push(`/user_admin_registry/${this.state.user_restaurant.document}`);
+		  		if(this.state.user_restaurant.document === user_restaurant.document){
+		  			this.props.history.push(`/user_admin_registry/${this.state.user_restaurant.document}`);
+		    	}
 		    });
 	}
 
@@ -75,6 +78,29 @@ class Step2 extends Component{
     					address_location = {this.state.user_restaurant.address_location}
     					onFormSubmit={this.handleFormRestaurant}
 					/>
+
+					<div className="bg-transparent mt-2">
+					    <p>
+						{this.state.user_restaurant.document_type}
+						<br/>
+						{this.state.user_restaurant.document}
+						<br/>
+						{this.state.user_restaurant.first_name}
+						<br/>
+						{this.state.user_restaurant.last_name}
+						<br/>
+						{this.state.user_restaurant.genre}
+						<br/>
+						{this.state.user_restaurant.phone_num}
+						<br/>
+						{this.state.user_restaurant.date_of_birth}
+						<br/>
+						{this.state.user_restaurant.email_address}
+						<br/>
+						{this.state.user_restaurant.address_location}
+						</p>
+					</div>
+
 				</div>
 			</div>		
 			);		
