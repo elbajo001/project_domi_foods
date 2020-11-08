@@ -26,9 +26,12 @@ class Restaurant extends Component {
         <img src={this.props.image} alt="img" width="348" height="200"/>
         <div className="card-body text-dark">
               <label className="label">Nit: {this.props.nit}</label>
+              <br/>
               <label className="label">Dirección: {this.props.address_location}</label>
+              <br/>
               <label className="label">Teléfono: {this.props.phone_num}</label>
-              <label className="label">Horario:{this.props.hours_start} -- {this.props.hours_end}</label>
+              <br/>
+              <label className="label">Horario: {this.props.hours_start} a {this.props.hours_end}</label>
               <label className="label">Página web: {this.props.web_page}</label>
         </div>
       </div>
