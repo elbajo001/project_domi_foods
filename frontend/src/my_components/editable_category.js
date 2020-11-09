@@ -3,6 +3,9 @@ import Category from './category';
 import CategoryForm from './category_form';
 
 class EditableCategory extends Component {
+   /*Componente que muestra la información categoría y permite las funcionalidades de
+   *crear, editar y eliminar*/
+ 
   state = {
     inEditMode: false
   };
@@ -28,6 +31,7 @@ class EditableCategory extends Component {
             id = {this.props.id}
             name={this.props.name}
             description={this.props.description}
+            image={this.props.image}
             restaurant={this.props.restaurant}
             onCancelClick={this.leaveEditMode}
             onFormSubmit={this.handleUpdate}
@@ -39,6 +43,7 @@ class EditableCategory extends Component {
             id={this.props.id}
             name={this.props.name}
             description={this.props.description}
+            image={this.props.image}
             restaurant={this.props.restaurant}
             onEditClick={this.enterEditMode}
             onDeleteClick={this.handleDelete}
@@ -46,7 +51,7 @@ class EditableCategory extends Component {
       );
     };
     return (
-      <div className="mb-2 p-2 card" style={{ boxShadow: "0 0 5px #ccc" }}>
+      <div className="col-lg-6 col-sm-6 mb-4" style={{ boxShadow: "0 0 5px #ccc" }}>
         {component()}
       </div>
     );

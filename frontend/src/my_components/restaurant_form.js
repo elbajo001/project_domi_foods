@@ -4,11 +4,7 @@ import React,{Component} from 'react';
 
 class RestaurantForm extends Component {
 
-  constructor(props){
-    super(props);
-    //this.fileInput = React.createRef();
-  }
-
+    //Componente que despliega el formulario de creación y actualización de un restaurante.
 
   state = {
     id: this.props.id || "",
@@ -17,8 +13,10 @@ class RestaurantForm extends Component {
     address_location: this.props.address_location || "",
     phone_num: this.props.phone_num || "",
     web_page: this.props.web_page || "",
-    hours: this.props.hours || "",
-    id_admin: 1
+    hours_start: this.props.hours_start || "",
+    hours_end: this.props.hours_end || "",
+    id_admin: this.props.id_admin || "",
+    image: this.props.image || ""
   };
 
   handleFormSubmit = (evt) => {
@@ -53,10 +51,13 @@ class RestaurantForm extends Component {
     this.setState({ web_page: evt.target.value });
   };
 
-  handleHoursUpdate = (evt) => {
-    this.setState({ hours: evt.target.value });
+  handleHoursStartUpdate = (evt) => {
+    this.setState({ hours_start: evt.target.value });
   };
 
+  handleHoursEndUpdate = (evt) => {
+    this.setState({ hours_end: evt.target.value });
+  }
 
   handleImageUpdate = (evt) => {
       this.setState({image: evt.target.files[0]});
@@ -135,16 +136,37 @@ class RestaurantForm extends Component {
           </div>
 
           <div className="form-row">
+            <div className="form-group col-sm-6">
             <label className="form-control-label">Hours</label>
             <input
-              type="text"
+              type="time"
               placeholder="Enter the Restaurant's schedule"
-              value={this.state.hours}
-              onChange={this.handleHoursUpdate}
+              value={this.state.hours_start}
+              onChange={this.handleHoursStartUpdate}
+              className="form-control"
+            />
+            </div>
+            <div className="form-group col-sm-6">
+               <label className="form-control-label"> a </label>
+            <input
+              type="time"
+              placeholder="Enter the Restaurant's schedule"
+              value={this.state.hours_end}
+              onChange={this.handleHoursEndUpdate}
+              className="form-control"
+            />
+            </div>
+
+          </div>
+        
+          <div className="form-row">
+            <label className="form-control-label">Image</label>
+            <input
+              type="file"
+              onChange={this.handleImageUpdate}
               className="form-control"
             />
           </div>
-        
 
 
         <div className="mt-3 form-group d-flex justify-content-between">

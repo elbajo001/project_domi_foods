@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import CategoryForm from "./category_form";
+import Delivery from "./delivery";
 
-class ToggleableCategoryForm extends Component {
-  //Componente que permite la creación de más categorías.
-  
+class ToggleableOrderForm extends Component {
+   //Componente que permite la confirmación de pedidos.
   state = {
     inCreateMode: false
   };
@@ -16,27 +15,22 @@ class ToggleableCategoryForm extends Component {
   handleCancleClick = () => {
     this.leaveCreateMode();
   };
-  handleFormSubmit = (category) => {
+  handleFormSubmit = (order) => {
     this.leaveCreateMode();
-    this.props.onCategoryCreate(category);
+    this.props.onOrderCreate(order);
   };
   render() {
     if (this.state.inCreateMode) {
       return (
         <div className="mb-3 p-4 col-auto" style={{ boxShadow: "0 0 10px #ccc" }}>
-          <CategoryForm
-            onFormSubmit={this.handleFormSubmit}
+          <Delivery
+            //onFormSubmit={this.handleFormSubmit}
             onCancelClick={this.handleCancleClick}
-          ></CategoryForm>
+          ></Delivery>
         </div>
       );
     }
-    return (
-      <button onClick={this.handleCreateClick} className="btn btn-danger btn-lg">
-        <i className="fas fa-plus"></i>
-      </button>
-    );
   }
 }
 
-export default ToggleableCategoryForm;
+export default ToggleableOrderForm;

@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 
 class CategoryForm extends Component {
-  //
+  //Componente que despliega el formulario de creación y actualización de una categoría.
+
   state = {
     id: this.props.id || "",
     name: this.props.name || "",
     description: this.props.description || "",
+    image: this.props.image || "",
     restaurant: this.props.restaurant || "",
     restaurants: [],
     restaurant_id: "",
@@ -15,7 +17,6 @@ class CategoryForm extends Component {
   };
 
   componentDidMount() {
-
     fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
       .then((response) => response.json())
       .then((data) => {
@@ -50,6 +51,10 @@ class CategoryForm extends Component {
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
   };
+
+  handleImageUpdate = (evt) => {
+    this.setState({ image: evt.target.files[0] });
+  }
 
 
   render() {
@@ -90,6 +95,15 @@ class CategoryForm extends Component {
           </select>
         </div>
 
+
+        <div className="form-row">
+          <label className="form-control-label">Image</label>
+          <input
+            type="file"
+            onChange={this.handleImageUpdate}
+            className="form-control"
+          />
+        </div>
 
         <div className="form-group d-flex justify-content-between">
           <button type="submit" className="btn btn-md btn-danger">

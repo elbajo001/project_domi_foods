@@ -1,11 +1,15 @@
 import React,{Component} from 'react';
 
 class Home extends Component{
+    /*Componente que despliega cortos resumenes estadísticos de ventas y otros detalles
+     * al administrador que ha iniciado sesión*/
+
+    //función que renderiza el contenido de este componente. 
 	render(){
 		return(
              <div id="content" className="p-4 p-md-5 pt-5">
 			 <main>
-                    <div className="container-fluid">
+                    <div className="jumbotron bg-light">
                         <h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Dashboard</h2>
                         <hr/>
                         <div className="row">

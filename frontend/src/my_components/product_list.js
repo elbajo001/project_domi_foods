@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditableProduct from './editable_product';
 
 class ProductList extends Component {
+  /*Componente que muestra la lista de productos de un restaurante*/
   render() {
     const products = this.props.products.map((product) => (
       <EditableProduct
@@ -10,6 +11,7 @@ class ProductList extends Component {
         name={product.name}
         price={product.price}
         description={product.description}
+        image={product.image}
         category={product.category}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}
@@ -18,7 +20,7 @@ class ProductList extends Component {
     if(Object.entries(products).length===0){
       return <div className="card-deck"><h5>No hay productos para mostrar.</h5></div>
     }
-    return <div className="card-deck">
+    return <div className="row">
         {products}
     </div>;
   }

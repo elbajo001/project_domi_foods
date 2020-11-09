@@ -2,6 +2,10 @@ import React,{Component} from 'react';
 
 
 class Reports extends Component{
+	/*Componente que despliega la funcionalidad de reportes estadísticos 
+	 *semanales y mensuales de un restaurante determinado.*/
+
+	//función que renderiza el contenido de este componente.
 	render(){
 		return(
 			<div id="content" className="p-4 p-md-5 pt-5">

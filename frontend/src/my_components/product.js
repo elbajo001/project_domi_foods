@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
 class Product extends Component {
+  /*Componente que muestra la información del producto*/
+  /*Parámetros: dirección ip del host que establece conexión con el servidor, esto para obtener
+  *correctamente la imagen del producto que viene serializada en formato JSON, y la
+  *la información de la categoría a la que el producto pertenece.*/
+
   state = {
     category_pr: {
-      id: this.props.id || "",
-      name: this.props.name || "",
-      description: this.props.description || "",
+      id: "",
+      name: "",
+      description: "",
     },
     dir_ip: "192.168.0.18",
   }
@@ -19,6 +24,7 @@ class Product extends Component {
   }
 
   render() {
+    const url = `http://${this.state.dir_ip}:8000${this.props.image}`;
     return (
       <div className="card" /* style="width: 18rem;" */>
         <div className="card-header d-flex justify-content-between bg-danger text-white">
@@ -34,8 +40,8 @@ class Product extends Component {
             </span>
           </div>
         </div>
+        <img src={url} alt={this.props.image} width="348" height="200" />
         <div className="card-body text-dark">
-          <img className="card-img-top" src="https://lorempics.com/200x150/337AB7/FFFFFF" alt="product" />
           <hr />
           <div>{this.props.description}</div>
           <label>Precio: {this.props.price}</label>

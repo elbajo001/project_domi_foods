@@ -3,6 +3,8 @@ import Product from './product';
 import ProductForm from './product_form';
 
 class EditableProduct extends Component {
+  /*Componente que muestra la información del producto y permite las funcionalidades de
+   *crear, editar y eliminar*/
   state = {
     inEditMode: false
   };
@@ -29,6 +31,7 @@ class EditableProduct extends Component {
             name={this.props.name}
             price={this.props.price}
             description={this.props.description}
+            image={this.props.image}
             category={this.props.category}
             onCancelClick={this.leaveEditMode}
             onFormSubmit={this.handleUpdate}
@@ -40,6 +43,7 @@ class EditableProduct extends Component {
           name={this.props.name}
           price={this.props.price}
           description={this.props.description}
+          image={this.props.image}
           category={this.props.category}
           onEditClick={this.enterEditMode}
           onDeleteClick={this.handleDelete}
@@ -47,7 +51,7 @@ class EditableProduct extends Component {
       );
     };
     return (
-      <div className="mb-3 p-2 card" style={{ boxShadow: "0 0 10px #ccc" }}>
+      <div className="col-lg-4 col-sm-6 mb-6" style={{ boxShadow: "0 0 10px #ccc" }}>
         {component()}
       </div>
     );

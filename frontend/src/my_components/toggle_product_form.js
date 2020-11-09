@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProductForm from "./product_form";
 
 class ToggleableProductForm extends Component {
+   //Componente que permite la creación de más productos.
   state = {
     inCreateMode: false
   };

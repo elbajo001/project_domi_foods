@@ -2,12 +2,15 @@ import React, { Component } from "react";
 
 
 class ProductForm extends Component {
+  /*Componente que despliega el formulario del producto, para la creación y actualización
+  *del mismo.*/
 
   state = {
     id: this.props.id || "",
     name: this.props.name || "",
     price: this.props.price || "",
     description: this.props.description || "",
+    image: this.props.image || "",
     category: this.props.category || "",
     //state_delete: this.props.state_delete || "",
     categories: [],
@@ -49,7 +52,6 @@ class ProductForm extends Component {
       });
   }
 
-
   handleCategory(event) {
     var id = "";
 
@@ -62,6 +64,10 @@ class ProductForm extends Component {
     this.setState({ category: id });
     //this.setState({category_id: event.target.value });
     this.setState({ category_name: event.target.value });
+  }
+
+  handleChange(event) {
+    this.setState({ category: event.target.value });
     //this.props.category=event.target.value;
   }
 
@@ -83,6 +89,9 @@ class ProductForm extends Component {
     this.setState({ description: evt.target.value });
   };
 
+  handleImageUpdate = (evt) => {
+    this.setState({ image: evt.target.files[0] });
+  }
 
   render() {
     const buttonText = this.props.id ? "Update Product" : "Create Product";
@@ -143,6 +152,15 @@ class ProductForm extends Component {
           >
             {this.state.description}
           </textarea>
+        </div>
+
+        <div className="form-row">
+          <label className="form-control-label">Image</label>
+          <input
+            type="file"
+            onChange={this.handleImageUpdate}
+            className="form-control"
+          />
         </div>
 
 
