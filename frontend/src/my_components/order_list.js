@@ -8,15 +8,11 @@ class OrderList extends Component {
   render() {
     const orders = this.props.orders.map((order) => (
       <EditableOrder
-        key={order.id}
-        id={order.id}
-        client={order.client}
-        estimated_time={order.estimated_time}
-        current_address={order.current_address}
-        longitude={order.longitude}
-        latitude={order.latitude}
-        observation={order.observation}
-        state={order.state}
+        key={order.order}
+        id={order.order}
+        name={order.name}
+        cantidad={order.candidad}
+        precio={order.precio}
         onDeleteClick={this.props.onDeleteClick}
         onUpdateClick={this.props.onUpdateClick}
       ></EditableOrder>

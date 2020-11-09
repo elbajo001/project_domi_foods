@@ -24,7 +24,10 @@ class EditableOrder extends Component {
     const component = () => {
       return (
         <Delivery
-  
+            id = {this.props.order}
+            name={this.props.name}
+            cantidad={this.props.cantidad}
+            precio={this.props.precio}
             onEditClick={this.enterEditMode}
             onDeleteClick={this.handleDelete}
         />

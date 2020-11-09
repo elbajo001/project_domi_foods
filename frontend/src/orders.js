@@ -5,6 +5,11 @@ class Orders extends Component{
 
   /*Componente que despliega la lista de pedidos realizados a un restaurante determinado.*/
 
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   /*Parámetros:
    *lista de pedidos
    *lista de restaurantes para discriminar los pedidos por el id del restaurante escogido.
@@ -17,6 +22,7 @@ class Orders extends Component{
         restaurant_name:"nn",
 		dir_ip:"192.168.1.151"
 	};
+
 
   /*permite traer la lista de restaurantes que son gerenciados por el administrador que
    *ha iniciado sesión, el id del administrador se obtiene de la ruta de acceso a este componente
@@ -70,7 +76,7 @@ class Orders extends Component{
 					<h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Pedidos</h2>
 					
 						<main className="d-flex justify-content-center my-4">
-            			<div className="jumbotron bg-light">
+            			<div className="jumbotron bg-light col-lg-12">
             				<OrderList
               					orders={this.state.orders}
             				/>
