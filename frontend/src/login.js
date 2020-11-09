@@ -12,7 +12,7 @@ class Login extends Component{
   */
 
     state = {
-    	 dir_ip:"192.168.1.151",
+    	 dir_ip:"192.168.88.9",
     	 user: {
     	 	 username:"",
     	     password:""

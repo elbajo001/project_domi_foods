@@ -30,7 +30,7 @@ SECRET_KEY = '-rcdo7n6i!ug=!ms5f!7r0+s!33#$c02%ja@jsicyn02fv0q(p'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['192.168.1.151']
+ALLOWED_HOSTS = ['192.168.88.9']
 
 
 # Others
@@ -104,49 +104,26 @@ WSGI_APPLICATION = 'domi_foods.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 """
-=======
-
-
->>>>>>> ade7cee01d9ce88b9c3e640e6005c9e9e9838d26
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-<<<<<<< HEAD
 """
 
-""" 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bd_domifoods',
+        'NAME': 'springt3',
         'USER': 'postgres',
         'PASSWORD': 'postgresql',
         'HOST': '127.0.0.1',
         'DATABASE_PORT':5432
     }
 }
- """
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'domi_foods',
-        'USER': 'postgres',
-        'PASSWORD': 'isa2020',
-      
-      #
-        #'NAME': 'bd_domi_foods',
-        #'USER': 'postgres',
-        #'PASSWORD': 'postgresql',
-      #app_accounts
-        'HOST': '127.0.0.1',
-        'DATABASE_PORT':5432
-    }
-}
+ 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

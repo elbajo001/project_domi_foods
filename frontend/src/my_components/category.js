@@ -5,7 +5,7 @@ class Category extends Component {
   /*Parámetros: dirección ip del host que establece conexión con el servidor, esto para obtener
   *correctamente la imagen de la categoría que viene serializada en formato JSON.*/
   state={
-    dir_ip:"192.168.1.151"
+    dir_ip:"192.168.88.9"
   }
   
   //función que renderiza el contenido de este componente.

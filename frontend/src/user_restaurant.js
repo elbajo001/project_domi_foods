@@ -25,7 +25,7 @@ class Step2 extends Component{
     		address_location: ""
 		},
 
-		dir_ip:"192.168.1.151",
+		dir_ip:"192.168.88.9",
 	};
 
 	//función que dirige los datos del formulario correspondientes al usuario que se está 

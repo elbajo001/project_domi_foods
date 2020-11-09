@@ -19,7 +19,7 @@ class ProductForm extends Component {
       category_id:"",
       category_name:"",
       restaurant_name:"",
-      dir_ip:"192.168.1.151",
+      dir_ip:"192.168.88.9",
     };
 
   

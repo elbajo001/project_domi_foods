@@ -18,7 +18,7 @@ class Categories extends Component{
     	categories: [],
 		  restaurants:[],
 		  restaurant_id: "",
-      dir_ip:"192.168.1.151",
+      dir_ip:"192.168.88.9",
   	};
 
 

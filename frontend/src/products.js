@@ -22,7 +22,7 @@ class Products extends Component{
     restaurants:[],
     restaurant_id:"",
     restaurant_name:"nn",
-    dir_ip:"192.168.1.151",
+    dir_ip:"192.168.88.9",
   }
 
 //permite mostrar productos de un restaurante dado

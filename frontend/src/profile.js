@@ -21,7 +21,7 @@ class Profile extends Component{
     	    email_address: "",
     		address_location: ""
 		},
-		dir_ip:"192.168.1.151",
+		dir_ip:"192.168.88.9",
 	};
 
 

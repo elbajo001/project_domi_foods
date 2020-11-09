@@ -34,7 +34,7 @@ class Registry extends Component{
 		},
 
 
-		dir_ip:"192.168.1.151",
+		dir_ip:"192.168.88.9",
 	};
 
 
