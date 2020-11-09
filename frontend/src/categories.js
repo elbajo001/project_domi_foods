@@ -1,25 +1,25 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import CategoryList from './my_components/category_list';
 import ToggleableCategoryForm from './my_components/toggle_category_form';
 
-class Categories extends Component{
+class Categories extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
-	
-	state = {
-    	categories: [],
-		  restaurants:[],
-		  restaurant_id: "",
-      dir_ip:"192.168.1.151",
-  	};
+
+  state = {
+    categories: [],
+    restaurants: [],
+    restaurant_id: "",
+    dir_ip: "192.168.0.18",
+  };
 
 
-    //listar categorías de un restaurante dado
-	  handleChange(event){
-		 var id = "";
+  //listar categorías de un restaurante dado
+  handleChange(event) {
+    var id = "";
 
     /*
      const auxRestaurants = this.state.restaurants.map(restaurant => {
@@ -30,68 +30,52 @@ class Categories extends Component{
       });
     */
     for (var i = 0; i < this.state.restaurants.length; i++) {
-      if(this.state.restaurants[i].name === event.target.value){
+      if (this.state.restaurants[i].name === event.target.value) {
         id = this.state.restaurants[i].id;
       }
     }
 
-<<<<<<< HEAD
-      fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/categories/`)
-=======
-      fetch(`http://192.168.0.111:8000/restaurants/api/restaurants/${id}/categories/`)
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
-       .then((response) => response.json())
-       .then((data) => {
-         this.setState({ categories: data });
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/restaurants/${id}/categories/`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ categories: data });
       });
-     
-	  }
 
-    //listar restaurantes para escoger uno y traer sus categorías 
-    componentDidMount() {
-    	
-<<<<<<< HEAD
-		  fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
-=======
-		  fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
-		  .then((response) => response.json())
-		  .then((data) => {
-			this.setState({ restaurants: data });
-		  });
-		};
+  }
+
+  //listar restaurantes para escoger uno y traer sus categorías 
+  componentDidMount() {
+
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ restaurants: data });
+      });
+  };
 
 
-    //crud de categorías
-    
-    //crear categoría
-  	createNewCategory = (category) => {
+  //crud de categorías
+
+  //crear categoría
+  createNewCategory = (category) => {
     fetch(
-<<<<<<< HEAD
-    	`http://${this.state.dir_ip}:8000/restaurants/api/categories/`, {
-=======
-    	'http://192.168.0.111:8000/restaurants/api/categories/', {
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(category),
-      }).then(response => response.json())
-        .then(category => {
-          this.setState({categories: this.state.categories.concat([category])});
-        });
-    }
+      `http://${this.state.dir_ip}:8000/restaurants/api/categories/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(category),
+    }).then(response => response.json())
+      .then(category => {
+        this.setState({ categories: this.state.categories.concat([category]) });
+      });
+  }
 
 
   //actualizar categoría
   updateCategory = (newCategory) => {
     fetch(
-<<<<<<< HEAD
       `http://${this.state.dir_ip}:8000/restaurants/api/categories/${newCategory.id}/`,
-=======
-      `http://192.168.0.111:8000/restaurants/api/categories/${newCategory.id}/`,
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
       {
         method: "PUT",
         headers: {
@@ -107,68 +91,66 @@ class Categories extends Component{
             return category;
           }
         });
-        this.setState({categories: newCategories});
+        this.setState({ categories: newCategories });
       });
   };
 
 
-    //eliminar categoría
-  	deleteCategory = (categoryId) => {
-    	fetch(
-<<<<<<< HEAD
-      		`http://${this.state.dir_ip}:8000/restaurants/api/categories/${categoryId}/`,
-=======
-      		`http://192.168.0.111:8000/restaurants/api/categories/${categoryId}/`,
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
-      	{
-        	method: "DELETE",
-        	headers: {
-          		"Content-Type": "application/json",
-        	}
-      	}).then(() => {
-      		this.setState({categories: this.state.categories.filter(
-          	category => category.id !== categoryId)})
-         });
-    }
+  //eliminar categoría
+  deleteCategory = (categoryId) => {
+    fetch(
+      `http://${this.state.dir_ip}:8000/restaurants/api/categories/${categoryId}/`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }).then(() => {
+        this.setState({
+          categories: this.state.categories.filter(
+            category => category.id !== categoryId)
+        })
+      });
+  }
 
   //renderizar para mostrar el contenido
-	render(){
-		return(
-			<div id="content" className="p-4 p-md-5 pt-5">
-			 <main>
+  render() {
+    return (
+      <div id="content" className="p-4 p-md-5 pt-5">
+        <main>
           <div className="container-fluid">
-					<h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Información de las Categorías</h2>
-          <div class="form-group mt-5">
-					<main className="d-flex justify-content-center my-4">
-            			<div className="jumbotron bg-white">
-            				<CategoryList
-              					categories={this.state.categories}
-              					onDeleteClick={this.deleteCategory}
-              					onUpdateClick={this.updateCategory}
-            				/>
-            				<ToggleableCategoryForm
-              					onCategoryCreate={this.createNewCategory}
-            				/>
-            			</div>
-            		</main>
+            <h2 className="font-weight-bold text-danger mt-4 bg-white" align="center">Información de las Categorías</h2>
+            <div class="form-group mt-5">
+              <main className="d-flex justify-content-center my-4">
+                <div className="jumbotron bg-white">
+                  <CategoryList
+                    categories={this.state.categories}
+                    onDeleteClick={this.deleteCategory}
+                    onUpdateClick={this.updateCategory}
+                  />
+                  <ToggleableCategoryForm
+                    onCategoryCreate={this.createNewCategory}
+                  />
+                </div>
+              </main>
 
-                 <p  className="text-white" align="center"><i>Escoja alguno de los restaurantes para ver sus categorías</i></p>
+              <p className="text-white" align="center"><i>Escoja alguno de los restaurantes para ver sus categorías</i></p>
               <div className="footer">
-              <nav aria-label="Page navigation">
-            <ul className="pagination justify-content-center">
-               {this.state.restaurants.map((restaurant)=>(
-                <li className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
-              ))}
-            </ul>
-           </nav>
-           </div>
+                <nav aria-label="Page navigation">
+                  <ul className="pagination justify-content-center">
+                    {this.state.restaurants.map((restaurant) => (
+                      <li className="page-item"><button className="page-link text-danger font-weight-bold" value={restaurant.name} onClick={this.handleChange}>{restaurant.name}</button></li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
 
-          		</div>
-          	</div>
-        	</main>
-		</div>
-		);
-	}
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default Categories;

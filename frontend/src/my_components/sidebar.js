@@ -1,27 +1,23 @@
-import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class Sidebar extends Component{
-  state={
-    admin:{
-      "user":"",
-      "document_type":"",
-      "document":"",
-      "first_name":"",
-      "last_name":"",
-      "phone_num":"",
-      "email":"",
-      "addres_location":""    
+class Sidebar extends Component {
+  state = {
+    admin: {
+      "user": "",
+      "document_type": "",
+      "document": "",
+      "first_name": "",
+      "last_name": "",
+      "phone_num": "",
+      "email": "",
+      "addres_location": ""
     },
-    dir_ip: "192.168.1.151",
+    dir_ip: "192.168.0.18",
   }
 
-  componentDidMount(){
-<<<<<<< HEAD
-     fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/10467803`)
-=======
-     fetch("http://192.168.0.111:8000/accounts/api/user_restaurant_detail/123124124214")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+  componentDidMount() {
+    fetch(`http://${this.state.dir_ip}:8000/accounts/api/user_restaurant_detail/10467803`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ admin: data });
@@ -29,9 +25,9 @@ class Sidebar extends Component{
   };
 
 
-	render(){
-		return(
-			 <nav id="sidebar">
+  render() {
+    return (
+      <nav id="sidebar">
         <div class="custom-menu">
           <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
@@ -40,21 +36,21 @@ class Sidebar extends Component{
         </div>
         <div class="p-4">
           <h1><a href="index.html" class="logo">
-              Domifoods!
+            Domifoods!
               <span>
               Food Delivery</span>
-              </a>
+          </a>
           </h1>
-           <hr/>
-              <img src="https://electronicssoftware.net/wp-content/uploads/user.png" height="70" width="70" alt="user"/>
-              <label className="form-control-sm ml-3">{this.state.admin.first_name} {this.state.admin.last_name}</label>
-          <hr/>
+          <hr />
+          <img src="https://electronicssoftware.net/wp-content/uploads/user.png" height="70" width="70" alt="user" />
+          <label className="form-control-sm ml-3">{this.state.admin.first_name} {this.state.admin.last_name}</label>
+          <hr />
           <ul class="list-unstyled components mb-5">
             <li class="active">
-              <Link to ="/"><span class="fa fa-home mr-3"></span>Home</Link>
+              <Link to="/"><span class="fa fa-home mr-3"></span>Home</Link>
             </li>
             <li>
-                <Link to ="/profile"><span class="fa fa-user mr-3"></span>Mi perfil</Link>
+              <Link to="/profile"><span class="fa fa-user mr-3"></span>Mi perfil</Link>
             </li>
             <li>
               <Link to="/restaurants"><span class="fa fa-briefcase mr-3"></span>Restaurante</Link>
@@ -72,8 +68,8 @@ class Sidebar extends Component{
         </div>
       </nav>
 
-		);
-	}
+    );
+  }
 }
 
 export default Sidebar;

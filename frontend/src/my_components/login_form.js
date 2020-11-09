@@ -1,61 +1,61 @@
 import React, { Component } from "react";
 
-class LoginForm extends Component{
+class LoginForm extends Component {
 	state = {
 		username: this.props.username || "",
 		password: this.props.password || "",
-		dir_ip: "192.168.1.151"
+		dir_ip: "192.168.0.18"
 	};
 
 	handleUserNameUpdate = evt => {
-		this.setState({username: evt.target.value});
+		this.setState({ username: evt.target.value });
 	}
 
-	handlePasswordUpdate = evt =>{
-		this.setState({password: evt.target.value});
+	handlePasswordUpdate = evt => {
+		this.setState({ password: evt.target.value });
 	}
 
 	handleFormSubmit = (evt) => {
-    	evt.preventDefault();
-    	this.props.onFormSubmit({ ...this.state });
-  	};
+		evt.preventDefault();
+		this.props.onFormSubmit({ ...this.state });
+	};
 
 
-	render(){
-		return(
+	render() {
+		return (
 			<form onSubmit={this.handleFormSubmit}>
 				<div className="form-group row mt-5">
-				   <label className="col-sm-4 col-form-label form-control-sm">Usuario</label>
-				   <div className="col-sm-6">
-				   <input 
-				   		className="form-control-sm" 
-				   		type="text"
-				   		placeholder="nombre de usuario"
-				   		name="username"
-				   		id="username"
-				   		onChange={this.handleUserNameUpdate}
-				   	/>
-				   </div>
+					<label className="col-sm-4 col-form-label form-control-sm">Usuario</label>
+					<div className="col-sm-6">
+						<input
+							className="form-control-sm"
+							type="text"
+							placeholder="nombre de usuario"
+							name="username"
+							id="username"
+							onChange={this.handleUserNameUpdate}
+						/>
+					</div>
 				</div>
 
 				<div className="form-group row">
 					<label className="col-sm-4 col-form-label form-control-sm">Contraseña</label>
 					<div className="col-sm-6">
-					<input 
-						className="form-control-sm" 
-						type="password"
-						placeholder="contraseña"
-						name="password"
-						id="password"
-						onChange={this.handlePasswordUpdate}
-					/>
+						<input
+							className="form-control-sm"
+							type="password"
+							placeholder="contraseña"
+							name="password"
+							id="password"
+							onChange={this.handlePasswordUpdate}
+						/>
 					</div>
 				</div>
 
 				<div className="container mt-4">
-					<button 
-						type="submit" 
-						className="btn btn-primary" 
+					<button
+						type="submit"
+						className="btn btn-primary"
 						name="btnLogin"
 					>
 						Iniciar Sesión

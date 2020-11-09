@@ -8,36 +8,32 @@ class CategoryForm extends Component {
     name: this.props.name || "",
     description: this.props.description || "",
     restaurant: this.props.restaurant || "",
-    restaurants:[],
-    restaurant_id:"",
-    restaurant_name:"",
-    dir_ip:"192.168.1.151",
+    restaurants: [],
+    restaurant_id: "",
+    restaurant_name: "",
+    dir_ip: "192.168.0.18",
   };
 
-   componentDidMount(){
+  componentDidMount() {
 
-<<<<<<< HEAD
-       fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
-=======
-       fetch("http://192.168.0.111:8000/restaurants/api/admin/1/restaurants")
->>>>>>> 98210b962e2ea3dffbb2c89de0b090a0b68d90f6
+    fetch(`http://${this.state.dir_ip}:8000/restaurants/api/admin/1/restaurants`)
       .then((response) => response.json())
       .then((data) => {
-      this.setState({ restaurants: data });
+        this.setState({ restaurants: data });
       });
   }
 
 
- handleRestaurant(event){
+  handleRestaurant(event) {
     var id = "";
-   
+
     for (var i = 0; i < this.state.restaurants.length; i++) {
-      if(this.state.restaurants[i].name === event.target.value){
+      if (this.state.restaurants[i].name === event.target.value) {
         id = this.state.restaurants[i].id;
       }
     }
-    this.setState({restaurant: id});
-    this.setState({restaurant_name: event.target.value});
+    this.setState({ restaurant: id });
+    this.setState({ restaurant_name: event.target.value });
   }
 
 
@@ -49,7 +45,7 @@ class CategoryForm extends Component {
   handleNameUpdate = (evt) => {
     this.setState({ name: evt.target.value });
   };
- 
+
 
   handleDescriptionUpdate = (evt) => {
     this.setState({ description: evt.target.value });
@@ -86,12 +82,12 @@ class CategoryForm extends Component {
 
         <div className="form-group">
           <label>Restaurante:</label>
-            <select className="form-control" value={this.state.restaurant_name} name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
-              <option>Seleccione...</option>
-              {this.state.restaurants.map((restaurant)=>(
-                <option>{restaurant.name}</option>
-              ))}
-            </select>
+          <select className="form-control" value={this.state.restaurant_name} name="restaurant" id="restaurant" onChange={this.handleRestaurant.bind(this)}>
+            <option>Seleccione...</option>
+            {this.state.restaurants.map((restaurant) => (
+              <option>{restaurant.name}</option>
+            ))}
+          </select>
         </div>
 
 
