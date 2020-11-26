@@ -29,6 +29,7 @@ class Category(models.Model):
     restaurant = models.ForeignKey(Restaurant,  on_delete=models.CASCADE,  null=False, blank=False, default=None)
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     description = models.TextField(null=True, blank=True)
+    type_executive = models.BooleanField(verbose_name='menú ejecutivo')
     image = models.ImageField(upload_to='media_restaurants/img_categories', null=False, blank=False)
     state = models.CharField(max_length=255, null=False, blank=False, default='disponible')
     created_at = models.DateTimeField(auto_now_add=True)

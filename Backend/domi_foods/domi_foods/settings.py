@@ -29,7 +29,7 @@ SECRET_KEY = '-rcdo7n6i!ug=!ms5f!7r0+s!33#$c02%ja@jsicyn02fv0q(p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.18']
 
 # Others
 # Date formats

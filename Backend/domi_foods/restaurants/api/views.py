@@ -78,6 +78,19 @@ def ListarCategoriasPorRestaurante(request, pk):
     serializer = CategorySerializer(list_categorias, many = True)
     return Response(serializer.data)
 
+@api_view(['GET'])   
+def ListProductsByExecutiveCategoryByRestaurant(request, pk):
+    
+    list_categorias = Category.objects.filter(restaurant = pk)
+    list_platos = []
+    for categoria in list_categorias:
+        if categoria.type_executive:
+            platos = Product.objects.filter(category = categoria.id)
+            for plato in platos:
+                list_platos.append(plato)
+    serializer = ProductSerializer(list_platos, many = True)
+    return Response(serializer.data)
+    
 
 # listar los restaurantes asociados a un admin <admin>
 class ListRestaurantsByAdmin(generics.ListAPIView):

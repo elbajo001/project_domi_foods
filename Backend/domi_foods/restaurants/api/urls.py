@@ -8,6 +8,7 @@ urlpatterns = [
     path('categories/', CategoryList.as_view()),
     # Categories GET, POST, PUT, DELETE
     path('categories/<int:pk>/', CategoryDetail.as_view()),
+    
 
 
     # Products GET, POST
@@ -23,6 +24,8 @@ urlpatterns = [
 
     # List all categories by restaurant <rest>
     path('restaurants/<str:pk>/categories/', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
+    # Categories by Type
+    path('restaurants/<str:pk>/category-executive/products/', ListProductsByExecutiveCategoryByRestaurant),
     #Listar categorias por restaurante
     #path('restaurants/categories/<str:pk>', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
     # List all products by restaurant <rest>

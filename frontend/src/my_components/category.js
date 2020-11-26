@@ -4,10 +4,10 @@ class Category extends Component {
   /*Componente que muestra la información de la categoría*/
   /*Parámetros: dirección ip del host que establece conexión con el servidor, esto para obtener
   *correctamente la imagen de la categoría que viene serializada en formato JSON.*/
-  state = {
-    dir_ip: "192.168.0.18"
+  state={
+    dir_ip:"192.168.1.151"
   }
-
+  
   //función que renderiza el contenido de este componente.
   render() {
     const url = `http://${this.state.dir_ip}:8000${this.props.image}`;
@@ -27,10 +27,10 @@ class Category extends Component {
             </span>
           </div>
         </div>
-        <img src={url} alt="category" height="150" width="250" />
+        <img src={url} alt="category" height="150" width="250"/>
         <div className="card-body text-dark">
-          <hr />
-          <p>{this.props.description}</p>
+             <hr/>
+            <p>{this.props.description}</p>
         </div>
       </div>
     );
