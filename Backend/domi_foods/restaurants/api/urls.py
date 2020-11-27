@@ -24,8 +24,10 @@ urlpatterns = [
 
     # List all categories by restaurant <rest>
     path('restaurants/<str:pk>/categories/', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
+    # List executive categories by restaurant <rest>
+    path('restaurants/<str:pk>/category-executive/', ListExecutiveCategoryByRestaurant),
     # Categories by Type
-    path('restaurants/<str:pk>/category-executive/products/', ListProductsByExecutiveCategoryByRestaurant),
+    path('restaurants/<str:pk>/category-executive/<int:cat>/products/', ListProductsByExecutiveCategoryByRestaurant),
     #Listar categorias por restaurante
     #path('restaurants/categories/<str:pk>', ListarCategoriasPorRestaurante, name = 'restaurant_categories'),
     # List all products by restaurant <rest>
